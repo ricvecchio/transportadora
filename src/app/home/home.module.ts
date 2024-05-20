@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HomeComponent, LoginComponent],
-  imports: [CommonModule, HomeRoutingModule, FormsModule],
+  imports: [CommonModule, HomeRoutingModule, FormsModule],  
   exports: [HomeComponent],
 })
 export class HomeModule { }
