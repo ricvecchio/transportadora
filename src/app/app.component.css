@@ -1,0 +1,11 @@
+main {
+    background: url(/assets/img/background-agua3.jpg);
+    background-size: contain;
+    min-height: 60vh;
+
+
+    /* background-attachment: fixed; */
+    height: 100vh;
+
+  }
+  

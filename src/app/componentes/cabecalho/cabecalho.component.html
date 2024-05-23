@@ -1,18 +1,47 @@
-<header class="sticky-top">
-    <nav class="navbar navbar-light bg-white">
-      <a class="navbar-brand">Transportadora</a>
-      <div *ngIf="user$ | async as user">
+<header class="cabecalho ff-inter">
+  <div class="logo">
+    <img src="../../../assets/img/logo-saotome.png" alt="Logo da aplicação São Tomé">
+    <p>Serviços completos em abastecimento de água potável em caminhões pipa.</p>
+  </div>
+  <img class="imagem" src="../../../assets/img/caminhao-cabecalho.png" alt="Imagem de um caminhão">
+
+  <div *ngIf="user$ | async as user">
+    <div *ngIf="user.name; else login">
+      <i class="fa fa-user-circle mr-1"> </i>
+      <a class="navbar-text">{{ user.name }}</a>
+      <a (click)="logout()" class="mr-1" > Logout</a>
+    </div>
+  </div>
+  <ng-template #login>
+    <span class="navbar-text">
+      <a [routerLink]="['']">Login</a>
+    </span>
+  </ng-template>
+
+</header>
+
+<!-- <header class="sticky-top"> -->
+    <!-- <nav class="navbar navbar-light bg-white">
+    <div class="col-md-8 mb-2">
+      <img
+        class="img-fluid d-none d-sm-block"
+        src="assets/img/logo.png"
+        alt="Imagem do logo São Tomé"
+      />
+    </div>
+      <a class="navbar-brand">Transportadora</a> -->
+      <!-- <div *ngIf="user$ | async as user">
         <div *ngIf="user.name; else login">
           <i class="fa fa-user-circle mr-1"> </i>
           <a class="mr-1">{{ user.name }}</a>
-          <a (click)="logout()">Logout</a>
+          <a (click)="logout()"> Logout</a>
         </div>
-      </div>
-    </nav>
-  
+      </div> -->
+    <!-- </nav> -->
+<!--   
     <ng-template #login>
       <span class="navbar-text">
         <a [routerLink]="['']">Login</a>
       </span>
     </ng-template>
-  </header>
+  </header> -->
