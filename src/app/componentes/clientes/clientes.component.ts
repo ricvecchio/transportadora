@@ -7,8 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesComponent implements OnInit {
 
+  dadosCliente = {
+    id: '1',
+    fantasia: 'Transportadora São Tomé',
+    razaosocial: 'Transportadora e entregadoria São Tomé Ltda',
+    telefone: '(11) 9 6448-2908',
+    modelo: 'modelo1'
+  }
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  criarPensamento() {
+    alert("Novo pensamento criado!")
+  }
+
+  cancelar() {
+    alert("Ação cancelada!")
   }
 }

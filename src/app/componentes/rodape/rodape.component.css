@@ -7,7 +7,14 @@ footer {
     grid-template-areas:
       "TextoCopyright LogoRodape .";
     align-items: center;
-    padding: 1rem 2rem;
+    /* padding: 1rem 2rem;   */
+
+    border-top: 1px solid #333;
+    bottom: 0;
+    left: 0;
+    height: 60px;
+    position: fixed;
+    width: 100%;
   }
   
   .TextoCopyright {
@@ -18,19 +25,17 @@ footer {
   .LogoRodape {
     justify-self: center;
     grid-area: LogoRodape;
-    max-width: 60px;
+    max-width: 70px;
   }
   
   footer small {
     color: white;
   }
 
-
-  .textoRodape {
-    justify-self: center;
-    color: white;
-  }
-
+  /* .TextoRodape {
+    justify-self: right;
+    grid-area: TextoRodape;
+  } */
 
   @media (max-width: 576px) {
     .cabecalho .logo {

@@ -1,14 +1,13 @@
 <header class="cabecalho ff-inter">
-  <div class="logo">
-    <img src="../../../assets/img/logo-saotome.png" alt="Logo da aplicação São Tomé">
-    <p>Serviços completos em abastecimento de água potável em caminhões pipa.</p>
-  </div>
+
+  <img class="logo" src="../../../assets/img/logo-cabecalho.png" alt="Imagem com um gota dagua">
+  <img class="logo-texto" src="../../../assets/img/logo-saotome.png" alt="Imagem com o texto São Tomé">
   <img class="imagem" src="../../../assets/img/caminhao-cabecalho.png" alt="Imagem de um caminhão">
 
   <div *ngIf="user$ | async as user">
     <div *ngIf="user.name; else login">
       <i class="fa fa-user-circle mr-1"> </i>
-      <a class="navbar-text">{{ user.name }}</a>
+      <a class="navbar-text">{{ user.name }}</a> <br>
       <a (click)="logout()" class="mr-1" > Logout</a>
     </div>
   </div>
