@@ -16,4 +16,5 @@ export class CabecalhoComponent {
     this.usuarioService.logout();
     this.router.navigate(['']);
   }
+
 }

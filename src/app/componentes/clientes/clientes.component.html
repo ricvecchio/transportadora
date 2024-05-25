@@ -1,4 +1,4 @@
-<section class="container criar-pensamentos ff-inter">
+<section class="container clientes ff-inter">
   <header class="header">
     <h2>Cadastro de Clientes:</h2>
   </header>
@@ -10,7 +10,8 @@
       id="fantasia"
       name="fantasia"
       placeholder="Digite o nome fantasia"
-      [value]="dadosCliente.fantasia"
+      [(ngModel)]="dadosCliente.fantasia"
+
     />
 
     <label for="razaosocial">Razão Social</label>
@@ -20,7 +21,7 @@
       id="razaosocial"
       name="razaosocial"
       placeholder="Digite a Razão Social"
-      [value]="dadosCliente.razaosocial"
+      [(ngModel)]="dadosCliente.razaosocial"
     />
 
     <label for="telefone">Telefone</label>
@@ -30,14 +31,20 @@
       id="telefone"
       name="telefone"
       placeholder="Digite o telefone"
-      [value]="dadosCliente.telefone"
+      [(ngModel)]="dadosCliente.telefone"
     />
 
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <div class="radio-modelo">
         <label for="modelo1">
-          <input type="radio" id="modelo1" value="modelo1" name="modelo-card" />
+          <input 
+          type="radio" 
+          id="modelo1" 
+          value="modelo1" 
+          name="modelo-card"
+          [(ngModel)]="dadosCliente.modelo"
+          >
           <div class="custom-radio">
             <span></span>
           </div>
@@ -55,7 +62,13 @@
 
       <div class="radio-modelo">
         <label for="modelo2">
-          <input type="radio" id="modelo2" value="modelo2" name="modelo-card" />
+          <input 
+          type="radio" 
+          id="modelo2" 
+          value="modelo2" 
+          name="modelo-card"
+          [(ngModel)]="dadosCliente.modelo"
+           />
           <div class="custom-radio">
             <span></span>
           </div>
@@ -72,7 +85,13 @@
 
       <div class="radio-modelo">
         <label for="modelo3">
-          <input type="radio" id="modelo3" value="modelo3" name="modelo-card" />
+          <input 
+          type="radio" 
+          id="modelo3" 
+          value="modelo3" 
+          name="modelo-card" 
+          [(ngModel)]="dadosCliente.modelo"
+          />
           <div class="custom-radio">
             <span></span>
           </div>
@@ -89,7 +108,7 @@
     </div>
 
     <div class="acoes">
-      <button (click)="criarPensamento()" class="botao">Salvar</button>
+      <button (click)="cadastrarCliente()" class="botao">Salvar</button>
       <button (click)="cancelar()" class="botao">Cancelar</button>
     </div>
   </form>

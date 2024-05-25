@@ -20,8 +20,8 @@ export class ClientesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  criarPensamento() {
-    alert("Novo pensamento criado!")
+  cadastrarCliente() {
+    alert("Cliente cadastrado com sucesso!")
   }
 
   cancelar() {

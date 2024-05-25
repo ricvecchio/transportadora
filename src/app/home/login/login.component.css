@@ -1,0 +1,33 @@
+  .login {
+    padding: 3rem 0;
+  }
+  
+  .login form {
+    background: #929e92;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+  }
+  
+  .login form label {
+    color: #000000;
+    font-weight: bold;
+    margin: 0 0 1rem;
+  }
+  
+  .login form .input {
+    border: none;
+    height: 40px;
+    padding: 1rem 1rem;
+    border-radius: 20px;
+    margin: 0 0 3rem;
+  }
+
+  .acoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }  

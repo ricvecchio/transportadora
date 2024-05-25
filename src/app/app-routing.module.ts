@@ -1,24 +1,39 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MenuComponent } from './componentes/menu/menu.component';
+import { HomeComponent } from './home/home.component';
+import { ClientesComponent } from './componentes/clientes/clientes.component';
+import { LoginComponent } from './home/login/login.component';
+import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
 
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     redirectTo: 'home',
+    pathMatch: 'full',
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        component: LoginComponent,
+      },
+      {
+        path: 'novousuario',
+        component: NovoUsuarioComponent,
+      },
+    ],
   },
-  // {
-  //   path: 'veiculos',
-  //   loadChildren: () => import('./veiculos/veiculos.module').then((m) => m.VeiculosModule),
-  // },  
+  {
+    path: 'menu',
+    component: MenuComponent
+  },  
   {
     path: 'clientes',
-    loadChildren: () => import('./componentes/clientes/clientes.module').then((m) => m.ClientesModule),
-  },  
+    component: ClientesComponent
+  }
 ];
 
 @NgModule({
