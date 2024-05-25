@@ -1,48 +1,3 @@
-<!-- <h4 class="text-center">Login</h4>
-
-<form class="form mt-6" (ngSubmit)="login()" #loginForm="ngForm">
-  <div class="form-group">
-    <input
-      class="form-control"
-      placeholder="Nome do usuário"
-      [(ngModel)]="usuario"
-      name="usuario"
-      #campoUsuario="ngModel"
-      required
-      />
-      <app-mensagem
-      *ngIf="campoUsuario.invalid && campoUsuario.touched"
-      mensagem="Usuário obrigatório"
-    ></app-mensagem>
-  </div>
-
-  <div class="form-group">
-    <input
-      type="password"
-      class="form-control"
-      placeholder="Senha"
-      [(ngModel)]="senha"
-      name="senha"
-      #campoSenha="ngModel"
-      required
-    />
-    <app-mensagem
-    *ngIf="campoSenha.invalid && campoSenha.touched"
-    mensagem="Senha obrigatória"
-  ></app-mensagem>
-  </div>
-
-  <button
-    type="submit"
-    class="btn btn-primary btn-block"
-    [disabled]="loginForm.invalid"
-  >
-    Login
-  </button>
-</form>
-
-<p>Não é um usuário? <a [routerLink]="['/home/novousuario']">Se cadastre!</a></p> -->
-
 <section class="container login ff-inter">
   <header class="text-center">
     <h4>Login</h4>
@@ -74,7 +29,7 @@
         #campoSenha="ngModel"
         required
       />
-      
+
       <app-mensagem
         *ngIf="campoSenha.invalid && campoSenha.touched"
         mensagem="Senha obrigatória"
@@ -82,11 +37,12 @@
 
       <button
         type="submit"
-        class="btn btn-primary btn-block"
+        class="botao btn-primary btn-block"
         [disabled]="loginForm.invalid"
       >
         Login
       </button>
+
     </form>
 
     <p>
