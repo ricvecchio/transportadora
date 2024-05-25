@@ -6,15 +6,16 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RodapeComponent } from './componentes/rodape/rodape.component';
 import { MenuComponent } from './componentes/menu/menu.component';
-import { ClientesComponent } from './componentes/clientes/clientes.component';
+import { CadastraClientesComponent } from './componentes/clientes/cadastra-clientes/cadastra-clientes.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
 import { MensagemComponent } from './componentes/mensagem/mensagem.component';
+import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-pedido.component';
 
 @NgModule({
-  declarations: [AppComponent, CabecalhoComponent, RodapeComponent, HomeComponent, LoginComponent, MensagemComponent, NovoUsuarioComponent, MenuComponent, ClientesComponent],
+  declarations: [AppComponent, CabecalhoComponent, RodapeComponent, HomeComponent, LoginComponent, MensagemComponent, NovoUsuarioComponent, MenuComponent, CadastraClientesComponent, EmitePedidoComponent],
   imports: [
     AppRoutingModule,
     HttpClientModule,

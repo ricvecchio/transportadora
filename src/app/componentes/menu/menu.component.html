@@ -1,10 +1,14 @@
 <section class="container">
-    <header class="header d-flex">
-        <h2 class="ff-inter">Menu</h2>
-        <button routerLink="/clientes" class="botao">Cadastro de Clientes</button>
-        <button class="botao">Cadastro de Pedidos</button>
-        <button class="botao">Consulta Pedidos</button>
-        <button class="botao">Consulta Clientes</button>
-    </header>
+  <header class="header d-flex">
+    <h2 class="ff-inter">Menu</h2>
+    <button routerLink="/cadastra-clientes" class="botao">Cadastro de Clientes</button>
+    <button class="botao">Cadastro de Pedidos</button>
+    <button class="botao">Consulta Pedidos</button>
+    <button class="botao">Consulta Clientes</button>
+  </header>
+  <div class="emite-pedido">
+    <div *ngFor="let Pedidos of listaPedidos">
+      <app-emite-pedido> [emite-pedido]="emite-pedido"></app-emite-pedido>
+    </div>
+  </div>
 </section>
-

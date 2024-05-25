@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-clientes',
-  templateUrl: './clientes.component.html',
-  styleUrl: './clientes.component.css'
+  selector: 'app-cadastra-clientes',
+  templateUrl: './cadastra-clientes.component.html',
+  styleUrl: './cadastra-clientes.component.css'
 })
-export class ClientesComponent implements OnInit {
+export class CadastraClientesComponent implements OnInit {
 
   dadosCliente = {
     id: '1',

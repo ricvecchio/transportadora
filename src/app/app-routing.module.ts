@@ -2,9 +2,10 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MenuComponent } from './componentes/menu/menu.component';
 import { HomeComponent } from './home/home.component';
-import { ClientesComponent } from './componentes/clientes/clientes.component';
+import { CadastraClientesComponent } from './componentes/clientes/cadastra-clientes/cadastra-clientes.component';
 import { LoginComponent } from './home/login/login.component';
 import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
+import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-pedido.component';
 
 const routes: Routes = [
   {
@@ -31,9 +32,13 @@ const routes: Routes = [
     component: MenuComponent
   },  
   {
-    path: 'clientes',
-    component: ClientesComponent
+    path: 'cadastra-clientes',
+    component: CadastraClientesComponent
   }
+  // {
+  //   path: 'emite-pedido',
+  //   component: EmitePedidoComponent
+  // }
 ];
 
 @NgModule({

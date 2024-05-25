@@ -11,11 +11,11 @@
     width: 200px;
   }
   
-  .clientes {
+  .cadastra-clientes {
     padding: 2rem 0;
   }
   
-  .clientes form {
+  .cadastra-clientes form {
     background: #C4EDFF;
   
     border: none;
@@ -27,13 +27,13 @@
     padding: 2rem;
   }
   
-  .clientes form label {
+  .cadastra-clientes form label {
     color: #154580;
     font-weight: bold;
     margin: 0 0 1rem;
   }
   
-  .clientes form .input {
+  .cadastra-clientes form .input {
     border: none;
     height: 40px;
     padding: 1rem 2rem;
@@ -42,7 +42,7 @@
   }
   
   
-  .clientes form .textarea {
+  .cadastra-clientes form .textarea {
     border: none;
     padding: 1rem 2rem;
     border-radius: 20px;
