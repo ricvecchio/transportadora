@@ -6,6 +6,7 @@ import { CadastraClientesComponent } from './componentes/clientes/cadastra-clien
 import { LoginComponent } from './home/login/login.component';
 import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
 import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-pedido.component';
+import { CadastrarPedidosComponent } from './componentes/pedidos/cadastrar-pedidos/cadastrar-pedidos.component';
 
 const routes: Routes = [
   {
@@ -34,11 +35,15 @@ const routes: Routes = [
   {
     path: 'cadastra-clientes',
     component: CadastraClientesComponent
+  },
+  {
+    path: 'cadastrar-pedidos',
+    component: CadastrarPedidosComponent
+  },
+  {
+    path: 'emite-pedido',
+    component: EmitePedidoComponent
   }
-  // {
-  //   path: 'emite-pedido',
-  //   component: EmitePedidoComponent
-  // }
 ];
 
 @NgModule({
