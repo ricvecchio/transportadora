@@ -1,6 +1,6 @@
 <section class="container login ff-inter">
   <header class="text-center">
-    <h4>Login</h4>
+    <h2 class="ff-inter">Login</h2>
   </header>
 
   <div class="input">
@@ -14,7 +14,7 @@
         #campoUsuario="ngModel"
         required
       />
-      <app-mensagem
+      <app-mensagem class="erro"
         *ngIf="campoUsuario.invalid && campoUsuario.touched"
         mensagem="Usuário obrigatório"
       ></app-mensagem>

@@ -29,6 +29,14 @@
   .acoes {
     display: flex;
     justify-content: center;
-    align-items: center;
     align-content: center;
   }  
+
+  .botao {
+    margin-top: 60px;
+    width: 200px;
+  }
+
+  /* .erro {
+    margin: 0 0 10;
+  } */
