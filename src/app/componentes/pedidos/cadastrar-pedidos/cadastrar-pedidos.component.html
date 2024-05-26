@@ -118,8 +118,8 @@
   </form>
 
   <div class="emite-pedido">
-    <div *ngFor="let pedidos of listaPedidos">
-      <app-emite-pedido> [emite-pedido]="emite-pedido"></app-emite-pedido>
+    <div *ngFor="let pedido of listaPedidos">
+      <app-emite-pedido [pedido]="pedido"></app-emite-pedido>
     </div>
   </div>
 </section>
