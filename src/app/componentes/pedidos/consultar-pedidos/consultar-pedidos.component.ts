@@ -9,27 +9,27 @@ export class ConsultarPedidosComponent implements OnInit {
 
 
   listaPedidos = [
-    {
-      id: '1',
-      fantasia: 'Passo informações para o componente filho',
-      razaosocial: 'Dados da lista da classe Consultar Pedidos',
-      telefone: '(11) 9 6448-2908',
-      modelo: 'modelo1'
-    },
-    {
-      id: '2',
-      fantasia: 'Minha propriedade é decorada com @Input()',
-      razaosocial: 'Dados da lista da classe Consultar Pedidos',
-      telefone: '(11) 9 6448-2908',
-      modelo: 'modelo2'
-    },
-    {
-      id: '3',
-      fantasia: 'Terceira registro da minha lista',
-      razaosocial: 'Dados da lista da classe Consultar Pedidos',
-      telefone: '(11) 9 6448-2908',
-      modelo: 'modelo3'
-    }
+    // {
+    //   id: '1',
+    //   fantasia: 'Passo informações para o componente filho',
+    //   razaosocial: 'Dados da lista da classe Consultar Pedidos',
+    //   telefone: '(11) 9 6448-2908',
+    //   modelo: 'modelo1'
+    // },
+    // {
+    //   id: '2',
+    //   fantasia: 'Minha propriedade é decorada com @Input()',
+    //   razaosocial: 'Dados da lista da classe Consultar Pedidos',
+    //   telefone: '(11) 9 6448-2908',
+    //   modelo: 'modelo2'
+    // },
+    // {
+    //   id: '3',
+    //   fantasia: 'Terceira registro da minha lista',
+    //   razaosocial: 'Dados da lista da classe Consultar Pedidos',
+    //   telefone: '(11) 9 6448-2908',
+    //   modelo: 'modelo3'
+    // }
   ];
 
   // larguraPensamento(): string {

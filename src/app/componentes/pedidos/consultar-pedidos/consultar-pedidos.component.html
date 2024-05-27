@@ -2,23 +2,15 @@
   <header class="header d-flex">
     <h2 class="ff-inter">Consultar Pedidos:</h2>
   </header>
-  <div class="layoutpedido">
+  <div class="layoutpedido" *ngIf="listaPedidos.length > 0; else semPedidos">
     <div *ngFor="let pedido of listaPedidos">
-      <app-cadastrar-pedidos [dadosPedido]="pedido" ></app-cadastrar-pedidos>
+      <app-cadastrar-pedidos [dadosPedido]="pedido"></app-cadastrar-pedidos>
     </div>
   </div>
 </section>
 
-<!-- <ng-template #semPensamentos>
-  <div class="ff-inter sem-pensamentos">
-    <p>Ainda não há pensamentos cadastrados!</p>
+<ng-template #semPedidos>
+  <div class="ff-inter sem-pedidos]">
+    <p>Ainda não há pedidos cadastrados!</p>
   </div>
 </ng-template>
-
-<div class="layoutpedido">
-  <app-cadastrar-pedidos></app-cadastrar-pedidos>
-  <div *ngFor="let pedido of listaPedidos">
-        <app-cadastrar-pedidos [dadosPedido]="pedido"></app-cadastrar-pedidos>
-      </div>
-    </div>
-</div> -->
