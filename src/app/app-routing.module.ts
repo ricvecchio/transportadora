@@ -1,3 +1,4 @@
+import { ConsultarPedidosComponent } from './componentes/pedidos/consultar-pedidos/consultar-pedidos.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MenuComponent } from './componentes/menu/menu.component';
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'cadastrar-pedidos',
     component: CadastrarPedidosComponent
+  },
+  {
+    path: 'consultar-pedidos',
+    component: ConsultarPedidosComponent
   },
   {
     path: 'emite-pedido',

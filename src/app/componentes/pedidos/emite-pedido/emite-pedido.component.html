@@ -1,27 +1,22 @@
-<!-- <div class="pensamento {{ pensamento.modelo }} ff-roboto-mono" [ngClass]="larguraPensamento()">
-    <img src="/assets/img/{{ pensamento.modelo }}.png" alt="Aspas coloridas">
-    <p class="conteudo">{{ pensamento.conteudo }}</p>
-    <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
-    <div class="acoes">
-      <button class="botao-editar">
-        <img src="/assets/img/icone-editar.png" alt="Ícone de editar">
-      </button>
-      <button class="botao-excluir">
-        <img src="/assets/img/icone-excluir.png" alt="Ícone de excluir">
-      </button>
-    </div>
-  </div> -->
+<section class="container emite-pedidos ff-inter">
+  <header class="header">
+    <h2>Pedido:</h2>
+  </header>
+</section>
 
-  <div class="pedido {{ pedido.modelo }} ff-roboto-mono pedido-p"> 
-    <img src="/assets/img/{{ pedido.modelo }}.png" alt="Aspas coloridas">
-    <p class="conteudo">{{ pedido.conteudo }}</p>
-    <p class="autoria"><b>{{ pedido.autoria }}</b></p>
-    <div class="acoes">
-      <button class="botao-editar">
-        <img src="/assets/img/icone-editar.png" alt="Ícone de editar">
-      </button>
-      <button class="botao-excluir">
-        <img src="/assets/img/icone-excluir.png" alt="Ícone de excluir">
-      </button>
-    </div>
+<div class="pedido {{ dadosPedido.modelo }} ff-roboto-mono pedido-p">
+  <img src="/assets/img/{{ dadosPedido.modelo }}.png" alt="Aspas coloridas" />
+  <p class="fantasia">{{ dadosPedido.fantasia }}</p>
+  <p class="telefone">{{ dadosPedido.telefone }}</p>
+  <p class="autoria"><b>{{ dadosPedido.razaosocial }}</b>
+  </p>
+  <div class="acoes">
+    <button class="botao-editar">
+      <img src="/assets/img/icone-editar.png" alt="Ícone de editar" />
+    </button>
+    <button class="botao-excluir">
+      <img src="/assets/img/icone-excluir.png" alt="Ícone de excluir" />
+    </button>
   </div>
+
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cadastrar-pedidos',
@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarPedidosComponent implements OnInit {
   
-  dadosPedido = {
+  @Input() dadosPedido = {
     id: '1',
-    fantasia: 'Transportadora São Tomé',
-    razaosocial: 'Transportadora e entregadoria São Tomé Ltda',
+    fantasia: 'I love Angular',
+    razaosocial: 'Testando modelo com @input - dados Cadastrar pedidos',
     telefone: '(11) 9 6448-2908',
     modelo: 'modelo1'
   }
@@ -31,24 +31,6 @@ export class CadastrarPedidosComponent implements OnInit {
   pedidoEmitido() {
     alert("Pedido Emitido!")
   }
-
-  listaPedidos = [
-    {
-      conteudo: 'Passo informações para o componente filho',
-      autoria: 'Componente pai',
-      modelo: 'modelo3'
-    },
-    {
-      conteudo: 'Minha propriedade é decorada com @Input()',
-      autoria: 'Componente filho',
-      modelo: 'modelo2'
-    },
-    {
-      conteudo: 'Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Diuretics paradis num copo é motivis de denguis. Atirei o pau no gatis, per gatis num morreus. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Sapien in monti palavris qui num significa nadis i pareci latim. ',
-      autoria: '',
-      modelo: 'modelo1'
-    },
-  ];
 
 }
 

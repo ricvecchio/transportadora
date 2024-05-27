@@ -17,18 +17,18 @@
     margin-top: 10px;
   }
   
-  .pedido {
+  .consultar-pedidos {
     background-color: #F8F9FE;
     padding: 1rem;
     box-sizing: border-box;
   }
   
-  .pedido .conteudo {
+  .consultar-pedidos .conteudo {
     margin: 1rem auto;
     word-wrap: break-word;
   }
   
-  .pedido .autoria {
+  .consultar-pedidos .autoria {
     word-wrap: break-word;
   }
   
@@ -44,21 +44,21 @@
     box-shadow: 8px 8px 0px #84EEC1;
   }
   
-  .pedido-g {
+  .consultar-pedidos-g {
     width: 556px;
   }
   
-  .pedido-p {
+  .consultar-pedidos-p {
     width: 262px;
   }
   
   @media screen and (max-width: 768px) {
-    .pedido-g {
+    .consultar-pedidos-g {
       width: 100%;
     }
   }
   @media screen and (max-width: 426px) {
-    .pedido-p {
+    .consultar-pedidos-p {
       width: 100%;
     }
   }

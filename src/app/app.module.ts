@@ -1,3 +1,4 @@
+import { ConsultarPedidosComponent } from './componentes/pedidos/consultar-pedidos/consultar-pedidos.component';
 import { ConsultarClientesComponent } from './componentes/clientes/consultar-clientes/consultar-clientes.component';
 import { LoginComponent } from './home/login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -17,7 +18,7 @@ import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-p
 import { CadastrarPedidosComponent } from './componentes/pedidos/cadastrar-pedidos/cadastrar-pedidos.component';
 
 @NgModule({
-  declarations: [AppComponent, CabecalhoComponent, RodapeComponent, HomeComponent, LoginComponent, MensagemComponent, NovoUsuarioComponent, MenuComponent, CadastraClientesComponent, ConsultarClientesComponent, CadastrarPedidosComponent ,EmitePedidoComponent],
+  declarations: [AppComponent, CabecalhoComponent, RodapeComponent, HomeComponent, LoginComponent, MensagemComponent, NovoUsuarioComponent, MenuComponent, CadastraClientesComponent, ConsultarClientesComponent, CadastrarPedidosComponent, ConsultarPedidosComponent, EmitePedidoComponent],
   imports: [
     AppRoutingModule,
     HttpClientModule,
