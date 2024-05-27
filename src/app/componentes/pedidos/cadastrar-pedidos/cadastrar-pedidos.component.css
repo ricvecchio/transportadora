@@ -92,6 +92,16 @@
   .modelo3 {
     box-shadow: 8px 8px 0px #84EEC1;
   }
+
+  .pedido-g {
+    width: 556px;
+    background-color: #F8F9FE;
+  }
+ 
+  .pedido-p {
+    width: 262px;
+    background-color: #F8F9FE;
+  }
   
   input[type='radio'] {
     display: none;
@@ -133,3 +143,4 @@
   input[type='radio']:checked+.custom-radio span {
     background: #154580;
   }
+  

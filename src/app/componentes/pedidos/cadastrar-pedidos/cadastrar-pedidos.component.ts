@@ -15,6 +15,13 @@ export class CadastrarPedidosComponent implements OnInit {
     modelo: 'modelo1'
   }
 
+  larguraPedido(): string {
+    if(this.dadosPedido.razaosocial.length >= 256) {
+      return 'pedido-g'
+    }
+    return 'pedido-p'
+  }
+
   constructor() { }
 
   ngOnInit(): void {

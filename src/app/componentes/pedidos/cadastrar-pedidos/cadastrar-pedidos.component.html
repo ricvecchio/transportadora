@@ -51,7 +51,7 @@
         </label>
 
         Prévia:
-        <div class="modelo modelo1 ff-roboto-mono">
+        <div class="modelo modelo1 ff-roboto-mono" [ngClass]="larguraPedido()">
           <img src="../../../../assets/img/modelo1.png" alt="Aspas azuis" />
           <p class="fantasia">{{ dadosPedido.fantasia }}</p>
           <p class="razaosocial">
@@ -79,10 +79,15 @@
         </label>
 
         Prévia:
-        <div class="modelo modelo2 ff-roboto-mono">
+        <div class="modelo modelo2 ff-roboto-mono" [ngClass]="larguraPedido()">
           <img src="../../../../assets/img/modelo2.png" alt="Aspas azuis" />
-          <p class="conteudo">Aqui vai o conteúdo</p>
-          <p class="autoria"><b>Aqui vai a autoria</b></p>
+          <p class="fantasia">{{ dadosPedido.fantasia }}</p>
+          <p class="razaosocial">
+            <b>{{ dadosPedido.razaosocial }}</b>
+          </p>
+          <p class="telefone">
+            <b>{{ dadosPedido.telefone }}</b>
+          </p>
         </div>
       </div>
 
@@ -102,10 +107,15 @@
         </label>
 
         Prévia:
-        <div class="modelo modelo3 ff-roboto-mono">
+        <div class="pedido {{ dadosPedido.modelo }} ff-roboto-mono" [ngClass]="larguraPedido()">
           <img src="../../../../assets/img/modelo3.png" alt="Aspas azuis" />
-          <p class="conteudo">Aqui vai o conteúdo</p>
-          <p class="autoria"><b>Aqui vai a autoria</b></p>
+          <p class="fantasia">{{ dadosPedido.fantasia }}</p>
+          <p class="razaosocial">
+            <b>{{ dadosPedido.razaosocial }}</b>
+          </p>
+          <p class="telefone">
+            <b>{{ dadosPedido.telefone }}</b>
+          </p>
         </div>
       </div>
     </div>
