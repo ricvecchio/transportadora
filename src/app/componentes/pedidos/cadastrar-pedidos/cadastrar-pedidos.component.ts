@@ -1,43 +1,53 @@
+import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
+import { Pedido } from '../pedido';
+import { PedidoService } from '../pedido.service';
 
 @Component({
   selector: 'app-cadastrar-pedidos',
   templateUrl: './cadastrar-pedidos.component.html',
-  styleUrl: './cadastrar-pedidos.component.css'
+  styleUrl: './cadastrar-pedidos.component.css',
 })
 export class CadastrarPedidosComponent implements OnInit {
-  
-  @Input() dadosPedido = {
-    id: '1',
-    fantasia: 'I love Angular',
-    razaosocial: 'Testando modelo com @input - dados Cadastrar pedidos',
-    telefone: '(11) 9 6448-2908',
-    modelo: 'modelo1'
-  }
+  @Input() dadosPedido: Pedido = {
+    fantasia: '',
+    razaosocial: '',
+    telefone: '',
+    modelo: 'modelo1',
+  };
 
   larguraPedido(): string {
-    if(this.dadosPedido.razaosocial.length >= 256) {
-      return 'pedido-g'
+    if (this.dadosPedido.razaosocial.length >= 256) {
+      return 'pedido-g';
     }
-    return 'pedido-p'
+    return 'pedido-p';
   }
 
-  constructor() { }
+  constructor(
+    private service: PedidoService,
+    private router: Router,
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   cadastrarPedido() {
-    alert("Pedido cadastrado com sucesso!")
+    this.service.criar(this.dadosPedido).subscribe(() => {
+      this.router.navigate(['/consultar-pedidos']);
+    });
   }
+  // cadastrarPedido() {
+  //   alert("Pedido cadastrado com sucesso!")
+  // }
 
   cancelar() {
-    alert("Ação cancelada!")
+    this.router.navigate(['/menu'])
   }
+
+  // cancelar() {
+  //   alert("Ação cancelada!")
+  // }
 
   pedidoEmitido() {
-    alert("Pedido Emitido!")
+    alert('Pedido Emitido!');
   }
-
 }
-

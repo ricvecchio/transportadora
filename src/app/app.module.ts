@@ -16,9 +16,11 @@ import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component
 import { MensagemComponent } from './componentes/mensagem/mensagem.component';
 import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-pedido.component';
 import { CadastrarPedidosComponent } from './componentes/pedidos/cadastrar-pedidos/cadastrar-pedidos.component';
+import { ExcluirPedidosComponent } from './componentes/pedidos/excluir-pedidos/excluir-pedidos.component';
+import { EditarPedidosComponent } from './componentes/pedidos/editar-pedidos/editar-pedidos.component';
 
 @NgModule({
-  declarations: [AppComponent, CabecalhoComponent, RodapeComponent, HomeComponent, LoginComponent, MensagemComponent, NovoUsuarioComponent, MenuComponent, CadastraClientesComponent, ConsultarClientesComponent, CadastrarPedidosComponent, ConsultarPedidosComponent, EmitePedidoComponent],
+  declarations: [AppComponent, CabecalhoComponent, RodapeComponent, HomeComponent, LoginComponent, MensagemComponent, NovoUsuarioComponent, MenuComponent, CadastraClientesComponent, ConsultarClientesComponent, CadastrarPedidosComponent, ConsultarPedidosComponent, ExcluirPedidosComponent, EditarPedidosComponent ,EmitePedidoComponent],
   imports: [
     AppRoutingModule,
     HttpClientModule,

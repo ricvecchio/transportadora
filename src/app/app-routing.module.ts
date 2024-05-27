@@ -8,6 +8,8 @@ import { LoginComponent } from './home/login/login.component';
 import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
 import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-pedido.component';
 import { CadastrarPedidosComponent } from './componentes/pedidos/cadastrar-pedidos/cadastrar-pedidos.component';
+import { ExcluirPedidosComponent } from './componentes/pedidos/excluir-pedidos/excluir-pedidos.component';
+import { EditarPedidosComponent } from './componentes/pedidos/editar-pedidos/editar-pedidos.component';
 
 const routes: Routes = [
   {
@@ -44,6 +46,14 @@ const routes: Routes = [
   {
     path: 'consultar-pedidos',
     component: ConsultarPedidosComponent
+  },
+  {
+    path: 'pedidos/excluir-pedidos/:id',
+    component: ExcluirPedidosComponent
+  },
+  {
+    path: 'pedidos/editar-pedidos/:id',
+    component: EditarPedidosComponent
   },
   {
     path: 'emite-pedido',

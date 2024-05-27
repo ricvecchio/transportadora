@@ -122,8 +122,15 @@
 
     <div class="acoes">
       <button (click)="cadastrarPedido()" class="botao">Salvar</button>
-      <button (click)="cancelar()" routerLink="/menu" class="botao">Cancelar</button>
+      <button (click)="cancelar()" class="botao">Cancelar</button>
       <button (click)="pedidoEmitido()" routerLink="/emite-pedido" class="botao">Emite Pedido</button>
+
+      <button class="botao-editar">
+        <img src="/assets/img/icone-editar.png" routerLink="pedidos/editar-pedidos/{{dadosPedido.id}}" alt="Ícone de editar">
+      </button>
+      <button class="botao-excluir" routerLink="pedidos/excluir-pedidos/{{dadosPedido.id}}">
+        <img src="/assets/img/icone-excluir.png" alt="Ícone de excluir">
+      </button>
     </div>
   </form>
 
