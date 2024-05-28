@@ -31,7 +31,7 @@ export class ExcluirPedidosComponent implements OnInit {
     })
   }
 
-  excluirPensamento() {
+  excluirPedido() {
     if(this.pedido.id) {
       this.service.excluir(this.pedido.id).subscribe(() => {
         this.router.navigate(['/consultar-pedidos'])

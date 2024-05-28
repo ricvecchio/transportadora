@@ -56,7 +56,7 @@ const routes: Routes = [
     component: EditarPedidosComponent
   },
   {
-    path: 'emite-pedido',
+    path: 'pedidos/emite-pedido',
     component: EmitePedidoComponent
   }
 ];

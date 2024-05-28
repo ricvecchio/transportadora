@@ -34,6 +34,41 @@
       "telefone": "(11) 9 6448-2955",
       "modelo": "modelo3",
       "id": 5
+    },
+    {
+      "fantasia": "Incluindo novo Pedido",
+      "razaosocial": "Testando a inclusão de novo Pedido",
+      "telefone": "(11) 9 6448-2955",
+      "modelo": "modelo1",
+      "id": 6
+    },
+    {
+      "fantasia": "Incluindo novo Pedido",
+      "razaosocial": "dsadsadsadsadsa",
+      "telefone": "546465465465",
+      "modelo": "modelo1",
+      "id": 7
+    },
+    {
+      "fantasia": "Mais uma novo inclusão para teste",
+      "razaosocial": "Testando mais uma nova inclusão",
+      "telefone": "dasdsadasdsa",
+      "modelo": "modelo3",
+      "id": 8
+    },
+    {
+      "fantasia": "TESTAAAAAANDO EXCLUSÃO FANTASIA",
+      "razaosocial": "TESTANDO EXCLUSÃO RAZÃO SOCIAL",
+      "telefone": "11 9 42313213123",
+      "modelo": "modelo2",
+      "id": 9
+    },
+    {
+      "fantasia": "TESTAAAAAANDO EXCLUSÃO FANTASIA",
+      "razaosocial": "dsadsadsadsadsa",
+      "telefone": "(11) 9 6448-2944",
+      "modelo": "modelo3",
+      "id": 10
     }
   ]
 }
