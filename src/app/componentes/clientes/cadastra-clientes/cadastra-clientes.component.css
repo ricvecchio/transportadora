@@ -61,11 +61,13 @@
   .modelo {
     background:#d9e7ec;
     padding: 1rem;
-    max-width: 1050px;
+
+    width: 100%;
     margin: 1rem 0 2rem; 
     border-radius: 10px;
+    width: 100%;
   }
-  
+
   .modelo .conteudo {
     margin: 1rem auto;
     word-wrap: break-word;
@@ -73,6 +75,13 @@
   
   .modelo .autoria {
     word-wrap: break-word;
+  }
+
+  .container-radio .imagem {
+    width: 920px;
+    height: 130px;
+    padding: 2rem;
+
   }
 
    .radio {
@@ -102,7 +111,6 @@
   .radio-modelo label {
     display: flex;
     align-items: center;
-    column-gap: 20px;
   }
   
   .custom-radio {
