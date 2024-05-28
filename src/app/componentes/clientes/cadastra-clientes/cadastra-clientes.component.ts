@@ -8,21 +8,30 @@ import { Component, OnInit } from '@angular/core';
 export class CadastraClientesComponent implements OnInit {
 
   dadosCliente = {
-    id: '1',
+    idCliente: '1',
     fantasia: 'Transportadora São Tomé',
-    razaosocial: 'Transportadora e entregadoria São Tomé Ltda',
+    razaoSocial: 'Transportadora e entregadoria São Tomé Ltda',
     telefone: '(11) 9 6448-2908',
+    contato: '',
+    email: '',
+    cep: '',
+    endereco: '',
+    numero: '',
+    bairro: '',
+    cidade: '',
+    estado: '',
+    complemento: '',
+    cpfCnpj: '',
+    sfobras: '',
+    cno: '',
+    mangueira: '',
+    tipoPgto: '',
+    ie: '',
+    volume: '',
+    ajudanteHora: '',
+    observacao: '',
     modelo: 'modelo1'
   }
-
-  dadosCliente3 = {
-    id: '3',
-    fantasia: 'Transportadora São Tomé 3',
-    razaosocial: 'Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Diuretics paradis num copo é motivis de denguis. Atirei o pau no gatis, per gatis num morreus. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Sapien in monti palavris qui num significa nadis i pareci latim.',
-    telefone: '(11) 9 6448-2908',
-    modelo: 'modelo3'
-  }
-
 
   constructor() { }
 

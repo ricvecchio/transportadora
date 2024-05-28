@@ -2,8 +2,18 @@
   <header class="header">
     <h2>Cadastro de Clientes:</h2>
   </header>
+
   <form>
-    <label for="fantasia">Fantasia</label>
+    <label for="idCliente">Código Cliente:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="idCliente"
+      name="idCliente"
+      [(ngModel)]="dadosCliente.idCliente"
+    />
+
+    <label for="fantasia">Fantasia:</label>
     <input
       type="textarea"
       class="input"
@@ -11,20 +21,19 @@
       name="fantasia"
       placeholder="Digite o nome fantasia"
       [(ngModel)]="dadosCliente.fantasia"
-
     />
 
-    <label for="razaosocial">Razão Social</label>
+    <label for="razaoSocial">Razão Social:</label>
     <input
       type="textarea"
       class="input"
-      id="razaosocial"
-      name="razaosocial"
+      id="razaoSocial"
+      name="razaoSocial"
       placeholder="Digite a Razão Social"
-      [(ngModel)]="dadosCliente.razaosocial"
+      [(ngModel)]="dadosCliente.razaoSocial"
     />
 
-    <label for="telefone">Telefone</label>
+    <label for="telefone">Telefone:</label>
     <input
       type="textarea"
       class="input"
@@ -34,84 +43,307 @@
       [(ngModel)]="dadosCliente.telefone"
     />
 
-    <label for="modelo">Selecione o modelo do card:</label>
+    <label for="contato">Contato:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="contato"
+      name="contato"
+      placeholder="Digite o Contato"
+      [(ngModel)]="dadosCliente.contato"
+    />
+
+    <label for="email">E-mail:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="email"
+      name="email"
+      placeholder="Digite o E-mail"
+      [(ngModel)]="dadosCliente.email"
+    />
+
+    <label for="cep">CEP:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="cep"
+      name="cep"
+      placeholder="Digite o CEP"
+      [(ngModel)]="dadosCliente.cep"
+    />
+
+    <label for="endereco">Endereço:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="endereco"
+      name="endereco"
+      [(ngModel)]="dadosCliente.endereco"
+    />
+
+    <label for="numero">Nº:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="numero"
+      name="numero"
+      placeholder="Digite o número do endereço"
+      [(ngModel)]="dadosCliente.numero"
+    />
+
+    <label for="bairro">Bairro:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="bairro"
+      name="bairro"
+      [(ngModel)]="dadosCliente.bairro"
+    />
+
+    <label for="cidade">Cidade:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="cidade"
+      name="cidade"
+      [(ngModel)]="dadosCliente.cidade"
+    />
+
+    <label for="estado">Estado:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="estado"
+      name="estado"
+      [(ngModel)]="dadosCliente.estado"
+    />
+
+    <label for="complemento">Complemento:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="complemento"
+      name="complemento"
+      placeholder="Digite o complemento do endereço"
+      [(ngModel)]="dadosCliente.complemento"
+    />
+
+    <label for="cpfCnpj">CPF/CNPJ:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="cpfCnpj"
+      name="cpfCnpj"
+      placeholder="Digite o CPF ou CNPJ"
+      [(ngModel)]="dadosCliente.cpfCnpj"
+    />
+
+    <label for="sfobras">SFOBRAS:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="sfobras"
+      name="sfobras"
+      placeholder="Digite o SFOBRAS"
+      [(ngModel)]="dadosCliente.sfobras"
+    />
+
+    <label for="cno">CNO:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="cno"
+      name="cno"
+      placeholder="Digite o CNO"
+      [(ngModel)]="dadosCliente.cno"
+    />
+
+    <label for="mangueira">Mangueira:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="mangueira"
+      name="mangueira"
+      placeholder="Informe o tamanho da mangueira"
+      [(ngModel)]="dadosCliente.mangueira"
+    />
+
+    <label for="tipoPgto">Tipo de Pagamento:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="tipoPgto"
+      name="tipoPgto"
+      placeholder="Informe o tipo de pagamento"
+      [(ngModel)]="dadosCliente.tipoPgto"
+    />
+
+    <label for="ie">Inscrição Estadual:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="ie"
+      name="ie"
+      placeholder="Informe a Inscrição Estadual"
+      [(ngModel)]="dadosCliente.ie"
+    />
+
+    <label for="volume">Volume:</label>
     <div class="container-radio">
       <div class="radio-modelo">
-        <label for="modelo1">
-          <input 
-          type="radio" 
-          id="modelo1" 
-          value="modelo1" 
-          name="modelo-card"
-          [(ngModel)]="dadosCliente.modelo"
-          >
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>Modelo 1</span>
-        </label>
-
-        Prévia:
-        <div class="modelo modelo1 ff-roboto-mono">
-          <img src="../../../../assets/img/modelo1.png" alt="Aspas azuis" />
-          <p class="fantasia">{{ dadosCliente.fantasia }}</p>
-          <p class="razaosocial"><b>{{ dadosCliente.razaosocial }}</b></p>
-          <p class="telefone"><b>{{ dadosCliente.telefone }}</b></p>
-        </div>
-      </div>
-
-      <div class="radio-modelo">
-        <label for="modelo2">
-          <input 
-          type="radio" 
-          id="modelo2" 
-          value="modelo2" 
-          name="modelo-card"
-          [(ngModel)]="dadosCliente.modelo"
-           />
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>Modelo 2</span>
-        </label>
-
-        Prévia:
-        <div class="modelo modelo2 ff-roboto-mono">
-          <img src="../../../../assets/img/modelo2.png" alt="Aspas azuis" />
-          <p class="fantasia">{{ dadosCliente.fantasia }}</p>
-          <p class="razaosocial"><b>{{ dadosCliente.razaosocial }}</b></p>
-          <p class="telefone"><b>{{ dadosCliente.telefone }}</b></p>
-        </div>
-      </div>
-
-      <div class="radio-modelo">
-        <label for="modelo3">
-          <input 
-          type="radio" 
-          id="modelo3" 
-          value="modelo3" 
-          name="modelo-card" 
-          [(ngModel)]="dadosCliente.modelo"
+        <label for="volume1">
+          <input
+            type="radio"
+            class="input"
+            id="volume1"
+            value="cx-5m³"
+            name="modelo-card"
+            [(ngModel)]="dadosCliente.volume"
           />
           <div class="custom-radio">
             <span></span>
           </div>
-          <span>Modelo 3</span>
+          <span>cx-5m³</span>
         </label>
+      </div>
 
-        Prévia:
-        <div class="modelo modelo3 ff-roboto-mono">
-          <img src="../../../../assets/img/modelo3.png" alt="Aspas azuis" />
-          <p class="fantasia">{{ dadosCliente3.fantasia }}</p>
-          <p class="razaosocial"><b>{{ dadosCliente3.razaosocial }}</b></p>
-          <p class="telefone"><b>{{ dadosCliente3.telefone }}</b></p>
-        </div>
+      <div class="radio-modelo">
+        <label for="volume2">
+          <input
+            type="radio"
+            class="input"
+            id="volume2"
+            value="cx-10m³"
+            name="modelo-card"
+            [(ngModel)]="dadosCliente.volume"
+          />
+          <div class="custom-radio">
+            <span></span>
+          </div>
+          <span>cx-10m³</span>
+        </label>
+      </div>
+
+      <div class="radio-modelo">
+        <label for="volume3">
+          <input
+            type="radio"
+            class="input"
+            id="volume3"
+            value="cx-15m³"
+            name="modelo-card"
+            [(ngModel)]="dadosCliente.volume"
+          />
+          <div class="custom-radio">
+            <span></span>
+          </div>
+          <span>cx-15m³</span>
+        </label>
+      </div>
+
+      <div class="radio-modelo">
+        <label for="volume4">
+          <input
+            type="radio"
+            class="input"
+            id="volume4"
+            value="lav-5m³"
+            name="modelo-card"
+            [(ngModel)]="dadosCliente.volume"
+          />
+          <div class="custom-radio">
+            <span></span>
+          </div>
+          <span>lav-5m³</span>
+        </label>
+      </div>
+
+      <div class="radio-modelo">
+        <label for="volume5">
+          <input
+            type="radio"
+            class="input"
+            id="volume5"
+            value="lav-10m³"
+            name="modelo-card"
+            [(ngModel)]="dadosCliente.volume"
+          />
+          <div class="custom-radio">
+            <span></span>
+          </div>
+          <span>lav-10m³</span>
+        </label>
+      </div>
+
+      <div class="radio-modelo">
+        <label for="volume6">
+          <input
+            type="radio"
+            class="input"
+            id="volume6"
+            value="lav-15m³"
+            name="modelo-card"
+            [(ngModel)]="dadosCliente.volume"
+          />
+          <div class="custom-radio">
+            <span></span>
+          </div>
+          <span>lav-15m³</span>
+        </label>
       </div>
     </div>
 
+    <label for="ajudanteHora">Ajudante p/ hora adicional:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="ajudanteHora"
+      name="ajudanteHora"
+      placeholder="Informe o ajudante para hora adicional"
+      [(ngModel)]="dadosCliente.ajudanteHora"
+    />
+
+    <label for="observacao">Observações:</label>
+    <input
+      type="textarea"
+      class="input"
+      id="observacao"
+      name="observacao"
+      placeholder="Informações adicionais"
+      [(ngModel)]="dadosCliente.observacao"
+    />
+
     <div class="acoes">
       <button (click)="cadastrarCliente()" class="botao">Salvar</button>
-      <button (click)="cancelar()" routerLink="/menu" class="botao">Cancelar</button>
+      <button (click)="cancelar()" routerLink="/menu" class="botao">
+        Cancelar
+      </button>
     </div>
   </form>
+  
+  <div class="container-radio">
+    <div class="radio-modelo">
+      <b><i>Prévia do Pedido:</i></b>        
+      <div class="modelo modelo1 ff-roboto-mono">
+        <img class="imagem" src="../../../../assets/img/logo.png" alt="Logo São Tomé" />
+        <p class="fantasia">{{ dadosCliente.fantasia }}</p>
+        <p class="razaosocial">
+          <b>{{ dadosCliente.razaoSocial }}</b>
+        </p>
+        <p class="telefone">
+          <b>{{ dadosCliente.telefone }}</b>
+        </p>
+        <p class="volume">
+          <b>{{ dadosCliente.volume }}</b>
+        </p>
+        <div class="acoes">
+          <button (click)="cancelar()" routerLink="/menu" class="botao">
+            Emite Pedido
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
