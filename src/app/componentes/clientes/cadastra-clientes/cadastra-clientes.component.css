@@ -85,10 +85,8 @@
     margin: 0;
   }
 
-    
   .container-previa {
     display: flex;
-    /* gap: 1.5rem; */
     flex-wrap: wrap;
     margin: 2rem 0rem;
   }

@@ -8,8 +8,8 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    padding: 3rem;
-    margin: 0 0 1rem;
+    padding: 3rem 3rem 1rem;
+    margin: 3rem 6rem 6rem;
   }
   
   .login form label {
@@ -23,7 +23,7 @@
     height: 40px;
     padding: 1rem 1rem;
     border-radius: 20px;
-    margin: 0 0 3rem;
+    margin: 0em 0em 1em;
   }
 
   .acoes {
@@ -37,6 +37,6 @@
     width: 200px;
   }
 
-  /* .erro {
-    margin: 0 0 10;
-  } */
+  .erro {
+    margin: 0em 0em 1em;
+  }
