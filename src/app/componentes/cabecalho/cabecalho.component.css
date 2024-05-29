@@ -27,8 +27,11 @@
     width: 8%;
     margin-left: auto; 
   }
-  
-  
+
+  .navbar-text {
+    padding: 0rem 0.5rem 0rem;
+  }
+    
   /* .cabecalho .logo img {
     width: 100%;
     max-width: 108px;

@@ -27,7 +27,7 @@
   .cadastra-clientes form label {
     color: #154580;
     font-weight: bold;
-    margin: 0 0 1rem;
+    margin: 0 0 1e;
   }
   
   .cadastra-clientes form .input {
@@ -35,7 +35,7 @@
     height: 40px;
     padding: 1rem 2rem;
     border-radius: 20px;
-    margin: 0.5rem 0 2rem;
+    margin: 0.5rem 0 1.5rem;
   }
   
   
@@ -45,13 +45,7 @@
     border-radius: 20px;
     margin: 0.5rem 0 2rem;
   }
-  
-  .container-radio {
-    display: flex;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-  }
-  
+
   .modelos {
     display: flex;
     gap: 2.5rem;
@@ -61,11 +55,9 @@
   .modelo {
     background:#d9e7ec;
     padding: 1rem;
-
     width: 100%;
-    margin: 1rem 0 2rem; 
-    border-radius: 10px;
-    width: 100%;
+    margin: 0 0 6rem; 
+    border-radius: 20px;
   }
 
   .modelo .conteudo {
@@ -76,16 +68,35 @@
   .modelo .autoria {
     word-wrap: break-word;
   }
-
+  
+  .container-radio {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
   .container-radio .imagem {
     width: 920px;
     height: 130px;
     padding: 2rem;
-
   }
 
    .radio {
     margin: 0;
+  }
+
+    
+  .container-previa {
+    display: flex;
+    /* gap: 1.5rem; */
+    flex-wrap: wrap;
+    margin: 2rem 0rem;
+  }
+  
+  .container-previa .imagem {
+    width: 920px;
+    height: 130px;
+    padding: 2rem;
   }
 
   .volume {
@@ -93,7 +104,7 @@
   }
   
   .modelo1 {
-    box-shadow: 8px 8px 0px #154580;
+    box-shadow: 15px 15px 15px #154580;
   }
   
   .modelo2 {
@@ -111,6 +122,7 @@
   .radio-modelo label {
     display: flex;
     align-items: center;
+    margin: 0.5rem 0.5rem 1.2rem;
   }
   
   .custom-radio {
