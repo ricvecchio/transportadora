@@ -1,5 +1,5 @@
   .login {
-    padding: 3rem 0;
+    padding: 1rem 1rem 1rem;
   }
   
   .login form {
@@ -8,8 +8,8 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    padding: 3rem 3rem 1rem;
-    margin: 3rem 6rem 6rem;
+    padding: 2rem 2rem 2rem;
+    margin: 1rem 8rem 1rem;
   }
   
   .login form label {
@@ -38,5 +38,17 @@
   }
 
   .erro {
+    margin: -1em 0em 1em;
+  }
+
+  .usuario {
+    width: 300px; 
+    margin-left: auto;
+    margin-right: auto; 
+  }
+
+  .text-center {
     margin: 0em 0em 1em;
   }
+  
+

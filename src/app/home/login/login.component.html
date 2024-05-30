@@ -14,7 +14,8 @@
         #campoUsuario="ngModel"
         required
       />
-      <app-mensagem class="erro"
+      <app-mensagem
+        class="erro"
         *ngIf="campoUsuario.invalid && campoUsuario.touched"
         mensagem="Usuário obrigatório"
       ></app-mensagem>
@@ -30,7 +31,8 @@
         required
       />
 
-      <app-mensagem class="erro"
+      <app-mensagem
+        class="erro"
         *ngIf="campoSenha.invalid && campoSenha.touched"
         mensagem="Senha obrigatória"
       ></app-mensagem>
@@ -42,11 +44,13 @@
       >
         Login
       </button>
-
     </form>
 
-    <p>
-      Não é um usuário? <a [routerLink]="['/home/novousuario']">Se cadastre!</a>
-    </p>
+    <div class="usuario">
+      <p>
+        Não é um usuário?
+        <a [routerLink]="['/home/novousuario']">Se cadastre!</a>
+      </p>
+    </div>
   </div>
 </section>

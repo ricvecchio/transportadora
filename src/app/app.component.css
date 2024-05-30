@@ -1,11 +1,7 @@
 main {
-    background: url(/assets/img/background-agua5.jpg);
+    /* background: url(/assets/img/background-agua5.jpg); */
+    background-color: #fcfcfc;
     background-size: contain;
-    min-height: 200vh;
-
-
-    /* background-attachment: fixed; */
-    height: 100vh;
-
+    height: 100%;
   }
   
