@@ -297,7 +297,7 @@
 
     <br /><br />
     <h6><strong>Informações Pedido:</strong></h6>
-    <br /><br />
+    <br />
 
     <div class="formulario__dupla">
       <div class="formulario_linha">
@@ -325,9 +325,7 @@
           [(ngModel)]="dadosCliente.sfobras"
         />
       </div>
-    </div>
 
-    <div class="formulario__dupla">
       <div class="formulario_linha">
         <label class="campo__etiqueta" for="cno">CNO:</label>
         <input
@@ -339,23 +337,19 @@
           [(ngModel)]="dadosCliente.cno"
         />
       </div>
-    </div>
 
-    <div class="formulario__dupla">
       <div class="formulario_linha">
         <label class="campo__etiqueta" for="mangueira">Mangueira:</label>
-        <input
-          type="textarea"
-          class="input"
-          id="mangueira"
-          name="mangueira"
-          placeholder="Informe o tamanho da mangueira"
-          [(ngModel)]="dadosCliente.mangueira"
-        />
+        <select id="estado" name="estado" class="campo__escrita">
+          <option>15 metros</option>
+          <option>30 metros</option>
+          <option>45 metros</option>
+          <option>50 metros</option>
+          <option>65 metros</option>
+          <option>80 metros</option>
+        </select>
       </div>
-    </div>
 
-    <div class="formulario__dupla">
       <div class="formulario_linha">
         <label class="campo__etiqueta" for="ie">Inscrição Estadual:</label>
         <input
@@ -363,7 +357,7 @@
           class="input"
           id="ie"
           name="ie"
-          placeholder="Informe a Inscrição Estadual"
+          placeholder="Informe a IE"
           [(ngModel)]="dadosCliente.ie"
         />
       </div>
@@ -508,13 +502,10 @@
       </div>
     </div>
 
-    <div class="acoes">
-      <!-- <button (click)="cadastrar()" class="botao">Salvar</button> -->
+    <!-- <div class="acoes">
+      <button (click)="cadastrar()" class="botao">Salvar</button>
       <button type="submit" class="botao">Salvar</button>
-      <button (click)="cancelar()" routerLink="/menu" class="botao">
-        Cancelar
-      </button>
-    </div>
+    </div> -->
   </form>
 
   <div class="container-previa">
@@ -563,6 +554,9 @@
       <div class="acoes">
         <button (click)="cancelar()" routerLink="/menu" class="botao">
           Emite Pedido
+        </button>
+        <button (click)="cancelar()" routerLink="/menu" class="botao">
+          Cancelar
         </button>
       </div>
     </div>
