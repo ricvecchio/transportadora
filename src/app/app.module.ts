@@ -18,9 +18,10 @@ import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-p
 import { CadastrarPedidosComponent } from './componentes/pedidos/cadastrar-pedidos/cadastrar-pedidos.component';
 import { ExcluirPedidosComponent } from './componentes/pedidos/excluir-pedidos/excluir-pedidos.component';
 import { EditarPedidosComponent } from './componentes/pedidos/editar-pedidos/editar-pedidos.component';
+import { ValidandoCepDirective } from './directives/validando-cep.directive';
 
 @NgModule({
-  declarations: [AppComponent, CabecalhoComponent, RodapeComponent, HomeComponent, LoginComponent, MensagemComponent, NovoUsuarioComponent, MenuComponent, CadastraClientesComponent, ConsultarClientesComponent, CadastrarPedidosComponent, ConsultarPedidosComponent, ExcluirPedidosComponent, EditarPedidosComponent ,EmitePedidoComponent],
+  declarations: [AppComponent, CabecalhoComponent, RodapeComponent, HomeComponent, LoginComponent, MensagemComponent, NovoUsuarioComponent, MenuComponent, CadastraClientesComponent, ConsultarClientesComponent, CadastrarPedidosComponent, ConsultarPedidosComponent, ExcluirPedidosComponent, EditarPedidosComponent ,EmitePedidoComponent, ValidandoCepDirective],
   imports: [
     AppRoutingModule,
     HttpClientModule,

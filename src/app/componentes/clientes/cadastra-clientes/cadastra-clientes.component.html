@@ -8,6 +8,7 @@
     id="formulario"
     #form="ngForm"
     (ngSubmit)="cadastrar(form)"
+    f
   >
     <!-- <form> -->
     <label for="idCliente">
@@ -35,29 +36,24 @@
           name="nome"
           placeholder="Digite o nome do cliente"
           class="campo__escrita"
+          [(ngModel)]="dadosCliente.nome"
           ngModel
           required
           minlength="2"
+          #nome="ngModel"
         />
-        <div
-          *ngIf="
-            (form.controls['nome']?.invalid &&
-              form.controls['nome']?.touched) ||
-            form.controls['nome']?.dirty
-          "
-        >
-          <small
-            class="erro__texto"
-            *ngIf="form.controls['nome']?.errors?.['required']"
-            >Preecha seu nome completo.</small
-          >
-          <small
-            class="erro__texto"
-            *ngIf="form.controls['nome']?.errors?.['minlength']"
-            >Nome deve ter mais de 2 caracteres.</small
-          >
+        <div *ngIf="(nome?.invalid && nome?.touched) || nome?.dirty">
+          <app-mensagem
+            *ngIf="nome?.errors?.['required']"
+            mensagem="Preecha seu nome completo."
+          ></app-mensagem>
+          <app-mensagem
+            *ngIf="nome?.errors?.['minlength']"
+            mensagem="Nome deve ter mais de 2 caracteres."
+          ></app-mensagem>
         </div>
       </div>
+
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="cpf">CPF:</label>
         <input
@@ -79,10 +75,27 @@
           class="input"
           id="telefone"
           name="telefone"
-          placeholder="(11) 3454-1234"
+          placeholder="(XX) XXXX-XXXX"
           [(ngModel)]="dadosCliente.telefone"
+          ngModel
+          #telefone="ngModel"
+          required
+          pattern="(\(?\d{2}\)?\s?)(\d{4}\-?\d{4})"
         />
+        <div
+          *ngIf="(telefone?.invalid && telefone?.touched) || telefone?.dirty"
+        >
+          <app-mensagem
+            *ngIf="telefone?.errors?.['required']"
+            mensagem="Campo telefone obrigatório."
+          ></app-mensagem>
+          <app-mensagem
+            *ngIf="telefone?.errors?.['pattern']"
+            mensagem="Campo telefone deve ter DDD com 2 digitos e 8/9 digitos."
+          ></app-mensagem>
+        </div>
       </div>
+
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="celular">Celular:</label>
         <input
@@ -90,10 +103,25 @@
           class="input"
           id="celular"
           name="celular"
-          placeholder="(11) 9 9544-4862"
+          placeholder="(XX) XXXXX-XXXX"
           [(ngModel)]="dadosCliente.celular"
+          ngModel
+          #celular="ngModel"
+          required
+          pattern="(\(?\d{2}\)?\s?)(\d{5}\-?\d{4})"
         />
+        <div *ngIf="(celular?.invalid && celular?.touched) || celular?.dirty">
+          <app-mensagem
+            *ngIf="celular?.errors?.['required']"
+            mensagem="Campo celular obrigatório."
+          ></app-mensagem>
+          <app-mensagem
+            *ngIf="celular?.errors?.['pattern']"
+            mensagem="Campo celular deve ter DDD com 2 digitos e 9 digitos."
+          ></app-mensagem>
+        </div>
       </div>
+
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="email">E-mail:</label>
         <input
@@ -103,7 +131,21 @@
           name="email"
           placeholder="Digite o E-mail"
           [(ngModel)]="dadosCliente.email"
+          ngModel
+          #email="ngModel"
+          required
+          email
         />
+        <div *ngIf="(email?.invalid && email?.touched) || email?.dirty">
+          <app-mensagem
+            *ngIf="email?.errors?.['required']"
+            mensagem="O campo e-mail é obrigatório."
+          ></app-mensagem>
+          <app-mensagem
+            *ngIf="email?.errors?.['email']"
+            mensagem="O campo e-mail deve seguir este padrão: exemplo@dominio.com"
+          ></app-mensagem>
+        </div>
       </div>
     </div>
 
@@ -117,8 +159,31 @@
           name="cep"
           placeholder="Digite o CEP"
           [(ngModel)]="dadosCliente.cep"
+          ngModel
+          required
+          #cep="ngModel"
+          pattern="^(\d{5})(-?\d{3})$"
+          minlength="8"
+          maxlength="9"
+          (blur)="consultaCEP($event, form)"
+          validadorCep
         />
+        <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
+          <app-mensagem
+            *ngIf="cep?.errors?.['required']"
+            mensagem="O campo de CEP é obrigatório"
+          ></app-mensagem>
+          <app-mensagem
+            *ngIf="cep?.errors?.['pattern']"
+            mensagem="O campo de CEP deve seguir este exemplo: 00000-000"
+          ></app-mensagem>
+          <app-mensagem
+            *ngIf="cep?.errors?.['validadorCep']"
+            mensagem="O Cep informado não existe."
+          ></app-mensagem>
+        </div>
       </div>
+
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="logradouro">Endereço:</label>
         <input
@@ -164,39 +229,26 @@
           [(ngModel)]="dadosCliente.bairro"
         />
       </div>
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="cidade">Cidade:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="cidade"
+          name="cidade"
+          [(ngModel)]="dadosCliente.cidade"
+        />
+      </div>
 
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="estado">UF:</label>
-        <select id="estado" name="estado" class="campo__escrita">
-          <option value="AC">Acre</option>
-          <option value="AL">Alagoas</option>
-          <option value="AP">Amapá</option>
-          <option value="AM">Amazonas</option>
-          <option value="BA">Bahia</option>
-          <option value="CE">Ceará</option>
-          <option value="DF">Distrito Federal</option>
-          <option value="ES">Espírito Santo</option>
-          <option value="GO">Goiás</option>
-          <option value="MA">Maranhão</option>
-          <option value="MT">Mato Grosso</option>
-          <option value="MS">Mato Grosso do Sul</option>
-          <option value="MG">Minas Gerais</option>
-          <option value="PA">Pará</option>
-          <option value="PB">Paraíba</option>
-          <option value="PR">Paraná</option>
-          <option value="PE">Pernambuco</option>
-          <option value="PI">Piauí</option>
-          <option value="RJ">Rio de Janeiro</option>
-          <option value="RN">Rio Grande do Norte</option>
-          <option value="RS">Rio Grande do Sul</option>
-          <option value="RO">Rondônia</option>
-          <option value="RR">Roraima</option>
-          <option value="SC">Santa Catarina</option>
-          <option value="SP">São Paulo</option>
-          <option value="SE">Sergipe</option>
-          <option value="TO">Tocantins</option>
-          <option value="EX">Estrangeiro</option>
-        </select>
+        <input
+          type="textarea"
+          class="input"
+          id="estado"
+          name="estado"
+          [(ngModel)]="dadosCliente.estado"
+        />
       </div>
     </div>
 
