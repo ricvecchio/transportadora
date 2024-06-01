@@ -43,10 +43,6 @@ export class CadastrarPedidosComponent implements OnInit {
     this.router.navigate(['/menu'])
   }
 
-  // cancelar() {
-  //   alert("Ação cancelada!")
-  // }
-
   pedidoEmitido() {
     alert('Pedido Emitido!');
   }

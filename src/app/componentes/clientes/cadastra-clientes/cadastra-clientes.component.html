@@ -1,347 +1,494 @@
 <section class="container cadastra-clientes ff-inter">
   <header class="header">
-    <h2>Cadastro de Clientes:</h2>
+    <h4><strong>Emitir Pedido:</strong></h4>
   </header>
 
-  <form>
-    <label for="idCliente">Código Cliente:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="idCliente"
-      name="idCliente"
-      [(ngModel)]="dadosCliente.idCliente"
-    />
+  <form
+    class="principal__formulario"
+    id="formulario"
+    #form="ngForm"
+    (ngSubmit)="cadastrar(form)"
+  >
+    <!-- <form> -->
+    <label for="idCliente">
+      <span style="color: black"> Código Cliente: </span>
+      <input
+        disabled
+        type="textarea"
+        class="id"
+        id="idCliente"
+        name="idCliente"
+        [(ngModel)]="dadosCliente.idCliente"
+      />
+    </label>
 
-    <label for="fantasia">Fantasia:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="fantasia"
-      name="fantasia"
-      placeholder="Digite o nome fantasia"
-      [(ngModel)]="dadosCliente.fantasia"
-    />
+    <h6><strong>Informações Cliente:</strong></h6>
+    <br />
 
-    <label for="razaoSocial">Razão Social:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="razaoSocial"
-      name="razaoSocial"
-      placeholder="Digite a Razão Social"
-      [(ngModel)]="dadosCliente.razaoSocial"
-    />
-
-    <label for="telefone">Telefone:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="telefone"
-      name="telefone"
-      placeholder="Digite o telefone"
-      [(ngModel)]="dadosCliente.telefone"
-    />
-
-    <label for="contato">Contato:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="contato"
-      name="contato"
-      placeholder="Digite o Contato"
-      [(ngModel)]="dadosCliente.contato"
-    />
-
-    <label for="email">E-mail:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="email"
-      name="email"
-      placeholder="Digite o E-mail"
-      [(ngModel)]="dadosCliente.email"
-    />
-
-    <label for="cep">CEP:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="cep"
-      name="cep"
-      placeholder="Digite o CEP"
-      [(ngModel)]="dadosCliente.cep"
-    />
-
-    <label for="endereco">Endereço:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="endereco"
-      name="endereco"
-      [(ngModel)]="dadosCliente.endereco"
-    />
-
-    <label for="numero">Nº:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="numero"
-      name="numero"
-      placeholder="Digite o número do endereço"
-      [(ngModel)]="dadosCliente.numero"
-    />
-
-    <label for="bairro">Bairro:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="bairro"
-      name="bairro"
-      [(ngModel)]="dadosCliente.bairro"
-    />
-
-    <label for="cidade">Cidade:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="cidade"
-      name="cidade"
-      [(ngModel)]="dadosCliente.cidade"
-    />
-
-    <label for="estado">Estado:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="estado"
-      name="estado"
-      [(ngModel)]="dadosCliente.estado"
-    />
-
-    <label for="complemento">Complemento:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="complemento"
-      name="complemento"
-      placeholder="Digite o complemento do endereço"
-      [(ngModel)]="dadosCliente.complemento"
-    />
-
-    <label for="cpfCnpj">CPF/CNPJ:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="cpfCnpj"
-      name="cpfCnpj"
-      placeholder="Digite o CPF ou CNPJ"
-      [(ngModel)]="dadosCliente.cpfCnpj"
-    />
-
-    <label for="sfobras">SFOBRAS:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="sfobras"
-      name="sfobras"
-      placeholder="Digite o SFOBRAS"
-      [(ngModel)]="dadosCliente.sfobras"
-    />
-
-    <label for="cno">CNO:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="cno"
-      name="cno"
-      placeholder="Digite o CNO"
-      [(ngModel)]="dadosCliente.cno"
-    />
-
-    <label for="mangueira">Mangueira:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="mangueira"
-      name="mangueira"
-      placeholder="Informe o tamanho da mangueira"
-      [(ngModel)]="dadosCliente.mangueira"
-    />
-
-    <label for="tipoPgto">Tipo de Pagamento:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="tipoPgto"
-      name="tipoPgto"
-      placeholder="Informe o tipo de pagamento"
-      [(ngModel)]="dadosCliente.tipoPgto"
-    />
-
-    <label for="ie">Inscrição Estadual:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="ie"
-      name="ie"
-      placeholder="Informe a Inscrição Estadual"
-      [(ngModel)]="dadosCliente.ie"
-    />
-
-    <label for="volume">Volume:</label>
-    <div class="container-radio">
-      <div class="radio-modelo">
-        <label for="volume1">
-          <input
-            type="radio"
-            class="input"
-            id="volume1"
-            value="cx-5m³"
-            name="modelo-card"
-            [(ngModel)]="dadosCliente.volume"
-          />
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>cx-5m³</span>
-        </label>
+    <div class="formulario__dupla">
+      <div class="formulario_linha">
+        <label class="campo__etiqueta" for="nome">Nome:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="nome"
+          name="nome"
+          placeholder="Digite o nome do cliente"
+          class="campo__escrita"
+          ngModel
+          required
+          minlength="2"
+        />
+        <div
+          *ngIf="
+            (form.controls['nome']?.invalid &&
+              form.controls['nome']?.touched) ||
+            form.controls['nome']?.dirty
+          "
+        >
+          <small
+            class="erro__texto"
+            *ngIf="form.controls['nome']?.errors?.['required']"
+            >Preecha seu nome completo.</small
+          >
+          <small
+            class="erro__texto"
+            *ngIf="form.controls['nome']?.errors?.['minlength']"
+            >Nome deve ter mais de 2 caracteres.</small
+          >
+        </div>
       </div>
-
-      <div class="radio-modelo">
-        <label for="volume2">
-          <input
-            type="radio"
-            class="input"
-            id="volume2"
-            value="cx-10m³"
-            name="modelo-card"
-            [(ngModel)]="dadosCliente.volume"
-          />
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>cx-10m³</span>
-        </label>
-      </div>
-
-      <div class="radio-modelo">
-        <label for="volume3">
-          <input
-            type="radio"
-            class="input"
-            id="volume3"
-            value="cx-15m³"
-            name="modelo-card"
-            [(ngModel)]="dadosCliente.volume"
-          />
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>cx-15m³</span>
-        </label>
-      </div>
-
-      <div class="radio-modelo">
-        <label for="volume4">
-          <input
-            type="radio"
-            class="input"
-            id="volume4"
-            value="lav-5m³"
-            name="modelo-card"
-            [(ngModel)]="dadosCliente.volume"
-          />
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>lav-5m³</span>
-        </label>
-      </div>
-
-      <div class="radio-modelo">
-        <label for="volume5">
-          <input
-            type="radio"
-            class="input"
-            id="volume5"
-            value="lav-10m³"
-            name="modelo-card"
-            [(ngModel)]="dadosCliente.volume"
-          />
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>lav-10m³</span>
-        </label>
-      </div>
-
-      <div class="radio-modelo">
-        <label for="volume6">
-          <input
-            type="radio"
-            class="input"
-            id="volume6"
-            value="lav-15m³"
-            name="modelo-card"
-            [(ngModel)]="dadosCliente.volume"
-          />
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>lav-15m³</span>
-        </label>
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="cpf">CPF:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="cpf"
+          name="cpf"
+          placeholder="Digite o CPF"
+          [(ngModel)]="dadosCliente.cpf"
+        />
       </div>
     </div>
 
-    <label for="ajudanteHora">Ajudante p/ hora adicional:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="ajudanteHora"
-      name="ajudanteHora"
-      placeholder="Informe o ajudante para hora adicional"
-      [(ngModel)]="dadosCliente.ajudanteHora"
-    />
+    <div class="formulario__dupla">
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="telefone">Telefone:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="telefone"
+          name="telefone"
+          placeholder="(11) 3454-1234"
+          [(ngModel)]="dadosCliente.telefone"
+        />
+      </div>
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="celular">Celular:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="celular"
+          name="celular"
+          placeholder="(11) 9 9544-4862"
+          [(ngModel)]="dadosCliente.celular"
+        />
+      </div>
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="email">E-mail:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="email"
+          name="email"
+          placeholder="Digite o E-mail"
+          [(ngModel)]="dadosCliente.email"
+        />
+      </div>
+    </div>
 
-    <label for="observacao">Observações:</label>
-    <input
-      type="textarea"
-      class="input"
-      id="observacao"
-      name="observacao"
-      placeholder="Informações adicionais"
-      [(ngModel)]="dadosCliente.observacao"
-    />
+    <div class="formulario__dupla">
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="cep">CEP:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="cep"
+          name="cep"
+          placeholder="Digite o CEP"
+          [(ngModel)]="dadosCliente.cep"
+        />
+      </div>
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="logradouro">Endereço:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="logradouro"
+          name="logradouro"
+          [(ngModel)]="dadosCliente.logradouro"
+        />
+      </div>
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="numero">Número:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="numero"
+          name="numero"
+          placeholder="Digite o número do endereço"
+          [(ngModel)]="dadosCliente.numero"
+        />
+      </div>
+    </div>
+
+    <div class="formulario__dupla">
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="complemento">Complemento:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="complemento"
+          name="complemento"
+          placeholder="Digite o complemento do endereço"
+          [(ngModel)]="dadosCliente.complemento"
+        />
+      </div>
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="bairro">Bairro:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="bairro"
+          name="bairro"
+          [(ngModel)]="dadosCliente.bairro"
+        />
+      </div>
+
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="estado">UF:</label>
+        <select id="estado" name="estado" class="campo__escrita">
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option>
+          <option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Pará</option>
+          <option value="PB">Paraíba</option>
+          <option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option value="SP">São Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
+          <option value="EX">Estrangeiro</option>
+        </select>
+      </div>
+    </div>
+
+    <br /><br />
+    <h6><strong>Informações Empresa:</strong></h6>
+    <br />
+
+    <div class="formulario__dupla">
+      <div class="formulario_linha">
+        <label class="campo__etiqueta" for="fantasia">Fantasia:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="fantasia"
+          name="fantasia"
+          placeholder="Digite o nome fantasia"
+          [(ngModel)]="dadosCliente.fantasia"
+        />
+      </div>
+    </div>
+
+    <div class="formulario__dupla">
+      <div class="formulario_linha">
+        <label class="campo__etiqueta" for="razaoSocial">Razão Social:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="razaoSocial"
+          name="razaoSocial"
+          placeholder="Digite a Razão Social"
+          [(ngModel)]="dadosCliente.razaoSocial"
+        />
+      </div>
+      <div class="formulario__campo">
+        <label class="campo__etiqueta" for="cnpj">CNPJ:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="cnpj"
+          name="cnpj"
+          placeholder="Digite o CNPJ"
+          [(ngModel)]="dadosCliente.cnpj"
+        />
+      </div>
+    </div>
+
+    <br /><br />
+    <h6><strong>Informações Pedido:</strong></h6>
+    <br /><br />
+
+    <div class="formulario__dupla">
+      <div class="formulario_linha">
+        <label class="campo__etiqueta" for="tipoPgto">Tipo de Pagamento:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="tipoPgto"
+          name="tipoPgto"
+          placeholder="Informe o tipo de pagamento"
+          [(ngModel)]="dadosCliente.tipoPgto"
+        />
+      </div>
+    </div>
+
+    <div class="formulario__dupla">
+      <div class="formulario_linha">
+        <label class="campo__etiqueta" for="sfobras">SFOBRAS:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="sfobras"
+          name="sfobras"
+          placeholder="Digite o SFOBRAS"
+          [(ngModel)]="dadosCliente.sfobras"
+        />
+      </div>
+    </div>
+
+    <div class="formulario__dupla">
+      <div class="formulario_linha">
+        <label class="campo__etiqueta" for="cno">CNO:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="cno"
+          name="cno"
+          placeholder="Digite o CNO"
+          [(ngModel)]="dadosCliente.cno"
+        />
+      </div>
+    </div>
+
+    <div class="formulario__dupla">
+      <div class="formulario_linha">
+        <label class="campo__etiqueta" for="mangueira">Mangueira:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="mangueira"
+          name="mangueira"
+          placeholder="Informe o tamanho da mangueira"
+          [(ngModel)]="dadosCliente.mangueira"
+        />
+      </div>
+    </div>
+
+    <div class="formulario__dupla">
+      <div class="formulario_linha">
+        <label class="campo__etiqueta" for="ie">Inscrição Estadual:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="ie"
+          name="ie"
+          placeholder="Informe a Inscrição Estadual"
+          [(ngModel)]="dadosCliente.ie"
+        />
+      </div>
+    </div>
+
+    <div class="formulario__dupla">
+      <div class="formulario_linha">
+        <label class="campo__etiqueta" for="volume">Volume:</label>
+        <div class="container-radio">
+          <div class="radio-modelo">
+            <label for="volume1">
+              <input
+                type="radio"
+                class="input"
+                id="volume1"
+                value="cx-5m³"
+                name="modelo-card"
+                [(ngModel)]="dadosCliente.volume"
+              />
+              <div class="custom-radio">
+                <span></span>
+              </div>
+              <span>cx-5m³</span>
+            </label>
+          </div>
+
+          <div class="radio-modelo">
+            <label for="volume2">
+              <input
+                type="radio"
+                class="input"
+                id="volume2"
+                value="cx-10m³"
+                name="modelo-card"
+                [(ngModel)]="dadosCliente.volume"
+              />
+              <div class="custom-radio">
+                <span></span>
+              </div>
+              <span>cx-10m³</span>
+            </label>
+          </div>
+
+          <div class="radio-modelo">
+            <label for="volume3">
+              <input
+                type="radio"
+                class="input"
+                id="volume3"
+                value="cx-15m³"
+                name="modelo-card"
+                [(ngModel)]="dadosCliente.volume"
+              />
+              <div class="custom-radio">
+                <span></span>
+              </div>
+              <span>cx-15m³</span>
+            </label>
+          </div>
+
+          <div class="radio-modelo">
+            <label for="volume4">
+              <input
+                type="radio"
+                class="input"
+                id="volume4"
+                value="lav-5m³"
+                name="modelo-card"
+                [(ngModel)]="dadosCliente.volume"
+              />
+              <div class="custom-radio">
+                <span></span>
+              </div>
+              <span>lav-5m³</span>
+            </label>
+          </div>
+
+          <div class="radio-modelo">
+            <label for="volume5">
+              <input
+                type="radio"
+                class="input"
+                id="volume5"
+                value="lav-10m³"
+                name="modelo-card"
+                [(ngModel)]="dadosCliente.volume"
+              />
+              <div class="custom-radio">
+                <span></span>
+              </div>
+              <span>lav-10m³</span>
+            </label>
+          </div>
+
+          <div class="radio-modelo">
+            <label for="volume6">
+              <input
+                type="radio"
+                class="input"
+                id="volume6"
+                value="lav-15m³"
+                name="modelo-card"
+                [(ngModel)]="dadosCliente.volume"
+              />
+              <div class="custom-radio">
+                <span></span>
+              </div>
+              <span>lav-15m³</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="formulario__dupla">
+      <div class="formulario_linha">
+        <label class="campo__etiqueta" for="ajudanteHora"
+          >Ajudante p/ hora adicional:</label
+        >
+        <input
+          type="textarea"
+          class="input"
+          id="ajudanteHora"
+          name="ajudanteHora"
+          placeholder="Informe o ajudante para hora adicional"
+          [(ngModel)]="dadosCliente.ajudanteHora"
+        />
+      </div>
+    </div>
+
+    <div class="formulario__dupla">
+      <div class="formulario_linha">
+        <label class="campo__etiqueta" for="observacao">Observações:</label>
+        <input
+          type="textarea"
+          class="input"
+          id="observacao"
+          name="observacao"
+          placeholder="Informações adicionais"
+          [(ngModel)]="dadosCliente.observacao"
+        />
+      </div>
+    </div>
 
     <div class="acoes">
-      <button (click)="cadastrarCliente()" class="botao">Salvar</button>
+      <!-- <button (click)="cadastrar()" class="botao">Salvar</button> -->
+      <button type="submit" class="botao">Salvar</button>
       <button (click)="cancelar()" routerLink="/menu" class="botao">
         Cancelar
       </button>
     </div>
   </form>
-  
+
   <div class="container-previa">
-      <header class="header">
-        <h4><i>Prévia do Pedido:</i></h4>
-      </header> 
-      <div class="modelo modelo1 ff-roboto-mono">
-        <img class="imagem" src="../../../../assets/img/logo.png" alt="Logo São Tomé" />
-        <p class="fantasia">{{ dadosCliente.fantasia }}</p>
-        <p class="razaosocial">
-          <b>{{ dadosCliente.razaoSocial }}</b>
-        </p>
+    <header class="header">
+      <h4><i>Prévia do Pedido:</i></h4>
+    </header>
+    <div class="modelo modelo1 ff-roboto-mono">
+      <img
+        class="imagem"
+        src="../../../../assets/img/logo.png"
+        alt="Logo São Tomé"
+      />
+      <p class="fantasia">{{ dadosCliente.fantasia }}</p>
+      <p class="razaosocial">
+        <b>{{ dadosCliente.razaoSocial }}</b>
+      </p>
 
-        <p class="volume">
-          <b>{{ dadosCliente.volume }}</b>
-        </p>
+      <p class="volume">
+        <b>{{ dadosCliente.volume }}</b>
+      </p>
 
-        <p class="mangueira">
-          <b>{{ dadosCliente.mangueira }}</b>
-        </p>
+      <p class="mangueira">
+        <b>{{ dadosCliente.mangueira }}</b>
+      </p>
 
-        <!-- <p class="preco">
+      <!-- <p class="preco">
           <b>{{ dadosCliente.preco }}</b>
         </p>
 
@@ -357,16 +504,15 @@
           <b>{{ dadosCliente.placa }}</b>
         </p> -->
 
-        <p class="observacao">
-          <b>{{ dadosCliente.observacao }}</b>
-        </p>
+      <p class="observacao">
+        <b>{{ dadosCliente.observacao }}</b>
+      </p>
 
-        <div class="acoes">
-          <button (click)="cancelar()" routerLink="/menu" class="botao">
-            Emite Pedido
-          </button>
-        </div>
+      <div class="acoes">
+        <button (click)="cancelar()" routerLink="/menu" class="botao">
+          Emite Pedido
+        </button>
       </div>
+    </div>
   </div>
-
 </section>
