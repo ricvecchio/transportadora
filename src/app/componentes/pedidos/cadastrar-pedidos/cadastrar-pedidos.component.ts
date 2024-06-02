@@ -32,12 +32,10 @@ export class CadastrarPedidosComponent implements OnInit {
 
   cadastrarPedido() {
     this.service.criar(this.dadosPedido).subscribe(() => {
+      alert("Pedido cadastrado com sucesso!")
       this.router.navigate(['/consultar-pedidos']);
     });
   }
-  // cadastrarPedido() {
-  //   alert("Pedido cadastrado com sucesso!")
-  // }
 
   cancelar() {
     this.router.navigate(['/menu'])

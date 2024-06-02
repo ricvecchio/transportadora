@@ -302,14 +302,39 @@
     <div class="formulario__dupla">
       <div class="formulario_linha">
         <label class="campo__etiqueta" for="tipoPgto">Tipo de Pagamento:</label>
-        <input
-          type="textarea"
-          class="input"
-          id="tipoPgto"
-          name="tipoPgto"
-          placeholder="Informe o tipo de pagamento"
-          [(ngModel)]="dadosCliente.tipoPgto"
-        />
+        <div class="container-radio">
+          <label for="pix">
+            <input
+              type="checkbox"
+              name="contato"
+              value="pix"
+              id="pix"
+              class="input-padrao"
+              [(ngModel)]="dadosCliente.tipoPgto"
+            />
+            PIX
+          </label>
+          <label for="debito">
+            <input
+              type="checkbox"
+              name="contato"
+              value="debito"
+              id="debito"
+              class="input-padrao"
+            />
+            Débito
+          </label>
+          <label for="credito">
+            <input
+              type="checkbox"
+              name="contato"
+              value="credito"
+              id="credito"
+              class="input-padrao"
+            />
+            Crédito
+          </label>
+        </div>
       </div>
     </div>
 
