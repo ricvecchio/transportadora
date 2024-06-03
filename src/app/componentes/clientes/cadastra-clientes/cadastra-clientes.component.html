@@ -11,6 +11,7 @@
     f
   >
     <!-- <form> -->
+
     <label for="idCliente">
       <span style="color: black"> Código Cliente: </span>
       <input
@@ -306,10 +307,10 @@
           <label for="pix">
             <input
               type="checkbox"
-              name="contato"
               value="pix"
               id="pix"
               class="input-padrao"
+              name="modelo-card"
               [(ngModel)]="dadosCliente.tipoPgto"
             />
             PIX
@@ -317,20 +318,20 @@
           <label for="debito">
             <input
               type="checkbox"
-              name="contato"
               value="debito"
               id="debito"
               class="input-padrao"
+              name="modelo-card"
             />
             Débito
           </label>
           <label for="credito">
             <input
               type="checkbox"
-              name="contato"
-              value="credito"
-              id="credito"
               class="input-padrao"
+              id="credito"
+              value="credito"
+              name="modelo-card"
             />
             Crédito
           </label>
@@ -546,6 +547,10 @@
       <p class="fantasia">{{ dadosCliente.fantasia }}</p>
       <p class="razaosocial">
         <b>{{ dadosCliente.razaoSocial }}</b>
+      </p>
+
+      <p class="tipoPgto">
+        <b>{{ dadosCliente.tipoPgto }}</b>
       </p>
 
       <p class="volume">
