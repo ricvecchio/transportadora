@@ -19,6 +19,10 @@ import { CadastrarPedidosComponent } from './componentes/pedidos/cadastrar-pedid
 import { ExcluirPedidosComponent } from './componentes/pedidos/excluir-pedidos/excluir-pedidos.component';
 import { EditarPedidosComponent } from './componentes/pedidos/editar-pedidos/editar-pedidos.component';
 import { ValidandoCepDirective } from './directives/validando-cep.directive';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { AsyncPipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, CabecalhoComponent, RodapeComponent, HomeComponent, LoginComponent, MensagemComponent, NovoUsuarioComponent, MenuComponent, CadastraClientesComponent, ConsultarClientesComponent, CadastrarPedidosComponent, ConsultarPedidosComponent, ExcluirPedidosComponent, EditarPedidosComponent ,EmitePedidoComponent, ValidandoCepDirective],
@@ -27,7 +31,11 @@ import { ValidandoCepDirective } from './directives/validando-cep.directive';
     HttpClientModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    AsyncPipe,
   ],
   providers: [],
   bootstrap: [AppComponent],

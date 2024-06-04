@@ -200,7 +200,21 @@
     /* margin: 1rem 0rem 3rem; */
   }
 
+  .example-form {
+    /* min-width: 150px;
+    max-width: 500px; */
+    width: 80%;
+  }
+  
+  .example-full-width {
+    /* width: 100%; */
+    margin: 2.5rem 0rem 0rem;
+  }
 
+  .formulario_cliente {
+    display: flex;
+    padding: 0rem 3rem 0rem;
+  }
 
 
 

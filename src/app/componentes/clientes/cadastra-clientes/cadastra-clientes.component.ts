@@ -1,7 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgForm,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConsultaCepService } from '../../../service/consulta-cep.service';
+import { Observable, map, startWith } from 'rxjs';
+
+export interface User {
+  name: string;
+}
+/**
+ * @title Display value autocomplete
+ */
 
 @Component({
   selector: 'app-cadastra-clientes',
@@ -37,20 +50,52 @@ export class CadastraClientesComponent implements OnInit {
     modelo: 'modelo1',
   };
 
-  formulario!: FormGroup;
+  // formulario!: FormGroup;
+
+  myControl = new FormControl<string | User>('');
+  options: User[] = [
+    { name: 'Jerinelson' }, 
+    { name: 'Bruno' }, 
+    { name: 'Brunelson' }, 
+    { name: 'Brunolindo' },
+    { name: 'Ricardo 01' }, 
+    { name: 'Ricardo 02' },  
+    { name: 'Ricardo 03' }, 
+    { name: 'Ricardo Del' }];
+  filteredOptions!: Observable<User[]>;
 
   constructor(
     private router: Router,
     private consultaCepService: ConsultaCepService,
-    private formBuilder: FormBuilder,
+    // private formBuilder: FormBuilder,
   ) {}
 
   ngOnInit(): void {
-    this.formulario = this.formBuilder.group({
-      conteudo: ['Formulario reativo'],
-      autoria: [''],
-      modelo: ['modelo1'],
-    });
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map((value) => {
+        const name = typeof value === 'string' ? value : value?.name;
+        return name ? this._filter(name as string) : this.options.slice();
+      }),
+    );
+
+    // this.formulario = this.formBuilder.group({
+    //   conteudo: ['Formulario reativo'],
+    //   autoria: [''],
+    //   modelo: ['modelo1'],
+    // });
+  }
+
+  displayFn(user: User): string {
+    return user && user.name ? user.name : '';
+  }
+
+  private _filter(name: string): User[] {
+    const filterValue = name.toLowerCase();
+
+    return this.options.filter((option) =>
+      option.name.toLowerCase().includes(filterValue),
+    );
   }
 
   consultaCEP(ev: any, form: NgForm) {
