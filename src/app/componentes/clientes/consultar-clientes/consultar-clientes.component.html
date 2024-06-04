@@ -1,1 +1,15 @@
-<p>consultar-clientes works!</p>
+<section class="container">
+  <header class="header d-flex">
+    <h2 class="ff-inter">Consultar Clientes:</h2>
+  </header>
+  <div class="layoutcliente" *ngIf="listaClientes.length > 0; else semClientes">
+    <div *ngFor="let cliente of listaClientes">
+      <app-cadastrar-clientes [dadosPedido]="cliente"></app-cadastrar-clientes>
+    </div>
+  </div>
+
+<ng-template #semClientes>
+  <div class="ff-inter sem-clientes]">
+    <p>Ainda não há clientes cadastrados!</p>
+  </div>
+</ng-template>

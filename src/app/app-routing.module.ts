@@ -1,15 +1,16 @@
-import { ConsultarPedidosComponent } from './componentes/pedidos/consultar-pedidos/consultar-pedidos.component';
+import { EditarClientesComponent } from './componentes/clientes/editar-clientes/editar-clientes.component';
+import { ConsultarClientesComponent } from './componentes/clientes/consultar-clientes/consultar-clientes.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MenuComponent } from './componentes/menu/menu.component';
 import { HomeComponent } from './home/home.component';
-import { CadastraClientesComponent } from './componentes/clientes/cadastra-clientes/cadastra-clientes.component';
 import { LoginComponent } from './home/login/login.component';
 import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
 import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-pedido.component';
+import { CadastrarClientesComponent } from './componentes/clientes/cadastrar-clientes/cadastrar-clientes.component';
+import { ExcluirClientesComponent } from './componentes/clientes/excluir-clientes/excluir-clientes.component';
+import { ConsultarPedidosComponent } from './componentes/pedidos/consultar-pedidos/consultar-pedidos.component';
 import { CadastrarPedidosComponent } from './componentes/pedidos/cadastrar-pedidos/cadastrar-pedidos.component';
-import { ExcluirPedidosComponent } from './componentes/pedidos/excluir-pedidos/excluir-pedidos.component';
-import { EditarPedidosComponent } from './componentes/pedidos/editar-pedidos/editar-pedidos.component';
 
 const routes: Routes = [
   {
@@ -36,8 +37,20 @@ const routes: Routes = [
     component: MenuComponent
   },  
   {
-    path: 'cadastra-clientes',
-    component: CadastraClientesComponent
+    path: 'cadastrar-clientes',
+    component: CadastrarClientesComponent
+  },
+  {
+    path: 'consultar-clientes',
+    component: ConsultarClientesComponent
+  },
+  {
+    path: 'clientes/editar-clientes/:id',
+    component: EditarClientesComponent
+  },
+  {
+    path: 'clientes/excluir-clientes/:id',
+    component: ExcluirClientesComponent
   },
   {
     path: 'cadastrar-pedidos',
@@ -46,14 +59,6 @@ const routes: Routes = [
   {
     path: 'consultar-pedidos',
     component: ConsultarPedidosComponent
-  },
-  {
-    path: 'pedidos/excluir-pedidos/:id',
-    component: ExcluirPedidosComponent
-  },
-  {
-    path: 'pedidos/editar-pedidos/:id',
-    component: EditarPedidosComponent
   },
   {
     path: 'pedidos/emite-pedido',

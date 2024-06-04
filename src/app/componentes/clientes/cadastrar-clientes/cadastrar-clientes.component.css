@@ -1,17 +1,21 @@
 .acoes {
     display: flex;
     justify-content: center;
+    align-items: center;
+    align-content: center;
   }
   
   .botao {
     margin: 5px;
+    margin-top: 70px;
+    width: 200px;
   }
   
-  .editar-pedidos {
+  .cadastrar-clientes {
     padding: 2rem 0;
   }
   
-  .editar-pedidos form {
+  .cadastrar-clientes form {
     background: #C4EDFF;
   
     border: none;
@@ -23,13 +27,13 @@
     padding: 2rem;
   }
   
-  .editar-pedidos form label {
+  .cadastrar-clientes form label {
     color: #154580;
     font-weight: bold;
     margin: 0 0 1rem;
   }
   
-  .editar-pedidos form .input {
+  .cadastrar-clientes form .input {
     border: none;
     height: 40px;
     padding: 1rem 2rem;
@@ -38,7 +42,7 @@
   }
   
   
-  .editar-pedidos form .textarea {
+  .cadastrar-clientes form .textarea {
     border: none;
     padding: 1rem 2rem;
     border-radius: 20px;
@@ -88,6 +92,16 @@
   .modelo3 {
     box-shadow: 8px 8px 0px #84EEC1;
   }
+
+  .cliente-g {
+    width: 556px;
+    background-color: #F8F9FE;
+  }
+ 
+  .cliente-p {
+    width: 262px;
+    background-color: #F8F9FE;
+  }
   
   input[type='radio'] {
     display: none;
@@ -129,3 +143,4 @@
   input[type='radio']:checked+.custom-radio span {
     background: #154580;
   }
+  

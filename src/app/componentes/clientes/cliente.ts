@@ -1,4 +1,4 @@
-export interface Pedido {
+export interface Cliente {
     id?: number
     fantasia: string
     razaosocial: string

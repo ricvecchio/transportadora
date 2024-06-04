@@ -14,47 +14,45 @@
   .cadastrar-pedidos {
     padding: 2rem 0;
   }
+
+  .cadastrar-pedidos form .id {
+    height: 10px;
+    padding: 1rem 1rem 1rem;
+    border-radius: 10px;
+    margin: 0.5rem 0 2.5rem;
+  }
   
   .cadastrar-pedidos form {
-    background: #C4EDFF;
-  
+    background: #dde0e2;
     border: none;
     border-radius: 20px;
-  
     display: flex;
     flex-direction: column;
-  
     padding: 2rem;
   }
   
   .cadastrar-pedidos form label {
     color: #154580;
     font-weight: bold;
-    margin: 0 0 1rem;
+    margin: 0rem 0rem -0.5em;
   }
-  
+
   .cadastrar-pedidos form .input {
     border: none;
-    height: 40px;
-    padding: 1rem 2rem;
-    border-radius: 20px;
-    margin: 0.5rem 0 2rem;
+    height: 10px;
+    padding: 1rem 1rem 1rem;
+    border-radius: 10px;
+    margin: 0.5rem 0 1.5rem;
+    width: 100%;
   }
   
-  
-  .cadastrar-pedidos form .textarea {
+    .cadastrar-pedidos form .textarea {
     border: none;
     padding: 1rem 2rem;
     border-radius: 20px;
     margin: 0.5rem 0 2rem;
   }
-  
-  .container-radio {
-    display: flex;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-  }
-  
+
   .modelos {
     display: flex;
     gap: 2.5rem;
@@ -62,12 +60,13 @@
   }
   
   .modelo {
-    background-color: #F8F9FE;
+    background:#d9e7ec;
     padding: 1rem;
-    max-width: 250px;
-    margin: 1rem 0 2rem;
+    width: 100%;
+    margin: 0 0 6rem; 
+    border-radius: 20px;
   }
-  
+
   .modelo .conteudo {
     margin: 1rem auto;
     word-wrap: break-word;
@@ -77,12 +76,41 @@
     word-wrap: break-word;
   }
   
-  .radio {
+  .container-radio {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 2rem 2rem;
+  }
+  
+  .container-radio .imagem {
+    width: 920px;
+    height: 130px;
+    padding: 2rem;
+  }
+
+   .radio {
     margin: 0;
+  }
+
+  .container-previa {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2rem 0rem;
+  }
+  
+  .container-previa .imagem {
+    width: 920px;
+    height: 130px;
+    padding: 2rem;
+  }
+
+  .volume {
+    box-shadow: 8px 8px 0px;
   }
   
   .modelo1 {
-    box-shadow: 8px 8px 0px #154580;
+    box-shadow: 15px 15px 15px #154580;
   }
   
   .modelo2 {
@@ -92,25 +120,15 @@
   .modelo3 {
     box-shadow: 8px 8px 0px #84EEC1;
   }
-
-  .pedido-g {
-    width: 556px;
-    background-color: #F8F9FE;
-  }
- 
-  .pedido-p {
-    width: 262px;
-    background-color: #F8F9FE;
-  }
   
   input[type='radio'] {
     display: none;
-  }
+    }
   
   .radio-modelo label {
     display: flex;
     align-items: center;
-    column-gap: 20px;
+    margin: 0.5rem 0.5rem 1.2rem;
   }
   
   .custom-radio {
@@ -143,4 +161,122 @@
   input[type='radio']:checked+.custom-radio span {
     background: #154580;
   }
+
+  .formulario__dupla {
+    display: flex;
+    padding: 0rem 3rem 0rem;
+  }
+
+  .formulario_linha {
+    margin: .3em 2em -1em 0em;
+    flex: auto;
+  }
+
+  .formulario__campo {
+    margin: .3em 2em -1em 0em;
+  }
   
+  .campo__etiqueta {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--azul);
+    margin-left: 1em;
+  }
+
+  .campo__escrita {
+    border: 1px solid var(--azul);
+    width: 100%;
+    margin: 0.5rem 0 1.5rem;
+    height: 10px;
+    padding: 1rem 1rem 1rem;
+    border-radius: 10px;
+  }
+
+  .input-padrao  {
+    width: 20px;
+    height: 20px;
+    /* margin: 1rem 0rem 3rem; */
+  }
+
+  .example-form {
+    /* min-width: 150px;
+    max-width: 500px; */
+    width: 80%;
+  }
+  
+  .example-full-width {
+    /* width: 100%; */
+    margin: 2.5rem 0rem 0rem;
+  }
+
+  .formulario_pedido {
+    display: flex;
+    padding: 0rem 3rem 0rem;
+  }
+
+
+
+
+
+
+
+  .principal {
+    width: 50vw;
+    margin: 5em auto 6em auto;
+  }
+  
+  .principal__titulo {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--laranja)
+  }
+  
+  .principal__subtitulo {
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 26px;
+    color: var(--azul);
+    margin: 3em 0 2em 0;
+  }
+    
+  .formulario__botao {
+    background: var(--laranja);
+    padding: 1em 4em;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    border: none;
+    color: var(--branco);
+    cursor: pointer;
+    float: right;
+  }
+  
+  .formulario__erro {
+    display: flex;
+    margin-top: .5em;
+    align-items: center;
+  }
+  
+  .erro__imagem {
+    width: 16px;
+    height: 16px;
+    margin: 0 .5em;
+    background-image: url('/assets/img/warning.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  .erro__texto {
+    font-size: 12px;
+    line-height: 18px;
+    color: red;
+    /* color: var(--vermelho); */
+  }
+  
+  .ng-invalid.ng-touched:not(form){
+    border-color: red;
+    color: red;
+  }
