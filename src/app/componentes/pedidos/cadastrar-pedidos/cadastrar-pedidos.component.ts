@@ -1,13 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  NgForm,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConsultaCepService } from '../../../service/consulta-cep.service';
-import { Observable, map, startWith } from 'rxjs';
+import { Observable, map, of, startWith } from 'rxjs';
 
 export interface User {
   name: string;
@@ -53,16 +48,19 @@ export class CadastrarPedidosComponent implements OnInit {
   // formulario!: FormGroup;
 
   myControl = new FormControl<string | User>('');
+
   options: User[] = [
-    { name: 'Jerinelson' }, 
-    { name: 'Bruno' }, 
-    { name: 'Brunelson' }, 
+    { name: 'Jerinelson' },
+    { name: 'Bruno' },
+    { name: 'Brunelson' },
     { name: 'Brunolindo' },
-    { name: 'Ricardo 01' }, 
-    { name: 'Ricardo 02' },  
-    { name: 'Ricardo 03' }, 
-    { name: 'Ricardo Del' }];
-  filteredOptions!: Observable<User[]>;
+    { name: 'Ricardo 01' },
+    { name: 'Ricardo 02' },
+    { name: 'Ricardo 03' },
+    { name: 'Ricardo Del' },
+  ];
+
+  filteredOptions: Observable<User[]> = of([]);
 
   constructor(
     private router: Router,
@@ -73,7 +71,7 @@ export class CadastrarPedidosComponent implements OnInit {
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map((value) => {
+      map(value => {
         const name = typeof value === 'string' ? value : value?.name;
         return name ? this._filter(name as string) : this.options.slice();
       }),
@@ -83,7 +81,7 @@ export class CadastrarPedidosComponent implements OnInit {
     //   conteudo: ['Formulario reativo'],
     //   autoria: [''],
     //   modelo: ['modelo1'],
-    // });
+    // });eit
   }
 
   displayFn(user: User): string {
