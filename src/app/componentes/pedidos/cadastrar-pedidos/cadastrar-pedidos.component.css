@@ -29,6 +29,7 @@
     display: flex;
     flex-direction: column;
     padding: 2rem;
+    width: 100%;
   }
   
   .cadastrar-pedidos form label {
@@ -207,14 +208,11 @@
   }
   
   .example-full-width {
-    /* width: 100%; */
-    margin: 2.5rem 0rem 0rem;
+    width: 100%;
+    margin: 0rem -1.5rem 1rem;
+    padding: 1rem 3rem 1rem;
   }
 
-  .formulario_pedido {
-    display: flex;
-    padding: 0rem 3rem 0rem;
-  }
 
 
 
