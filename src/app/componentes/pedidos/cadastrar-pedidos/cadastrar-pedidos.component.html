@@ -29,15 +29,15 @@
         </mat-form-field>
       </div>
 
-      <label for="idCliente">
+      <label for="id">
         <span style="color: black"> Código Cliente: </span>
         <input
           disabled
           type="textarea"
           class="id"
-          id="idCliente"
-          name="idCliente"
-          [(ngModel)]="dadosCliente.idCliente"
+          id="id"
+          name="id"
+          [(ngModel)]="dadosPedido.id"
         />
       </label>
     </div>
@@ -55,7 +55,7 @@
           name="nome"
           placeholder="Digite o nome do cliente"
           class="campo__escrita"
-          [(ngModel)]="dadosCliente.nome"
+          [(ngModel)]="dadosPedido.nome"
           ngModel
           required
           minlength="2"
@@ -81,7 +81,7 @@
           id="cpf"
           name="cpf"
           placeholder="Digite o CPF"
-          [(ngModel)]="dadosCliente.cpf"
+          [(ngModel)]="dadosPedido.cpf"
         />
       </div>
     </div>
@@ -95,7 +95,7 @@
           id="telefone"
           name="telefone"
           placeholder="(XX) XXXX-XXXX"
-          [(ngModel)]="dadosCliente.telefone"
+          [(ngModel)]="dadosPedido.telefone"
           ngModel
           #telefone="ngModel"
           required
@@ -123,7 +123,7 @@
           id="celular"
           name="celular"
           placeholder="(XX) XXXXX-XXXX"
-          [(ngModel)]="dadosCliente.celular"
+          [(ngModel)]="dadosPedido.celular"
           ngModel
           #celular="ngModel"
           required
@@ -149,7 +149,7 @@
           id="email"
           name="email"
           placeholder="Digite o E-mail"
-          [(ngModel)]="dadosCliente.email"
+          [(ngModel)]="dadosPedido.email"
           ngModel
           #email="ngModel"
           required
@@ -177,7 +177,7 @@
           id="cep"
           name="cep"
           placeholder="Digite o CEP"
-          [(ngModel)]="dadosCliente.cep"
+          [(ngModel)]="dadosPedido.cep"
           ngModel
           required
           #cep="ngModel"
@@ -210,7 +210,7 @@
           class="input"
           id="logradouro"
           name="logradouro"
-          [(ngModel)]="dadosCliente.logradouro"
+          [(ngModel)]="dadosPedido.logradouro"
         />
       </div>
       <div class="formulario__campo">
@@ -221,7 +221,7 @@
           id="numero"
           name="numero"
           placeholder="Digite o número do endereço"
-          [(ngModel)]="dadosCliente.numero"
+          [(ngModel)]="dadosPedido.numero"
         />
       </div>
     </div>
@@ -235,7 +235,7 @@
           id="complemento"
           name="complemento"
           placeholder="Digite o complemento do endereço"
-          [(ngModel)]="dadosCliente.complemento"
+          [(ngModel)]="dadosPedido.complemento"
         />
       </div>
       <div class="formulario__campo">
@@ -245,7 +245,7 @@
           class="input"
           id="bairro"
           name="bairro"
-          [(ngModel)]="dadosCliente.bairro"
+          [(ngModel)]="dadosPedido.bairro"
         />
       </div>
       <div class="formulario__campo">
@@ -255,7 +255,7 @@
           class="input"
           id="cidade"
           name="cidade"
-          [(ngModel)]="dadosCliente.cidade"
+          [(ngModel)]="dadosPedido.cidade"
         />
       </div>
 
@@ -266,7 +266,7 @@
           class="input"
           id="estado"
           name="estado"
-          [(ngModel)]="dadosCliente.estado"
+          [(ngModel)]="dadosPedido.estado"
         />
       </div>
     </div>
@@ -284,7 +284,7 @@
           id="fantasia"
           name="fantasia"
           placeholder="Digite o nome fantasia"
-          [(ngModel)]="dadosCliente.fantasia"
+          [(ngModel)]="dadosPedido.fantasia"
         />
       </div>
     </div>
@@ -298,7 +298,7 @@
           id="razaoSocial"
           name="razaoSocial"
           placeholder="Digite a Razão Social"
-          [(ngModel)]="dadosCliente.razaoSocial"
+          [(ngModel)]="dadosPedido.razaoSocial"
         />
       </div>
       <div class="formulario__campo">
@@ -309,7 +309,7 @@
           id="cnpj"
           name="cnpj"
           placeholder="Digite o CNPJ"
-          [(ngModel)]="dadosCliente.cnpj"
+          [(ngModel)]="dadosPedido.cnpj"
         />
       </div>
     </div>
@@ -329,7 +329,7 @@
               id="pix"
               class="input-padrao"
               name="modelo-card"
-              [(ngModel)]="dadosCliente.tipoPgto"
+              [(ngModel)]="dadosPedido.tipoPgto"
             />
             PIX
           </label>
@@ -366,7 +366,7 @@
           id="sfobras"
           name="sfobras"
           placeholder="Digite o SFOBRAS"
-          [(ngModel)]="dadosCliente.sfobras"
+          [(ngModel)]="dadosPedido.sfobras"
         />
       </div>
 
@@ -378,7 +378,7 @@
           id="cno"
           name="cno"
           placeholder="Digite o CNO"
-          [(ngModel)]="dadosCliente.cno"
+          [(ngModel)]="dadosPedido.cno"
         />
       </div>
 
@@ -402,7 +402,7 @@
           id="ie"
           name="ie"
           placeholder="Informe a IE"
-          [(ngModel)]="dadosCliente.ie"
+          [(ngModel)]="dadosPedido.ie"
         />
       </div>
     </div>
@@ -419,7 +419,7 @@
                 id="volume1"
                 value="cx-5m³"
                 name="modelo-card"
-                [(ngModel)]="dadosCliente.volume"
+                [(ngModel)]="dadosPedido.volume"
               />
               <div class="custom-radio">
                 <span></span>
@@ -436,7 +436,7 @@
                 id="volume2"
                 value="cx-10m³"
                 name="modelo-card"
-                [(ngModel)]="dadosCliente.volume"
+                [(ngModel)]="dadosPedido.volume"
               />
               <div class="custom-radio">
                 <span></span>
@@ -453,7 +453,7 @@
                 id="volume3"
                 value="cx-15m³"
                 name="modelo-card"
-                [(ngModel)]="dadosCliente.volume"
+                [(ngModel)]="dadosPedido.volume"
               />
               <div class="custom-radio">
                 <span></span>
@@ -470,7 +470,7 @@
                 id="volume4"
                 value="lav-5m³"
                 name="modelo-card"
-                [(ngModel)]="dadosCliente.volume"
+                [(ngModel)]="dadosPedido.volume"
               />
               <div class="custom-radio">
                 <span></span>
@@ -487,7 +487,7 @@
                 id="volume5"
                 value="lav-10m³"
                 name="modelo-card"
-                [(ngModel)]="dadosCliente.volume"
+                [(ngModel)]="dadosPedido.volume"
               />
               <div class="custom-radio">
                 <span></span>
@@ -504,7 +504,7 @@
                 id="volume6"
                 value="lav-15m³"
                 name="modelo-card"
-                [(ngModel)]="dadosCliente.volume"
+                [(ngModel)]="dadosPedido.volume"
               />
               <div class="custom-radio">
                 <span></span>
@@ -527,7 +527,7 @@
           id="ajudanteHora"
           name="ajudanteHora"
           placeholder="Informe o ajudante para hora adicional"
-          [(ngModel)]="dadosCliente.ajudanteHora"
+          [(ngModel)]="dadosPedido.ajudanteHora"
         />
       </div>
     </div>
@@ -541,7 +541,7 @@
           id="observacao"
           name="observacao"
           placeholder="Informações adicionais"
-          [(ngModel)]="dadosCliente.observacao"
+          [(ngModel)]="dadosPedido.observacao"
         />
       </div>
     </div>
@@ -562,41 +562,41 @@
         src="../../../../assets/img/logo.png"
         alt="Logo São Tomé"
       />
-      <p class="fantasia">{{ dadosCliente.fantasia }}</p>
+      <p class="fantasia">{{ dadosPedido.fantasia }}</p>
       <p class="razaosocial">
-        <b>{{ dadosCliente.razaoSocial }}</b>
+        <b>{{ dadosPedido.razaoSocial }}</b>
       </p>
 
       <p class="tipoPgto">
-        <b>{{ dadosCliente.tipoPgto }}</b>
+        <b>{{ dadosPedido.tipoPgto }}</b>
       </p>
 
       <p class="volume">
-        <b>{{ dadosCliente.volume }}</b>
+        <b>{{ dadosPedido.volume }}</b>
       </p>
 
       <p class="mangueira">
-        <b>{{ dadosCliente.mangueira }}</b>
+        <b>{{ dadosPedido.mangueira }}</b>
       </p>
 
       <!-- <p class="preco">
-          <b>{{ dadosCliente.preco }}</b>
+          <b>{{ dadosPedido.preco }}</b>
         </p>
 
         <p class="motorista">
-          <b>{{ dadosCliente.motorista }}</b>
+          <b>{{ dadosPedido.motorista }}</b>
         </p>
 
         <p class="caminhao">
-          <b>{{ dadosCliente.caminhao }}</b>
+          <b>{{ dadosPedido.caminhao }}</b>
         </p>
 
         <p class="placa">
-          <b>{{ dadosCliente.placa }}</b>
+          <b>{{ dadosPedido.placa }}</b>
         </p> -->
 
       <p class="observacao">
-        <b>{{ dadosCliente.observacao }}</b>
+        <b>{{ dadosPedido.observacao }}</b>
       </p>
 
       <div class="acoes">

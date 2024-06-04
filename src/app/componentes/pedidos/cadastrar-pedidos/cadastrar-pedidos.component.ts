@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -22,8 +22,8 @@ export interface User {
   styleUrl: './cadastrar-pedidos.component.css',
 })
 export class CadastrarPedidosComponent implements OnInit {
-  dadosCliente = {
-    idCliente: '1',
+  @Input() dadosPedido = {
+    id: 1,
     nome: 'Ricardo Del Vecchio (TESTANDO)',
     cpf: '',
     telefone: '',

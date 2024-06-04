@@ -1,1 +1,15 @@
-<p>consultar-pedidos works!</p>
+<section class="container">
+    <header class="header d-flex">
+      <h2 class="ff-inter">Consultar Pedidos:</h2>
+    </header>
+    <div class="layoutpedido" *ngIf="listaPedidos.length > 0; else semPedidos">
+      <div *ngFor="let pedido of listaPedidos">
+        <app-cadastrar-pedidos [dadosPedido]="pedido"></app-cadastrar-pedidos>
+      </div>
+    </div>
+  
+  <ng-template #semPedidos>
+    <div class="ff-inter sem-pedidos]">
+      <p>Ainda não há pedidos cadastrados!</p>
+    </div>
+  </ng-template>
