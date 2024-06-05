@@ -31,15 +31,16 @@ export class CadastrarPedidosComponent implements OnInit {
     bairro: '',
     cidade: '',
     estado: '',
-    fantasia: '',
-    razaoSocial: '',
-    cnpj: '',
+    fantasia: 'Condomínio Residencial Turquesa',
+    razaoSocial: 'Condomínio Turquesa',
+    cnpj: '43.254.354/0001-75',
     tipoPgto: '',
     sfobras: '',
     cno: '',
     mangueira: '',
     ie: '',
-    volume: '',
+    volume: '',    
+    preco: '',
     ajudanteHora: '',
     observacao: '',
     modelo: 'modelo1',
@@ -61,6 +62,7 @@ export class CadastrarPedidosComponent implements OnInit {
   ];
 
   filteredOptions: Observable<User[]> = of([]);
+list: any;
 
   constructor(
     private router: Router,

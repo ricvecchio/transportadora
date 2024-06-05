@@ -278,7 +278,7 @@
 
     <div class="formulario__dupla">
       <div class="formulario_linha">
-        <label class="campo__etiqueta" for="fantasia">Fantasia:</label>
+        <label class="campo__etiqueta" for="fantasia">Nome Fantasia:</label>
         <input
           type="textarea"
           class="input"
@@ -323,36 +323,42 @@
       <div class="formulario_linha">
         <label class="campo__etiqueta" for="tipoPgto">Tipo de Pagamento:</label>
         <div class="container-radio">
-          <label for="pix">
+          <label for="avista">
             <input
               type="checkbox"
-              value="pix"
-              id="pix"
+              value="avista"
+              id="avista"
               class="input-padrao"
               name="modelo-card"
               [(ngModel)]="dadosPedido.tipoPgto"
             />
-            PIX
+            Á vista
           </label>
-          <label for="debito">
-            <input
-              type="checkbox"
-              value="debito"
-              id="debito"
-              class="input-padrao"
-              name="modelo-card"
-            />
-            Débito
-          </label>
-          <label for="credito">
-            <input
-              type="checkbox"
-              class="input-padrao"
-              id="credito"
-              value="credito"
-              name="modelo-card"
-            />
-            Crédito
+          <label for="faturado">
+            Faturado:
+            <select id="dias" name="dias" class="campo__escrita">
+              <option>10 dias</option>
+              <option>11 dias</option>
+              <option>12 dias</option>
+              <option>13 dias</option>
+              <option>14 dias</option>
+              <option>15 dias</option>
+              <option>16 dias</option>
+              <option>17 dias</option>
+              <option>18 dias</option>
+              <option>19 dias</option>
+              <option>20 dias</option>
+              <option>21 dias</option>
+              <option>22 dias</option>
+              <option>23 dias</option>
+              <option>24 dias</option>
+              <option>25 dias</option>
+              <option>26 dias</option>
+              <option>27 dias</option>
+              <option>28 dias</option>
+              <option>29 dias</option>
+              <option>30 dias</option>
+            </select>
           </label>
         </div>
       </div>
@@ -410,8 +416,9 @@
 
     <div class="formulario__dupla">
       <div class="formulario_linha">
-        <label class="campo__etiqueta" for="volume">Volume:</label>
         <div class="container-radio">
+          <label class="campo__etiqueta" for="volume">Volume:</label>
+
           <div class="radio-modelo">
             <label for="volume1">
               <input
@@ -517,6 +524,54 @@
       </div>
     </div>
 
+    <div class="formulario_preco">
+      <label class="campo__etiqueta" for="complemento">Preço:</label>
+      <div class="formulario_precos">
+        <input
+          type="textarea"
+          class="input"
+          id="preco1"
+          name="preco1"
+          [(ngModel)]="dadosPedido.preco"
+        />
+        <input
+          type="textarea"
+          class="input"
+          id="preco2"
+          name="preco2"
+          [(ngModel)]="dadosPedido.preco"
+        />
+        <input
+          type="textarea"
+          class="input"
+          id="preco3"
+          name="preco3"
+          [(ngModel)]="dadosPedido.preco"
+        />
+        <input
+          type="textarea"
+          class="input"
+          id="preco4"
+          name="preco4"
+          [(ngModel)]="dadosPedido.preco"
+        />
+        <input
+          type="textarea"
+          class="input"
+          id="preco5"
+          name="preco5"
+          [(ngModel)]="dadosPedido.preco"
+        />
+        <input
+          type="textarea"
+          class="input"
+          id="preco6"
+          name="preco6"
+          [(ngModel)]="dadosPedido.preco"
+        />
+      </div>
+    </div>
+
     <div class="formulario__dupla">
       <div class="formulario_linha">
         <label class="campo__etiqueta" for="ajudanteHora"
@@ -563,42 +618,51 @@
         src="../../../../assets/img/logo.png"
         alt="Logo São Tomé"
       />
-      <p class="fantasia">{{ dadosPedido.fantasia }}</p>
-      <p class="razaosocial">
-        <b>{{ dadosPedido.razaoSocial }}</b>
-      </p>
 
-      <p class="tipoPgto">
-        <b>{{ dadosPedido.tipoPgto }}</b>
-      </p>
-
-      <p class="volume">
-        <b>{{ dadosPedido.volume }}</b>
-      </p>
-
-      <p class="mangueira">
-        <b>{{ dadosPedido.mangueira }}</b>
-      </p>
-
-      <!-- <p class="preco">
-          <b>{{ dadosPedido.preco }}</b>
+      <div class="campos_previa">
+        <p class="idPedido">
+          <b>PEDIDO: </b>
+          <!-- {{ dadosPedido.idPedido }} -->
         </p>
+      </div>
 
-        <p class="motorista">
-          <b>{{ dadosPedido.motorista }}</b>
+      <div class="campos_previa">
+        <p class="data">
+          <b>DATA: </b>
+          <!-- {{ dadosPedido.data }} -->
         </p>
+      </div>
 
-        <p class="caminhao">
-          <b>{{ dadosPedido.caminhao }}</b>
+      <div class="campos_previa">
+        <p class="fantasia">
+          <b>CLIENTE: </b>
+          {{ dadosPedido.fantasia }}
         </p>
+      </div>
 
-        <p class="placa">
-          <b>{{ dadosPedido.placa }}</b>
-        </p> -->
+      <div class="campos_previa">
+        <p class="endereco">
+          <b>ENDEREÇO: </b>
+          <!-- {{ dadosPedido.endereco }} -->
+        </p>
+      </div>
 
-      <p class="observacao">
-        <b>{{ dadosPedido.observacao }}</b>
-      </p>
+      <div class="campos_previa">
+        <b>VOLUME: </b>
+        {{ dadosPedido.volume }}
+        <b>MANGUEIRA: </b>
+        {{ dadosPedido.mangueira }}
+        <b>PREÇO: </b>
+        <p class="preco">
+          <!-- {{ dadosPedido.preco }} -->
+        </p>
+      </div>
+
+      <div class="campos_previa">
+        <b>MOTORISTA: </b>
+        <b>CAMINHÃO: </b>
+        <b>PLACA: </b>
+      </div>
 
       <div class="acoes">
         <button (click)="cancelar()" routerLink="/menu" class="botao">
