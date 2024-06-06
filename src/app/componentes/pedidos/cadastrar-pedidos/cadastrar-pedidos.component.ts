@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConsultaCepService } from '../../../service/consulta-cep.service';
 import { Observable, map, of, startWith } from 'rxjs';
@@ -17,6 +17,12 @@ export interface User {
   styleUrl: './cadastrar-pedidos.component.css',
 })
 export class CadastrarPedidosComponent implements OnInit {
+
+  isChecked = 'true';
+  formGroup = this._formBuilder.group({
+    acceptTerms: ['', Validators.requiredTrue],
+  });
+
   @Input() dadosPedido = {
     id: 1,
     nome: 'Ricardo Del Vecchio (TESTANDO)',
@@ -46,6 +52,7 @@ export class CadastrarPedidosComponent implements OnInit {
     modelo: 'modelo1',
   };
 
+
   // formulario!: FormGroup;
 
   myControl = new FormControl<string | User>('');
@@ -68,7 +75,12 @@ list: any;
     private router: Router,
     private consultaCepService: ConsultaCepService,
     // private formBuilder: FormBuilder,
+    private _formBuilder: FormBuilder
   ) {}
+
+  alertFormValues(formGroup: FormGroup) {
+    alert(JSON.stringify(formGroup.value, null, 2));
+  }
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -118,6 +130,13 @@ list: any;
     });
   }
 
+  // atualizouSelect(){
+  //   let select = document.querySelector("#metros");
+  //   let optionValue = select.options[select.selectedIndex];
+  //   let text = optionValue.text;
+  //   console.log(text);
+  // }
+
   // cadastrar(form: NgForm){
   //   // console.log('Pedido cadastrado com sucesso!');
   //   console.log(form.controls);
@@ -138,4 +157,4 @@ list: any;
   cancelar() {
     alert('Ação cancelada!');
   }
-}
+}   

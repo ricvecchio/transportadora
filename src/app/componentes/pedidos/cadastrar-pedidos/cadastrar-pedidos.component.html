@@ -321,7 +321,9 @@
 
     <div class="formulario__dupla">
       <div class="formulario_linha">
-        <label class="campo__etiqueta" for="tipoPgto">Tipo de Pagamento:</label>
+        <label class="campo__etiqueta" for="tipoPgto"
+          >Forma de Pagamento:</label
+        >
         <div class="container-radio">
           <label for="avista">
             <input
@@ -364,6 +366,10 @@
       </div>
     </div>
 
+    <mat-slide-toggle color="blue" [(ngModel)]="isChecked"
+      >Entregar no mesmo endereço de cadastro: {{ isChecked }}</mat-slide-toggle
+    ><br />
+
     <div class="formulario__dupla">
       <div class="formulario_linha">
         <label class="campo__etiqueta" for="sfobras">SFOBRAS:</label>
@@ -391,14 +397,26 @@
 
       <div class="formulario_linha">
         <label class="campo__etiqueta" for="mangueira">Mangueira:</label>
-        <select id="estado" name="estado" class="campo__escrita">
-          <option>15 metros</option>
-          <option>30 metros</option>
-          <option>45 metros</option>
-          <option>50 metros</option>
-          <option>65 metros</option>
-          <option>80 metros</option>
-        </select>
+        <mat-form-field>
+          <select matNativeControl required> 
+            <!-- <select [(ngModel)]="dadosPedido.mangueira"> 
+            <option [(ngModel)]="dadosPedido.mangueira">15 metros</option>  -->
+            <option value="15m">15 metros</option>
+            <option value="30m">30 metros</option> 
+            <option value="45m">45 metros</option>
+            <option value="50m">50 metros</option>
+            <option value="65m">65 metros</option>
+            <option value="80m">80 metros</option>
+          </select>
+          <!-- <select id="metros" onchange="atualizouSelect()"> 
+            <option value="15m"selected>15 metros</option>
+            <option value="30m">30 metros</option> 
+            <option value="45m">45 metros</option>
+            <option value="50m">50 metros</option>
+            <option value="65m">65 metros</option>
+            <option value="80m">80 metros</option>
+          </select> -->
+        </mat-form-field>
       </div>
 
       <div class="formulario_linha">

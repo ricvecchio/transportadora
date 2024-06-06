@@ -25,6 +25,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AsyncPipe } from '@angular/common';
 import { MatNativeDateModule } from '@angular/material/core';
 import {provideAnimations} from '@angular/platform-browser/animations';
+import {MatSlideToggleModule, _MatSlideToggleRequiredValidatorModule} from '@angular/material/slide-toggle';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -55,6 +60,9 @@ import {provideAnimations} from '@angular/platform-browser/animations';
     MatInputModule,
     MatAutocompleteModule,
     AsyncPipe,
+    MatSlideToggleModule,
+    _MatSlideToggleRequiredValidatorModule,
+    MatButtonModule
   ],
   providers: [
     provideAnimations(),
