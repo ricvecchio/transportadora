@@ -30,6 +30,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -62,12 +67,19 @@ import {MatCardModule} from '@angular/material/card';
     AsyncPipe,
     MatSlideToggleModule,
     _MatSlideToggleRequiredValidatorModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatDividerModule,
+    MatListModule,
+    MatCheckboxModule,
+    MatCardModule     
   ],
   providers: [
     provideAnimations(),
     provideHttpClient(),
-    importProvidersFrom(MatNativeDateModule)
+    importProvidersFrom(MatNativeDateModule),
+    provideMomentDateAdapter()
   ],
   bootstrap: [AppComponent],
 })

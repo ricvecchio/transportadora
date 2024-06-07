@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { ConsultaCepService } from '../../../service/consulta-cep.service';
 import { Observable, map, of, startWith } from 'rxjs';
 
+interface Metros {
+  value: string;
+  viewValue: string;
+}
+
 export interface User {
   name: string;
 }
@@ -18,7 +23,7 @@ export interface User {
 })
 export class CadastrarPedidosComponent implements OnInit {
 
-  isChecked = 'true';
+  isChecked = true;
   formGroup = this._formBuilder.group({
     acceptTerms: ['', Validators.requiredTrue],
   });
@@ -58,14 +63,16 @@ export class CadastrarPedidosComponent implements OnInit {
   myControl = new FormControl<string | User>('');
 
   options: User[] = [
-    { name: 'Jerinelson' },
+
     { name: 'Bruno' },
     { name: 'Brunelson' },
-    { name: 'Brunolindo' },
+    { name: 'Pedrola' },
+    { name: 'Jerebenga' },
     { name: 'Ricardo 01' },
     { name: 'Ricardo 02' },
     { name: 'Ricardo 03' },
-    { name: 'Ricardo Del' },
+    { name: 'Ricardola' },
+    { name: 'Salomonstro' },
   ];
 
   filteredOptions: Observable<User[]> = of([]);
@@ -75,7 +82,7 @@ list: any;
     private router: Router,
     private consultaCepService: ConsultaCepService,
     // private formBuilder: FormBuilder,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
   ) {}
 
   alertFormValues(formGroup: FormGroup) {
@@ -110,6 +117,17 @@ list: any;
     );
   }
 
+  selectedMetros!: string;
+
+  metros: Metros[] = [
+    {value: '15 metros', viewValue: '15 metros'},
+    {value: '30 metros', viewValue: '30 metros'},
+    {value: '45 metros', viewValue: '45 metros'},
+    {value: '60 metros', viewValue: '60 metros'},
+    {value: '75 metros', viewValue: '75 metros'},
+    {value: '90 metros', viewValue: '90 metros'},
+  ];
+
   consultaCEP(ev: any, form: NgForm) {
     const cep = ev.target.value;
     if (cep != '') {
@@ -130,17 +148,16 @@ list: any;
     });
   }
 
-  // atualizouSelect(){
-  //   let select = document.querySelector("#metros");
-  //   let optionValue = select.options[select.selectedIndex];
-  //   let text = optionValue.text;
-  //   console.log(text);
-  // }
-
   // cadastrar(form: NgForm){
   //   // console.log('Pedido cadastrado com sucesso!');
   //   console.log(form.controls);
   // }
+
+  dataAtual: Date = new Date();
+
+  checked = false;
+  indeterminate = false;
+  disabled = false;
 
   cadastrar(form: any) {
     console.log(form);

@@ -212,7 +212,7 @@
     margin: 0rem -1.5rem 1rem;
     padding: 1rem 3rem 1rem;
   }
-
+f 
   .formulario_preco {
     display: flex;
     gap: 1rem;
@@ -230,6 +230,10 @@
   .mat-slide-toggle {
     margin: 8px 0;
     display: block;
+  }
+
+  .example-margin {
+    margin: 0 12px;
   }
 
   

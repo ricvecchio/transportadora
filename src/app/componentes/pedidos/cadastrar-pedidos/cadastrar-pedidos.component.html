@@ -1,3 +1,24 @@
+<mat-card>
+  <mat-card-content>
+    <section class="example-section">
+      <mat-checkbox class="example-margin" [(ngModel)]="disabled">Desabilita checkbox</mat-checkbox>
+    </section>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="result">
+  <mat-card-content>
+    <section class="example-section">
+      <mat-checkbox
+          class="example-margin"
+          [(ngModel)]="checked"
+          [disabled]="disabled">
+        I'm a checkbox
+      </mat-checkbox>
+    </section>
+  </mat-card-content>
+</mat-card>
+
 <section class="container cadastrar-pedidos ff-inter">
   <header class="header">
     <h4><strong>Emitir Pedido:</strong></h4>
@@ -325,43 +346,35 @@
           >Forma de Pagamento:</label
         >
         <div class="container-radio">
-          <label for="avista">
-            <input
-              type="checkbox"
-              value="avista"
-              id="avista"
-              class="input-padrao"
-              name="modelo-card"
-              [(ngModel)]="dadosPedido.tipoPgto"
-            />
-            Á vista
-          </label>
-          <label for="faturado">
-            Faturado:
-            <select id="dias" name="dias" class="campo__escrita">
-              <option>10 dias</option>
-              <option>11 dias</option>
-              <option>12 dias</option>
-              <option>13 dias</option>
-              <option>14 dias</option>
-              <option>15 dias</option>
-              <option>16 dias</option>
-              <option>17 dias</option>
-              <option>18 dias</option>
-              <option>19 dias</option>
-              <option>20 dias</option>
-              <option>21 dias</option>
-              <option>22 dias</option>
-              <option>23 dias</option>
-              <option>24 dias</option>
-              <option>25 dias</option>
-              <option>26 dias</option>
-              <option>27 dias</option>
-              <option>28 dias</option>
-              <option>29 dias</option>
-              <option>30 dias</option>
-            </select>
-          </label>
+
+          <mat-checkbox [(ngModel)]="dadosPedido.tipoPgto" class="example-margin">Á vista</mat-checkbox>
+
+          <mat-form-field>
+            <mat-label>Faturado:</mat-label>
+            <mat-select disableRipple>
+              <mat-option value="1">10 dias</mat-option>
+              <mat-option value="2">11 dias</mat-option>
+              <mat-option value="3">12 dias</mat-option>
+              <mat-option value="4">13 dias</mat-option>
+              <mat-option value="5">14 dias</mat-option>
+              <mat-option value="6">15 dias</mat-option>
+              <mat-option value="7">16 dias</mat-option>
+              <mat-option value="8">17 dias</mat-option>
+              <mat-option value="9">18 dias</mat-option>
+              <mat-option value="10">19 dias</mat-option>
+              <mat-option value="11">20 dias</mat-option>
+              <mat-option value="12">21 dias</mat-option>
+              <mat-option value="13">22 dias</mat-option>
+              <mat-option value="14">23 dias</mat-option>
+              <mat-option value="15">24 dias</mat-option>
+              <mat-option value="16">25 dias</mat-option>
+              <mat-option value="17">26 dias</mat-option>
+              <mat-option value="18">27 dias</mat-option>
+              <mat-option value="19">28 dias</mat-option>
+              <mat-option value="20">29 dias</mat-option>
+              <mat-option value="21">30 dias</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
     </div>
@@ -398,24 +411,13 @@
       <div class="formulario_linha">
         <label class="campo__etiqueta" for="mangueira">Mangueira:</label>
         <mat-form-field>
-          <select matNativeControl required> 
-            <!-- <select [(ngModel)]="dadosPedido.mangueira"> 
-            <option [(ngModel)]="dadosPedido.mangueira">15 metros</option>  -->
-            <option value="15m">15 metros</option>
-            <option value="30m">30 metros</option> 
-            <option value="45m">45 metros</option>
-            <option value="50m">50 metros</option>
-            <option value="65m">65 metros</option>
-            <option value="80m">80 metros</option>
+          <mat-label>Selecione o tamanho</mat-label>
+          <select matNativeControl [(ngModel)]="selectedMetros" name="metro">
+            <option value="" selected></option>
+            @for (metro of metros; track metro) {
+              <option [value]="metro.value">{{ metro.viewValue }}</option>
+            }
           </select>
-          <!-- <select id="metros" onchange="atualizouSelect()"> 
-            <option value="15m"selected>15 metros</option>
-            <option value="30m">30 metros</option> 
-            <option value="45m">45 metros</option>
-            <option value="50m">50 metros</option>
-            <option value="65m">65 metros</option>
-            <option value="80m">80 metros</option>
-          </select> -->
         </mat-form-field>
       </div>
 
@@ -431,6 +433,10 @@
         />
       </div>
     </div>
+
+    <mat-list>
+      <mat-divider></mat-divider>
+    </mat-list>
 
     <div class="formulario__dupla">
       <div class="formulario_linha">
@@ -521,7 +527,6 @@
               <span>lav-10m³</span>
             </label>
           </div>
-
           <div class="radio-modelo">
             <label for="volume6">
               <input
@@ -590,6 +595,10 @@
       </div>
     </div>
 
+    <mat-list>
+      <mat-divider></mat-divider>
+    </mat-list>
+
     <div class="formulario__dupla">
       <div class="formulario_linha">
         <label class="campo__etiqueta" for="ajudanteHora"
@@ -648,6 +657,7 @@
         <p class="data">
           <b>DATA: </b>
           <!-- {{ dadosPedido.data }} -->
+          {{ dataAtual | date: "dd/MM/yyyy" }}
         </p>
       </div>
 
@@ -669,7 +679,7 @@
         <b>VOLUME: </b>
         {{ dadosPedido.volume }}
         <b>MANGUEIRA: </b>
-        {{ dadosPedido.mangueira }}
+        {{ selectedMetros }}
         <b>PREÇO: </b>
         <p class="preco">
           <!-- {{ dadosPedido.preco }} -->
