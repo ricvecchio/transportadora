@@ -1,7 +1,9 @@
 <mat-card>
   <mat-card-content>
     <section class="example-section">
-      <mat-checkbox class="example-margin" [(ngModel)]="disabled">Desabilita checkbox</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="disabled"
+        >Desabilita checkbox</mat-checkbox
+      >
     </section>
   </mat-card-content>
 </mat-card>
@@ -10,9 +12,10 @@
   <mat-card-content>
     <section class="example-section">
       <mat-checkbox
-          class="example-margin"
-          [(ngModel)]="checked"
-          [disabled]="disabled">
+        class="example-margin"
+        [(ngModel)]="checked"
+        [disabled]="disabled"
+      >
         I'm a checkbox
       </mat-checkbox>
     </section>
@@ -346,8 +349,11 @@
           >Forma de Pagamento:</label
         >
         <div class="container-radio">
-
-          <mat-checkbox [(ngModel)]="dadosPedido.tipoPgto" class="example-margin">Á vista</mat-checkbox>
+          <mat-checkbox
+            [(ngModel)]="dadosPedido.tipoPgto"
+            class="example-margin"
+            >Á vista</mat-checkbox
+          >
 
           <mat-form-field>
             <mat-label>Faturado:</mat-label>
@@ -433,10 +439,6 @@
         />
       </div>
     </div>
-
-    <mat-list>
-      <mat-divider></mat-divider>
-    </mat-list>
 
     <div class="formulario__dupla">
       <div class="formulario_linha">
@@ -595,10 +597,6 @@
       </div>
     </div>
 
-    <mat-list>
-      <mat-divider></mat-divider>
-    </mat-list>
-
     <div class="formulario__dupla">
       <div class="formulario_linha">
         <label class="campo__etiqueta" for="ajudanteHora"
@@ -646,6 +644,10 @@
         alt="Logo São Tomé"
       />
 
+      <mat-list>
+        <mat-divider></mat-divider>
+      </mat-list>
+
       <div class="campos_previa">
         <p class="idPedido">
           <b>PEDIDO: </b>
@@ -660,6 +662,10 @@
           {{ dataAtual | date: "dd/MM/yyyy" }}
         </p>
       </div>
+
+      <mat-list>
+        <mat-divider></mat-divider>
+      </mat-list>
 
       <div class="campos_previa">
         <p class="fantasia">
@@ -691,6 +697,10 @@
         <b>CAMINHÃO: </b>
         <b>PLACA: </b>
       </div>
+
+      <mat-list>
+        <mat-divider></mat-divider>
+      </mat-list>
 
       <div class="acoes">
         <button (click)="cancelar()" routerLink="/menu" class="botao">
