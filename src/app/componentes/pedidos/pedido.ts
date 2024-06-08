@@ -16,6 +16,13 @@ export interface Pedido {
     razaoSocial: string
     cnpj: string
     tipoPgto: string
+    cepEntrega: string
+    logradouroEntrega: string
+    numeroEntrega: string
+    complementoEntrega: string
+    bairroEntrega: string
+    cidadeEntrega: string
+    estadoEntrega: string
     sfobras: string
     cno: string
     mangueira: string

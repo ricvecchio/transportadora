@@ -46,6 +46,13 @@ export class CadastrarPedidosComponent implements OnInit {
     razaoSocial: 'Condomínio Turquesa',
     cnpj: '43.254.354/0001-75',
     tipoPgto: '',
+    cepEntrega: '',
+    logradouroEntrega: '',
+    numeroEntrega: '',
+    complementoEntrega: '',
+    bairroEntrega: '',
+    cidadeEntrega: '',
+    estadoEntrega: '',
     sfobras: '',
     cno: '',
     mangueira: '',
@@ -134,6 +141,8 @@ list: any;
       this.consultaCepService.getConsultaCep(cep).subscribe((resultado) => {
         console.log(resultado);
         this.populandoEndereco(resultado, form);
+//INCLUIR IF PARA DIFERENCIAR
+        this.populandoEnderecoEntrega(resultado, form);
       });
     }
   }
@@ -148,6 +157,17 @@ list: any;
     });
   }
 
+  // REVER PARA NÃO DUPLICAR O MÉTODO
+  populandoEnderecoEntrega(dados: any, form: NgForm) {
+    form.form.patchValue({
+      logradouroEntrega: dados.logradouro,
+      complementoEntrega: dados.complemento,
+      bairroEntrega: dados.bairro,
+      cidadeEntrega: dados.localidade,
+      estadoEntrega: dados.uf,
+    });
+  }
+
   // cadastrar(form: NgForm){
   //   // console.log('Pedido cadastrado com sucesso!');
   //   console.log(form.controls);
@@ -156,7 +176,6 @@ list: any;
   dataAtual: Date = new Date();
 
   checked = false;
-  indeterminate = false;
   disabled = false;
 
   cadastrar(form: any) {
