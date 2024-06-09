@@ -168,6 +168,8 @@ list: any;
     });
   }
 
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+
   // cadastrar(form: NgForm){
   //   // console.log('Pedido cadastrado com sucesso!');
   //   console.log(form.controls);

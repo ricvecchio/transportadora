@@ -45,8 +45,63 @@
     <h6><strong>Informações Cliente:</strong></h6>
     <br />
 
-    <div class="botao-entrega">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Nome:</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>CPF:</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
 
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Telefone:</mat-label>
+            <span matTextPrefix>+55 &nbsp;</span>
+            <input type="tel" matInput placeholder="(11) 5555-1234" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Celular:</mat-label>
+            <span matTextPrefix>+55 &nbsp;</span>
+            <input type="cel" matInput placeholder="(11) 95555-1234" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>E-mail:</mat-label>
+            <input
+              type="email"
+              matInput
+              [formControl]="emailFormControl"
+              placeholder="Ex. pat@example.com"
+            />
+            @if (
+              emailFormControl.hasError("email") &&
+              !emailFormControl.hasError("required")
+            ) {
+              <mat-error>E-mail inválido.</mat-error>
+            }
+            @if (emailFormControl.hasError("required")) {
+              <mat-error>Email é <strong>obrigatório</strong></mat-error>
+            }
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <div class="botao-entrega">
       <td>
         <mat-form-field class="example-full-width">
           <mat-label>CEP:</mat-label>
