@@ -135,6 +135,12 @@ list: any;
     {value: '90 metros', viewValue: '90 metros'},
   ];
 
+  listaVolume!: string;
+  volumes: string[] = ['cx-5m³', 'cx-10m³', 'cx-15m³', 'lav-5m³', 'lav-10m³', 'lav-15m³'];
+
+  listaPreco!: string;
+  precos!: string[];
+
   consultaCEP(ev: any, form: NgForm) {
     const cep = ev.target.value;
     if (cep != '') {

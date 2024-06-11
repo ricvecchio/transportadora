@@ -36,6 +36,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatListModule,
     MatCheckboxModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatRadioModule
   ],
   providers: [
     provideAnimations(),

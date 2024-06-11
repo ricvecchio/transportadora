@@ -22,13 +22,14 @@
   min-width: 150px;
   max-width: 500px;
   width: 100%;
-}
+} */
 
 .example-full-width {
   width: 100%;
+  padding: 0rem 2rem 0rem;
 }
 
-td {
+/* td {
   padding-right: 8px;
 } */
 
@@ -36,6 +37,9 @@ mat-grid-tile {
   background: lightblue;
 }
 
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}
 
 
 
@@ -248,11 +252,11 @@ mat-grid-tile {
     width: 80%;
   }
   
-  .example-full-width {
+  /* .example-full-width {
     width: 100%;
     margin: 0rem -1.5rem 1rem;
     padding: 1rem 3rem 1rem;
-  }
+  } */
 f 
   .formulario_preco {
     display: flex;
