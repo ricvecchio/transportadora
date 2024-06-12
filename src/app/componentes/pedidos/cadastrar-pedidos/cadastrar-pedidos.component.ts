@@ -74,7 +74,7 @@ export class CadastrarPedidosComponent implements OnInit {
     { name: 'Bruno' },
     { name: 'Brunelson' },
     { name: 'Pedrola' },
-    { name: 'Jerebenga' },
+    { name: 'Jeréba' },
     { name: 'Ricardo 01' },
     { name: 'Ricardo 02' },
     { name: 'Ricardo 03' },
