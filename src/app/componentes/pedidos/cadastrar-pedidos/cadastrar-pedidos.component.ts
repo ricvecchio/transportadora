@@ -1,5 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConsultaCepService } from '../../../service/consulta-cep.service';
 import { Observable, map, of, startWith } from 'rxjs';
@@ -22,55 +28,110 @@ export interface User {
   styleUrl: './cadastrar-pedidos.component.css',
 })
 export class CadastrarPedidosComponent implements OnInit {
+  statesFaturamento: string[] = [];
 
-  isChecked = true;
-  formGroup = this._formBuilder.group({
-    acceptTerms: ['', Validators.requiredTrue],
-  });
+  isAdressChecked = false;
+  isPaymentChecked = false
 
-  @Input() dadosPedido = {
-    id: 1,
-    nome: 'Ricardo Del Vecchio (TESTANDO)',
+  dadosPedido: any = {
+    id: 'Google',
+    nome: '',
     cpf: '',
     telefone: '',
     celular: '',
     email: '',
-    cep: '',
+    cepEntrega: '',
     logradouro: '',
     numero: '',
     complemento: '',
+    referencia: '',
     bairro: '',
     cidade: '',
     estado: '',
-    fantasia: 'Condomínio Residencial Turquesa',
-    razaoSocial: 'Condomínio Turquesa',
-    cnpj: '43.254.354/0001-75',
-    tipoPgto: '',
-    cepEntrega: '',
-    logradouroEntrega: '',
-    numeroEntrega: '',
-    complementoEntrega: '',
-    bairroEntrega: '',
-    cidadeEntrega: '',
-    estadoEntrega: '',
+    fantasia: '',
+    razaoSocial: '',
+    cnpj: '',
     sfobras: '',
     cno: '',
-    mangueira: '',
-    ie: '',
-    volume: '',    
     preco: '',
     ajudanteHora: '',
     observacao: '',
-    modelo: 'modelo1',
   };
 
+  formGroup = this._formBuilder.group({
+    idCliente: [{ value: this.dadosPedido.id, disabled: true }],
+    buscarCliente: ['', Validators.required],
+    nome: ['', Validators.required],
+    cpf: ['', Validators.required],
+    telefone: ['', Validators.required],
+    celular: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    cepCliente: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
+    logradouro: ['', Validators.required],
+    numero: ['', Validators.required],
+    complemento: [''],
+    referencia: [''],
+    bairro: ['', Validators.required],
+    cidade: ['', Validators.required],
+    estado: ['', Validators.required],
+    antasia: ['', Validators.required],
+    razaoSocial: ['', Validators.required],
+    cnpj: ['', Validators.required],
+    sfobras: [''],
+    cno: [''],
+    metro: [''],
+    ie: [''],
+    preco1: [''],
+    preco2: [''],
+    preco3: [''],
+    preco4: [''],
+    preco5: [''],
+    preco6: [''],
+    deliveryAddress: [false, Validators.requiredTrue],
+    cashPayment: [false, Validators.requiredTrue]
+  });
+
+  // @Input() dadosPedido = {
+  //   id: 1,
+  //   nome: 'Ricardo Del Vecchio (TESTANDO)',
+  //   cpf: '',
+  //   telefone: '',
+  //   celular: '',
+  //   email: '',
+  //   cep: '',
+  //   logradouro: '',
+  //   numero: '',
+  //   complemento: '',
+  //   bairro: '',
+  //   cidade: '',
+  //   estado: '',
+  //   fantasia: 'Condomínio Residencial Turquesa',
+  //   razaoSocial: 'Condomínio Turquesa',
+  //   cnpj: '43.254.354/0001-75',
+  //   tipoPgto: '',
+  //   cepEntrega: '',
+  //   logradouroEntrega: '',
+  //   numeroEntrega: '',
+  //   complementoEntrega: '',
+  //   bairroEntrega: '',
+  //   cidadeEntrega: '',
+  //   estadoEntrega: '',
+  //   sfobras: '',
+  //   cno: '',
+  //   mangueira: '',
+  //   ie: '',
+  //   volume: '',
+  //   preco: '',
+  //   ajudanteHora: '',
+  //   observacao: '',
+  //   modelo: 'modelo1',
+  // };
 
   // formulario!: FormGroup;
 
   myControl = new FormControl<string | User>('');
 
   options: User[] = [
-
     { name: 'Bruno' },
     { name: 'Brunelson' },
     { name: 'Pedrola' },
@@ -83,7 +144,7 @@ export class CadastrarPedidosComponent implements OnInit {
   ];
 
   filteredOptions: Observable<User[]> = of([]);
-list: any;
+  list: any;
 
   constructor(
     private router: Router,
@@ -92,6 +153,15 @@ list: any;
     private _formBuilder: FormBuilder,
   ) {}
 
+  onToggleChange(event: any): void {
+    this.isAdressChecked = event.checked;
+  }
+
+
+  onPaymentCheckBoxChange(event: any): void {
+    this.isPaymentChecked = event.checked;
+  }
+
   alertFormValues(formGroup: FormGroup) {
     alert(JSON.stringify(formGroup.value, null, 2));
   }
@@ -99,7 +169,7 @@ list: any;
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => {
+      map((value) => {
         const name = typeof value === 'string' ? value : value?.name;
         return name ? this._filter(name as string) : this.options.slice();
       }),
@@ -109,7 +179,17 @@ list: any;
     //   conteudo: ['Formulario reativo'],
     //   autoria: [''],
     //   modelo: ['modelo1'],
-    // });eit
+    // });
+
+    this.isAdressChecked = this.formGroup.get('deliveryAddress')?.value || false;
+    this.formGroup.get('deliveryAddress')?.valueChanges.subscribe(value => {
+      this.isAdressChecked = value || false;
+    });
+
+    this.isPaymentChecked = this.formGroup.get('cashPayment')?.value || false;
+    this.formGroup.get('cashPayment')?.valueChanges.subscribe(value => {
+      this.isPaymentChecked = value || false;
+    });
   }
 
   displayFn(user: User): string {
@@ -127,30 +207,37 @@ list: any;
   selectedMetros!: string;
 
   metros: Metros[] = [
-    {value: '15 metros', viewValue: '15 metros'},
-    {value: '30 metros', viewValue: '30 metros'},
-    {value: '45 metros', viewValue: '45 metros'},
-    {value: '60 metros', viewValue: '60 metros'},
-    {value: '75 metros', viewValue: '75 metros'},
-    {value: '90 metros', viewValue: '90 metros'},
+    { value: '15 metros', viewValue: '15 metros' },
+    { value: '30 metros', viewValue: '30 metros' },
+    { value: '45 metros', viewValue: '45 metros' },
+    { value: '60 metros', viewValue: '60 metros' },
+    { value: '75 metros', viewValue: '75 metros' },
+    { value: '90 metros', viewValue: '90 metros' },
   ];
 
   listaVolume!: string;
-  volumes: string[] = ['cx-5m³', 'cx-10m³', 'cx-15m³', 'lav-5m³', 'lav-10m³', 'lav-15m³'];
+  volumes: string[] = [
+    'cx-5m³',
+    'cx-10m³',
+    'cx-15m³',
+    'lav-5m³',
+    'lav-10m³',
+    'lav-15m³',
+  ];
 
   listaPreco!: string;
   precos!: string[];
 
   consultaCEP(ev: any, form: NgForm) {
     const cep = ev.target.value;
-    if (cep != '') {
-      this.consultaCepService.getConsultaCep(cep).subscribe((resultado) => {
-        console.log(resultado);
-        this.populandoEndereco(resultado, form);
-//INCLUIR IF PARA DIFERENCIAR
-        this.populandoEnderecoEntrega(resultado, form);
-      });
-    }
+    //     if (cep != '') {
+    //       this.consultaCepService.getConsultaCep(cep).subscribe((resultado) => {
+    //         console.log(resultado);
+    //         this.populandoEndereco(resultado, form);
+    // //INCLUIR IF PARA DIFERENCIAR
+    //         this.populandoEnderecoEntrega(resultado, form);
+    //       });
+    //     }
   }
 
   populandoEndereco(dados: any, form: NgForm) {
@@ -174,7 +261,10 @@ list: any;
     });
   }
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
 
   // cadastrar(form: NgForm){
   //   // console.log('Pedido cadastrado com sucesso!');
@@ -201,4 +291,4 @@ list: any;
   cancelar() {
     alert('Ação cancelada!');
   }
-}   
+}
