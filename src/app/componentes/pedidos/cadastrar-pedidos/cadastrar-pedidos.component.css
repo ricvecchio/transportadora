@@ -12,12 +12,6 @@
   width: 100%;
 }
 
-.table-linha {
-  width: 100%;
-  display: grid;
-  padding: 0rem 2rem 0rem;
-}
-
 .espaco-dentro {
   padding: 0rem 2rem 0rem;
 }
@@ -26,13 +20,12 @@
   display: grid;
 }
 
-.form-campo-telefone {
-  width: 80%;
-}
-
 .example-full-width {
   width: 100%;
 }
+
+
+
 
 
 
@@ -54,8 +47,6 @@
   /* margem interna que afasta os elementos da borda do grid */
   padding: 20px 10px;
 }
-
-
 
 .example-section {
   align-content: center;
@@ -80,17 +71,7 @@ td {
   margin-left: 16px;
 }
 
-.table-linha {
-  width:100%;
-  display: grid;
-  padding: 0rem 2rem 0rem;
-  /* width:200px;
-  height:200px;
-  padding:10px; */
-}
   
-
-
 .acoes {
     display: flex;
     justify-content: center;
