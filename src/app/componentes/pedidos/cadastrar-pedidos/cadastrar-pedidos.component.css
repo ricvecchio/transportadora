@@ -20,7 +20,7 @@
   display: grid;
 }
 
-.example-full-width {
+.full-width {
   width: 100%;
 }
 
@@ -34,7 +34,9 @@
 
 
 
-
+.example-margin {
+  margin: 0 10px;
+}
 
 .exemplo-net {
   display: grid;
@@ -48,15 +50,6 @@
   padding: 20px 10px;
 }
 
-.example-section {
-  align-content: center;
-  align-items: center;
-  height: 60px;
-}
-
-.example-margin {
-  margin: 0 10px;
-}
 
 .mat-slide-toggle {
   margin: 8px 10px;
