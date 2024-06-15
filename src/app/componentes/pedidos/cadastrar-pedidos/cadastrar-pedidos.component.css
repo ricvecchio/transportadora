@@ -24,88 +24,56 @@
   width: 100%;
 }
 
+.container-previa {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem 0rem;
+}
 
+.container-previa .imagem {
+  width: 920px;
+  height: 130px;
+  padding: 2rem;
+}
 
-
-
-
-
-
-
-
-
-.example-margin {
+.checkbox-margin {
   margin: 0 10px;
 }
-
-.exemplo-net {
-  display: grid;
-  /* aqui eu determino é são 3 colunas de tamanhos iguas, cada coluna tem uma fração */
-  grid-template-columns: repeat(3, 1fr);
-  /* esssa é a altura das linhas, se vc quiser pode apaga-la caso não queira uma altura definida */
-  grid-auto-rows: 100px;
-  /* espaço entre um elemento interno e outro */
-  grid-gap: 5px 8px;
-  /* margem interna que afasta os elementos da borda do grid */
-  padding: 20px 10px;
-}
-
 
 .mat-slide-toggle {
   margin: 8px 10px;
   display: block;
 }
 
-td {
-  padding-right: 8px;
-}
-
-.mat-mdc-radio-button ~ .mat-mdc-radio-button {
-  margin-left: 16px;
-}
-
-  
 .acoes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-  }
-  
-  .botao {
-    margin: 5px;
-    margin-top: 70px;
-    width: 200px;
-  }
- 
-  .modelo {
-    background:#d9e7ec;
-    padding: 1rem;
-    width: 100%;
-    margin: 0 0 6rem; 
-    border-radius: 20px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
 
-  .container-previa {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 2rem 0rem;
-  }
-  
-  .container-previa .imagem {
-    width: 920px;
-    height: 130px;
-    padding: 2rem;
-  }
+.botao {
+  margin: 5px;
+  margin-top: 70px;
+  width: 200px;
+}
 
-  .modelo1 {
-    box-shadow: 15px 15px 15px #154580;
-  }
-    
-  input[type='radio']:checked+.custom-radio {
-    border-color: #154580;
-  }
-  
-  input[type='radio']:checked+.custom-radio span {
-    background: #154580;
-  }
+.modelo {
+  background:#d9e7ec;
+  padding: 1rem;
+  width: 100%;
+  margin: 0 0 6rem; 
+  border-radius: 20px;
+}
+
+.modelo1 {
+  box-shadow: 15px 15px 15px #154580;
+}
+
+input[type='radio']:checked+.custom-radio {
+  border-color: #154580;
+}
+
+input[type='radio']:checked+.custom-radio span {
+  background: #154580;
+}
