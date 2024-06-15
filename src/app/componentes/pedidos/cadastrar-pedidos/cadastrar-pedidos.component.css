@@ -3,68 +3,43 @@
 }
 
 .cadastrar-pedidos form {
-background: #dde0e2;
-border: none;
-border-radius: 20px;
-display: flex;
-flex-direction: column;
-padding: 2rem;
-width: 100%;
+  background: #dde0e2;
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 100%;
 }
 
 .example-full-width {
-width: 100%;
+  width: 100%;
+}
+
+table.example-full-width {
+  width: 100%;
 }
 
 td {
-padding-right: 8px;
-}
-
-
-.buscar-coluna {
-width: 90%; /* Ajuste essa porcentagem conforme necessário */
-}
-
-.codigo-coluna {
-width: 10%; /* Ajuste essa porcentagem conforme necessário */
+  padding-right: 8px;
 }
 
 .nome-coluna {
-width: 70%; /* Ajuste essa porcentagem conforme necessário */
+  width: 90%; /* Ajuste conforme necessário */
 }
 
 .cpf-coluna {
-width: 30%; /* Ajuste essa porcentagem conforme necessário */
+  width: 30%; /* Ajuste conforme necessário */
 }
 
 .telefone-coluna {
-width: 30%;
+  width: 30%; /* Ajuste conforme necessário */
 }
 
 .celular-coluna {
-width: 30%;
+  width: 30%; /* Ajuste conforme necessário */
 }
 
 .email-coluna {
-width: 100%;
-}
-
-.cep-field {
-width: 30%;
-}
-.logradouro-coluna {
-width: 90%;
-}
-
-.numero-coluna {
-width: 10%;
-}
-
-
-.complemento-coluna {
-width: 100%;
-}
-
-.referencia-coluna {
-width: 100%;
+  width: 40%; /* Ajuste conforme necessário */
 }
