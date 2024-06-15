@@ -1,206 +1,930 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ConsultaCepService } from '../../../service/consulta-cep.service';
-import { Observable, map, of, startWith } from 'rxjs';
+<section class="container cadastrar-pedidos ff-inter">
+  <header class="header">
+    <h4><strong>Emitir Pedido</strong></h4>
+  </header>
 
-interface Metros {
-  value: string;
-  viewValue: string;
-}
+ 
+  <form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <td class="codigo-coluna">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Código Cliente</mat-label>
+          <input matInput disabled value="Google" disabled name="idCliente" [(ngModel)]="dadosPedido.id" />
+        </mat-form-field>
+      </td>
+      <td class="buscar-coluna">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Buscar Cliente</mat-label>
+          <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" />
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">{{ option.name }}</mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </td>
+    </table>
+    <br />
+    <h6><strong>Informações Cliente</strong></h6>
+    <br />
+  
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td class="nome-coluna">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Nome:</mat-label>
+            <input matInput name="nome" placeholder="Digite o nome do cliente" [(ngModel)]="dadosPedido.nome" />
+          </mat-form-field>
+        </td>
+        <td class="cpf-coluna">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>CPF:</mat-label>
+            <input matInput name="cpf" placeholder="Digite o CPF" [(ngModel)]="dadosPedido.cpf" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td class="telefone-coluna">
+          <mat-form-field appearance="outline">
+            <mat-label>Telefone:</mat-label>
+            <span matTextPrefix>+55 &nbsp;</span>
+            <input matInput placeholder="(11) 5555-1234" name="telefone" [(ngModel)]="dadosPedido.telefone" />
+          </mat-form-field>
+        </td>
+        <td class="celular-coluna">
+          <mat-form-field appearance="outline">
+            <mat-label>Celular:</mat-label>
+            <span matTextPrefix>+55 &nbsp;</span>
+            <input matInput name="celular" placeholder="(XX) 9XXXX-XXXX" [(ngModel)]="dadosPedido.celular" />
+          </mat-form-field>
+        </td>
+        <td class="email-coluna">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>E-mail:</mat-label>
+            <input matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" name="email"
+              [(ngModel)]="dadosPedido.email" />
+            @if (
+            emailFormControl.hasError("email") &&
+            !emailFormControl.hasError("required")
+            ) {
+            <mat-error>E-mail inválido.</mat-error>
+            }
+            @if (emailFormControl.hasError("required")) {
+            <mat-error>Email é <strong>obrigatório</strong></mat-error>
+            }
+          </mat-form-field>
+        </td>
+      </tr>
+  
+    </table>
+  
+    <br />
+    <h6>
+      <strong>Informações Endereço</strong>
+    </h6>
+  
+    <br />
+  
+  
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <mat-form-field class="example-full-width cep-field" appearance="outline">
+          <mat-label>CEP:</mat-label>
+          <input matInput #postalCode minlength="8" maxlength="9" placeholder="Ex. 04053-070" name="cepEntrega"
+            [(ngModel)]="dadosPedido.cepEntrega" ngModel required #cep="ngModel" pattern="^(\d{5})(-?\d{3})$"
+            validadorCep />
+          <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
+            <app-mensagem *ngIf="cep?.errors?.['required']" mensagem="O campo de CEP é obrigatório"></app-mensagem>
+            <app-mensagem *ngIf="cep?.errors?.['validadorCep']" mensagem="O Cep informado não existe."></app-mensagem>
+          </div>
+          <mat-hint align="end">{{ postalCode.value.length }} / 9</mat-hint>
+        </mat-form-field>
+      </tr>
+      <tr>
+        <td class="logradouro-coluna">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Logradouro:</mat-label>
+            <input matInput name="logradouro" [(ngModel)]="dadosPedido.logradouro" />
+          </mat-form-field>
+        </td>
+        <td class="numero-coluna">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Número:</mat-label>
+            <input matInput name="numero" [(ngModel)]="dadosPedido.numero" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td class="complemento-coluna">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Complemento:</mat-label>
+            <input matInput placeholder="Ex. Apto 64" name="complemento" [(ngModel)]="dadosPedido.complemento" />
+          </mat-form-field>
+        </td>
+        <td class="referencia-coluna">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Referência:</mat-label>
+            <input matInput placeholder="Ex. Próximo a escola adventista" name="referencia"
+              [(ngModel)]="dadosPedido.complemento" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td class="bairro-coluna">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Bairro:</mat-label>
+            <input matInput name="bairro" [(ngModel)]="dadosPedido.bairro" />
+          </mat-form-field>
+        </td>
+        <td class="cidade-coluna">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Cidade:</mat-label>
+            <input matInput placeholder="Ex. Santo André" name="cidade" [(ngModel)]="dadosPedido.cidade" />
+          </mat-form-field>
+        </td>
+        <td class="uf-coluna">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>UF:</mat-label>
+            <input matInput placeholder="Ex. São Paulo" name="estado" [(ngModel)]="dadosPedido.estado" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  
+    <br />
+    <h6><strong>Informações Empresa:</strong></h6>
+    <br />
+  
+    <table class="example-full-width" cellspacing="0">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Nome Fantasia:</mat-label>
+        <input matInput name="fantasia" placeholder="Digite o nome fantasia" [(ngModel)]="dadosPedido.fantasia" />
+      </mat-form-field>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Razão Social:</mat-label>
+            <input matInput name="razaoSocial" placeholder="Digite a Razão Social"
+              [(ngModel)]="dadosPedido.razaoSocial" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>CNPJ:</mat-label>
+            <input matInput name="cnpj" placeholder="Digite o CNPJ" [(ngModel)]="dadosPedido.cnpj" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  
+    <br />
+    <h6><strong>Informações Pedido:</strong></h6>
+    <br /><br />
+  
+  
+  
+  
+    <table class="example-full-width" cellspacing="0">
+  
+      <tr>Forma de Pagamento</tr>
+      <tr>
+        <td>
+          <mat-card-content>
+            <section class="example-section">
+              <mat-checkbox class="example-margin" [(ngModel)]="disabled">Á Vista</mat-checkbox>
+            </section>
+          </mat-card-content>
+        </td>
+        <td>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Faturar em</mat-label>
+            <mat-select>
+              <mat-option>Não disponível</mat-option>
+              <mat-option *ngFor="let state of statesFaturamento" [value]="state">{{state}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+  
+      <tr>
+        <mat-slide-toggle color="blue" [(ngModel)]="isChecked">Entregar no mesmo endereço de cadastro</mat-slide-toggle>
+      </tr>
+  
+      <br />
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>CEP:</mat-label>
+            <input disableRipple [disabled]="isChecked" matInput #postalCode minlength="8" maxlength="9"
+              placeholder="Ex. 04053-070" name="cepEntrega" [(ngModel)]="dadosPedido.cepEntrega" ngModel required
+              #cep="ngModel" pattern="^(\d{5})(-?\d{3})$" validadorCep />
+            <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
+              <app-mensagem *ngIf="cep?.errors?.['required']" mensagem="O campo de CEP é obrigatório"></app-mensagem>
+              <app-mensagem *ngIf="cep?.errors?.['validadorCep']" mensagem="O Cep informado não existe."></app-mensagem>
+            </div>
+            <mat-hint align="end">{{ postalCode.value.length }} / 9</mat-hint>
+          </mat-form-field>
+        </td>
+  
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Logradouro:</mat-label>
+            <input disableRipple [disabled]="isChecked" matInput name="logradouro"
+              [(ngModel)]="dadosPedido.logradouro" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Número:</mat-label>
+            <input disableRipple [disabled]="isChecked" matInput name="numero" [(ngModel)]="dadosPedido.numero" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Complemento:</mat-label>
+            <input disableRipple [disabled]="isChecked" matInput placeholder="Ex. Apto 64" name="complemento"
+              [(ngModel)]="dadosPedido.complemento" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Bairro:</mat-label>
+            <input disableRipple [disabled]="isChecked" matInput name="bairro" [(ngModel)]="dadosPedido.bairro" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Cidade:</mat-label>
+            <input disableRipple [disabled]="isChecked" matInput placeholder="Ex. Santo André" name="cidade"
+              [(ngModel)]="dadosPedido.cidade" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>UF:</mat-label>
+            <input disableRipple [disabled]="isChecked" matInput placeholder="Ex. São Paulo" name="estado"
+              [(ngModel)]="dadosPedido.estado" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  
+  
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>SFOBRAS:</mat-label>
+            <input matInput name="sfobras" placeholder="Digite o SFOBRAS" [(ngModel)]="dadosPedido.sfobras" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>CNO:</mat-label>
+            <input matInput name="cno" placeholder="Digite o CNO" [(ngModel)]="dadosPedido.cno" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Mangueira: Metros</mat-label>
+            <select matNativeControl [(ngModel)]="selectedMetros" name="metro">
+              <option value="" selected></option>
+              @for (metro of metros; track metro) {
+              <option [value]="metro.value">{{ metro.viewValue }}</option>
+              }
+            </select>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Inscrição Estadual:</mat-label>
+            <input matInput name="ie" placeholder="Informe a IE" [(ngModel)]="dadosPedido.ie" />
+          </mat-form-field>
+        </td>
+      </tr>
+  
+      <tr>
+        Preço
+      </tr>
+      <br />
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Preço cx-5m³</mat-label>
+            <input matInput name="preco1" [(ngModel)]="dadosPedido.preco" />
+          </mat-form-field>
+        </td>
+        <td>
+          <strong></strong>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Preço cx-10m³</mat-label>
+            <input matInput name="preco2" [(ngModel)]="dadosPedido.preco" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Preço cx-15m³</mat-label>
+            <input matInput name="preco3" [(ngModel)]="dadosPedido.preco" />
+          </mat-form-field>
+        </td>
+      </tr>
+  
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Preço lav-5m³</mat-label>
+            <input matInput name="preco4" [(ngModel)]="dadosPedido.preco" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Preço lav-10m³</mat-label>
+            <input matInput name="preco5" [(ngModel)]="dadosPedido.preco" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Preço lav-15m³</mat-label>
+            <input matInput name="preco6" [(ngModel)]="dadosPedido.preco" />
+          </mat-form-field>
+        </td>
+      </tr>
+  
+  
+    </table>
+  
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Ajudante p/ hora adicional:</mat-label>
+            <input matInput name="ajudanteHora" placeholder="Informe o ajudante para hora adicional"
+              [(ngModel)]="dadosPedido.ajudanteHora" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Observações:</mat-label>
+            <input matInput name="observacao" placeholder="Informações adicionais"
+              [(ngModel)]="dadosPedido.observacao" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  
+  </form>
+  
 
-export interface User {
-  name: string;
-}
-/**
- * @title Display value autocomplete
- */
-
-@Component({
-  selector: 'app-cadastrar-pedidos',
-  templateUrl: './cadastrar-pedidos.component.html',
-  styleUrl: './cadastrar-pedidos.component.css',
-})
-export class CadastrarPedidosComponent implements OnInit {
-
-  statesFaturamento: string[] = []
-
-  isChecked = true;
-  formGroup = this._formBuilder.group({
-    acceptTerms: ['', Validators.requiredTrue],
-  });
-
-  @Input() dadosPedido = {
-    id: 1,
-    nome: 'Ricardo Del Vecchio (TESTANDO)',
-    cpf: '',
-    telefone: '',
-    celular: '',
-    email: '',
-    cep: '',
-    logradouro: '',
-    numero: '',
-    complemento: '',
-    bairro: '',
-    cidade: '',
-    estado: '',
-    fantasia: 'Condomínio Residencial Turquesa',
-    razaoSocial: 'Condomínio Turquesa',
-    cnpj: '43.254.354/0001-75',
-    tipoPgto: '',
-    cepEntrega: '',
-    logradouroEntrega: '',
-    numeroEntrega: '',
-    complementoEntrega: '',
-    bairroEntrega: '',
-    cidadeEntrega: '',
-    estadoEntrega: '',
-    sfobras: '',
-    cno: '',
-    mangueira: '',
-    ie: '',
-    volume: '',    
-    preco: '',
-    ajudanteHora: '',
-    observacao: '',
-    modelo: 'modelo1',
-  };
 
 
-  // formulario!: FormGroup;
+  <!-- <form
+    class="principal__formulario example-form"
+    id="formulario"
+    #form="ngForm"
+    (ngSubmit)="cadastrar(form)"
+  >
+  
+    <div class="espaco-dentro">
+      <div class="row">
+        <div class="col-md-10">
+          <mat-form-field class="form-campo-nome">
+            <mat-label>Nome:</mat-label>
+            <input
+              matInput
+              name="nome"
+              placeholder="Digite o nome do cliente"
+              [(ngModel)]="dadosPedido.nome"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field class="form-campo-cpf">
+            <mat-label>CPF:</mat-label>
+            <input
+              matInput
+              name="cpf"
+              placeholder="Digite o CPF"
+              [(ngModel)]="dadosPedido.cpf"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
 
-  myControl = new FormControl<string | User>('');
+    <div class="espaco-dentro">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field class="form-campo-telefone">
+            <mat-label>Telefone:</mat-label>
+            <span matTextPrefix>+55 &nbsp;</span>
+            <input
+              matInput
+              placeholder="(11) 5555-1234"
+              name="telefone"
+              [(ngModel)]="dadosPedido.telefone"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field class="form-campo-telefone">
+            <mat-label>Celular:</mat-label>
+            <span matTextPrefix>+55 &nbsp;</span>
+            <input
+              matInput
+              name="celular"
+              placeholder="(XX) 9XXXX-XXXX"
+              [(ngModel)]="dadosPedido.celular"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field class="form-campo-email">
+            <mat-label>E-mail:</mat-label>
+            <input
+              matInput
+              [formControl]="emailFormControl"
+              placeholder="Ex. pat@example.com"
+              name="email"
+              [(ngModel)]="dadosPedido.email"
+            />
+            @if (
+              emailFormControl.hasError("email") &&
+              !emailFormControl.hasError("required")
+            ) {
+              <mat-error>E-mail inválido.</mat-error>
+            }
+            @if (emailFormControl.hasError("required")) {
+              <mat-error>Email é <strong>obrigatório</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
 
-  options: User[] = [
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>CEP:</mat-label>
+          <input
+            matInput
+            #postalCode
+            minlength="8"
+            maxlength="9"
+            placeholder="Ex. 04053-070"
+            name="cepEntrega"
+            [(ngModel)]="dadosPedido.cepEntrega"
+            ngModel
+            required
+            #cep="ngModel"
+            pattern="^(\d{5})(-?\d{3})$"
+            (blur)="consultaCEP($event, form)"
+            validadorCep
+          />
+          <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
+            <app-mensagem
+              *ngIf="cep?.errors?.['required']"
+              mensagem="O campo de CEP é obrigatório"
+            ></app-mensagem>
+            <app-mensagem
+              *ngIf="cep?.errors?.['validadorCep']"
+              mensagem="O Cep informado não existe."
+            ></app-mensagem>
+          </div>
+          <mat-hint align="end">{{ postalCode.value.length }} / 9</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
 
-    { name: 'Bruno' },
-    { name: 'Brunelson' },
-    { name: 'Pedrola' },
-    { name: 'Jeréba' },
-    { name: 'Ricardo 01' },
-    { name: 'Ricardo 02' },
-    { name: 'Ricardo 03' },
-    { name: 'Ricardola' },
-    { name: 'Salomonstro' },
-  ];
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Logradouro:</mat-label>
+            <input
+              matInput
+              name="logradouro"
+              [(ngModel)]="dadosPedido.logradouro"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Número:</mat-label>
+            <input matInput name="numero" [(ngModel)]="dadosPedido.numero" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
 
-  filteredOptions: Observable<User[]> = of([]);
-list: any;
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Complemento:</mat-label>
+            <input
+              matInput
+              placeholder="Ex. Apto 64"
+              name="complemento"
+              [(ngModel)]="dadosPedido.complemento"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Bairro:</mat-label>
+            <input matInput name="bairro" [(ngModel)]="dadosPedido.bairro" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
 
-  constructor(
-    private router: Router,
-    private consultaCepService: ConsultaCepService,
-    // private formBuilder: FormBuilder,
-    private _formBuilder: FormBuilder,
-  ) {}
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Cidade:</mat-label>
+            <input
+              matInput
+              placeholder="Ex. Santo André"
+              name="cidade"
+              [(ngModel)]="dadosPedido.cidade"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>UF:</mat-label>
+            <input
+              matInput
+              placeholder="Ex. São Paulo"
+              name="estado"
+              [(ngModel)]="dadosPedido.estado"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
 
-  alertFormValues(formGroup: FormGroup) {
-    alert(JSON.stringify(formGroup.value, null, 2));
-  }
+    <br />
+    <h6><strong>Informações Empresa:</strong></h6>
+    <br />
 
-  ngOnInit(): void {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => {
-        const name = typeof value === 'string' ? value : value?.name;
-        return name ? this._filter(name as string) : this.options.slice();
-      }),
-    );
+    <table class="example-full-width" cellspacing="0">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome Fantasia:</mat-label>
+        <input
+          matInput
+          name="fantasia"
+          placeholder="Digite o nome fantasia"
+          [(ngModel)]="dadosPedido.fantasia"
+        />
+      </mat-form-field>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Razão Social:</mat-label>
+            <input
+              matInput
+              name="razaoSocial"
+              placeholder="Digite a Razão Social"
+              [(ngModel)]="dadosPedido.razaoSocial"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>CNPJ:</mat-label>
+            <input
+              matInput
+              name="cnpj"
+              placeholder="Digite o CNPJ"
+              [(ngModel)]="dadosPedido.cnpj"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
 
-    // this.formulario = this.formBuilder.group({
-    //   conteudo: ['Formulario reativo'],
-    //   autoria: [''],
-    //   modelo: ['modelo1'],
-    // });eit
-  }
+    <br />
+    <h6><strong>Informações Pedido:</strong></h6>
+    <br /><br />
 
-  displayFn(user: User): string {
-    return user && user.name ? user.name : '';
-  }
+    Forma de Pagamento:
+    <tr>
+      <td>
+        <mat-card-content>
+          <section class="example-section">
+            <mat-checkbox class="example-margin" [(ngModel)]="disabled"
+              >Á Vista</mat-checkbox
+            >
+          </section>
+        </mat-card-content>
+      </td>
+      <td>
+        <mat-card-content>
+          <section class="example-section">
+            <mat-form-field>
+              <mat-label>Faturado:</mat-label>
+              <mat-select disableRipple [disabled]="disabled">
+                <mat-option value="0"> </mat-option>
+                <mat-option value="1">10 dias</mat-option>
+                <mat-option value="2">11 dias</mat-option>
+                <mat-option value="3">12 dias</mat-option>
+                <mat-option value="4">13 dias</mat-option>
+                <mat-option value="5">14 dias</mat-option>
+                <mat-option value="6">15 dias</mat-option>
+                <mat-option value="7">16 dias</mat-option>
+                <mat-option value="8">17 dias</mat-option>
+                <mat-option value="9">18 dias</mat-option>
+                <mat-option value="10">19 dias</mat-option>
+                <mat-option value="11">20 dias</mat-option>
+                <mat-option value="12">21 dias</mat-option>
+                <mat-option value="13">22 dias</mat-option>
+                <mat-option value="14">23 dias</mat-option>
+                <mat-option value="15">24 dias</mat-option>
+                <mat-option value="16">25 dias</mat-option>
+                <mat-option value="17">26 dias</mat-option>
+                <mat-option value="18">27 dias</mat-option>
+                <mat-option value="19">28 dias</mat-option>
+                <mat-option value="20">29 dias</mat-option>
+                <mat-option value="21">30 dias</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </section>
+        </mat-card-content>
+      </td>
+    </tr>
 
-  private _filter(name: string): User[] {
-    const filterValue = name.toLowerCase();
+    <br />
 
-    return this.options.filter((option) =>
-      option.name.toLowerCase().includes(filterValue),
-    );
-  }
+    <mat-slide-toggle color="blue" [(ngModel)]="isChecked"
+      >Entregar no mesmo endereço de cadastro:</mat-slide-toggle
+    >
 
-  selectedMetros!: string;
+    <div class="botao-entrega">
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label>CEP:</mat-label>
+          <input
+            disableRipple
+            [disabled]="isChecked"
+            matInput
+            #postalCode
+            minlength="8"
+            maxlength="9"
+            placeholder="Ex. 04053-070"
+            name="cepEntrega"
+            [(ngModel)]="dadosPedido.cepEntrega"
+            ngModel
+            required
+            #cep="ngModel"
+            pattern="^(\d{5})(-?\d{3})$"
+            (blur)="consultaCEP($event, form)"
+            validadorCep
+          />
+          <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
+            <app-mensagem
+              *ngIf="cep?.errors?.['required']"
+              mensagem="O campo de CEP é obrigatório"
+            ></app-mensagem>
+            <app-mensagem
+              *ngIf="cep?.errors?.['validadorCep']"
+              mensagem="O Cep informado não existe."
+            ></app-mensagem>
+          </div>
+          <mat-hint align="end">{{ postalCode.value.length }} / 9</mat-hint>
+        </mat-form-field>
+      </td>
 
-  metros: Metros[] = [
-    {value: '15 metros', viewValue: '15 metros'},
-    {value: '30 metros', viewValue: '30 metros'},
-    {value: '45 metros', viewValue: '45 metros'},
-    {value: '60 metros', viewValue: '60 metros'},
-    {value: '75 metros', viewValue: '75 metros'},
-    {value: '90 metros', viewValue: '90 metros'},
-  ];
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Logradouro:</mat-label>
+              <input
+                disableRipple
+                [disabled]="isChecked"
+                matInput
+                name="logradouro"
+                [(ngModel)]="dadosPedido.logradouro"
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Número:</mat-label>
+              <input
+                disableRipple
+                [disabled]="isChecked"
+                matInput
+                name="numero"
+                [(ngModel)]="dadosPedido.numero"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
 
-  listaVolume!: string;
-  volumes: string[] = ['cx-5m³', 'cx-10m³', 'cx-15m³', 'lav-5m³', 'lav-10m³', 'lav-15m³'];
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Complemento:</mat-label>
+              <input
+                disableRipple
+                [disabled]="isChecked"
+                matInput
+                placeholder="Ex. Apto 64"
+                name="complemento"
+                [(ngModel)]="dadosPedido.complemento"
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Bairro:</mat-label>
+              <input
+                disableRipple
+                [disabled]="isChecked"
+                matInput
+                name="bairro"
+                [(ngModel)]="dadosPedido.bairro"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
 
-  listaPreco!: string;
-  precos!: string[];
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Cidade:</mat-label>
+              <input
+                disableRipple
+                [disabled]="isChecked"
+                matInput
+                placeholder="Ex. Santo André"
+                name="cidade"
+                [(ngModel)]="dadosPedido.cidade"
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>UF:</mat-label>
+              <input
+                disableRipple
+                [disabled]="isChecked"
+                matInput
+                placeholder="Ex. São Paulo"
+                name="estado"
+                [(ngModel)]="dadosPedido.estado"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-  consultaCEP(ev: any, form: NgForm) {
-    const cep = ev.target.value;
-//     if (cep != '') {
-//       this.consultaCepService.getConsultaCep(cep).subscribe((resultado) => {
-//         console.log(resultado);
-//         this.populandoEndereco(resultado, form);
-// //INCLUIR IF PARA DIFERENCIAR
-//         this.populandoEnderecoEntrega(resultado, form);
-//       });
-//     }
-  }
+    <table>
+      <tr>
+        <td>
+          <mat-form-field class="table-linha">
+            <mat-label>SFOBRAS:</mat-label>
+            <input
+              matInput
+              name="sfobras"
+              placeholder="Digite o SFOBRAS"
+              [(ngModel)]="dadosPedido.sfobras"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="table-linha">
+            <mat-label>CNO:</mat-label>
+            <input
+              matInput
+              name="cno"
+              placeholder="Digite o CNO"
+              [(ngModel)]="dadosPedido.cno"
+            />
+          </mat-form-field>
+        </td>
+        <mat-form-field>
+          <mat-label>Mangueira: Metros</mat-label>
+          <select matNativeControl [(ngModel)]="selectedMetros" name="metro">
+            <option value="" selected></option>
+            @for (metro of metros; track metro) {
+              <option [value]="metro.value">{{ metro.viewValue }}</option>
+            }
+          </select>
+        </mat-form-field>
+        <td>
+          <mat-form-field class="table-linha">
+            <mat-label>Inscrição Estadual:</mat-label>
+            <input
+              matInput
+              name="ie"
+              placeholder="Informe a IE"
+              [(ngModel)]="dadosPedido.ie"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
 
-  populandoEndereco(dados: any, form: NgForm) {
-    form.form.patchValue({
-      logradouro: dados.logradouro,
-      complemento: dados.complemento,
-      bairro: dados.bairro,
-      cidade: dados.localidade,
-      estado: dados.uf,
-    });
-  }
+    <h6>Volume:</h6>
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="listaVolume"
+    >
+      @for (volume of volumes; track volume) {
+        <mat-radio-button class="example-radio-button" [value]="volume">{{
+          volume
+        }}</mat-radio-button>
+      }
+    </mat-radio-group>
 
-  // REVER PARA NÃO DUPLICAR O MÉTODO
-  populandoEnderecoEntrega(dados: any, form: NgForm) {
-    form.form.patchValue({
-      logradouroEntrega: dados.logradouro,
-      complementoEntrega: dados.complemento,
-      bairroEntrega: dados.bairro,
-      cidadeEntrega: dados.localidade,
-      estadoEntrega: dados.uf,
-    });
-  }
+    Preço:
+    <table>
+      <td>
+        <mat-form-field class="table-linha">
+          <mat-label>Preço cx-5m³</mat-label>
+          <input matInput name="preco1" [(ngModel)]="dadosPedido.preco" />
+        </mat-form-field>
+      </td>
+      <td>
+        <strong></strong>
+        <mat-form-field class="table-linha">
+          <mat-label>Preço cx-10m³</mat-label>
+          <input matInput name="preco2" [(ngModel)]="dadosPedido.preco" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="table-linha">
+          <mat-label>Preço cx-15m³</mat-label>
+          <input matInput name="preco3" [(ngModel)]="dadosPedido.preco" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="table-linha">
+          <mat-label>Preço lav-5m³</mat-label>
+          <input matInput name="preco4" [(ngModel)]="dadosPedido.preco" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="table-linha">
+          <mat-label>Preço lav-10m³</mat-label>
+          <input matInput name="preco5" [(ngModel)]="dadosPedido.preco" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="table-linha">
+          <mat-label>Preço lav-15m³</mat-label>
+          <input matInput name="preco6" [(ngModel)]="dadosPedido.preco" />
+        </mat-form-field>
+      </td>
+    </table>
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Ajudante p/ hora adicional:</mat-label>
+            <input
+              matInput
+              name="ajudanteHora"
+              placeholder="Informe o ajudante para hora adicional"
+              [(ngModel)]="dadosPedido.ajudanteHora"
+            />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Observações:</mat-label>
+            <input
+              matInput
+              name="observacao"
+              placeholder="Informações adicionais"
+              [(ngModel)]="dadosPedido.observacao"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </form> -->
 
-  // cadastrar(form: NgForm){
-  //   // console.log('Pedido cadastrado com sucesso!');
-  //   console.log(form.controls);
-  // }
+  <br />
+  <br />
 
-  dataAtual: Date = new Date();
-
-  checked = false;
-  disabled = false;
-
-  cadastrar(form: any) {
-    console.log(form);
-    if (form.valid) {
-      this.router.navigate(['sucesso']);
-      console.log('Formulário enviado');
-      alert('Formulário enviado');
-    } else {
-      console.log('Formulário inválido');
-      alert('Formulário inválido!');
-    }
-  }
-
-  cancelar() {
-    alert('Ação cancelada!');
-  }
-}   
+</section>
