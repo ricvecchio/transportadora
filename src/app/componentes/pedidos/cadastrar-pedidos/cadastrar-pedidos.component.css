@@ -64,16 +64,5 @@
   width: 100%;
   margin: 0 0 6rem; 
   border-radius: 20px;
-}
-
-.modelo1 {
   box-shadow: 15px 15px 15px #154580;
-}
-
-input[type='radio']:checked+.custom-radio {
-  border-color: #154580;
-}
-
-input[type='radio']:checked+.custom-radio span {
-  background: #154580;
 }
