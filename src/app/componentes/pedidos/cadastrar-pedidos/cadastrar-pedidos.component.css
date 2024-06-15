@@ -13,38 +13,31 @@
 }
 
 .table-linha {
-  width:100%;
+  width: 100%;
   display: grid;
   padding: 0rem 2rem 0rem;
-}
-
-.form-campo-nome {
-  width: 620px;
-
-  /* grid-gap: 10px 120px; */
-  /* word-spacing: 4.25;
-  grid: 10%; */
-} 
-
-.form-campo-cpf {
-  width: 100%;
-}
-
-.example-form {
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
-  /* padding: 0rem 2rem 0rem; */
 }
 
 .espaco-dentro {
   padding: 0rem 2rem 0rem;
 }
 
-/* border-collapse: separate;
-border-spacing: 10px 0; */
+.form-grid {
+  display: grid;
+}
+
+.form-campo-telefone {
+  width: 80%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+
+
+
 
 
 
