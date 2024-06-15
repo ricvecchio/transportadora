@@ -1,5 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConsultaCepService } from '../../../service/consulta-cep.service';
 import { Observable, map, of, startWith } from 'rxjs';
@@ -12,9 +18,6 @@ interface Metros {
 export interface User {
   name: string;
 }
-/**
- * @title Display value autocomplete
- */
 
 @Component({
   selector: 'app-cadastrar-pedidos',
@@ -22,7 +25,6 @@ export interface User {
   styleUrl: './cadastrar-pedidos.component.css',
 })
 export class CadastrarPedidosComponent implements OnInit {
-
   isChecked = true;
   formGroup = this._formBuilder.group({
     acceptTerms: ['', Validators.requiredTrue],
@@ -57,20 +59,18 @@ export class CadastrarPedidosComponent implements OnInit {
     cno: '',
     mangueira: '',
     ie: '',
-    volume: '',    
+    volume: '',
     preco: '',
     ajudanteHora: '',
     observacao: '',
     modelo: 'modelo1',
   };
 
-
   // formulario!: FormGroup;
 
   myControl = new FormControl<string | User>('');
 
   options: User[] = [
-
     { name: 'Bruno' },
     { name: 'Brunelson' },
     { name: 'Pedrola' },
@@ -83,7 +83,7 @@ export class CadastrarPedidosComponent implements OnInit {
   ];
 
   filteredOptions: Observable<User[]> = of([]);
-list: any;
+  list: any;
 
   constructor(
     private router: Router,
@@ -99,17 +99,11 @@ list: any;
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => {
+      map((value) => {
         const name = typeof value === 'string' ? value : value?.name;
         return name ? this._filter(name as string) : this.options.slice();
       }),
     );
-
-    // this.formulario = this.formBuilder.group({
-    //   conteudo: ['Formulario reativo'],
-    //   autoria: [''],
-    //   modelo: ['modelo1'],
-    // });eit
   }
 
   displayFn(user: User): string {
@@ -127,16 +121,23 @@ list: any;
   selectedMetros!: string;
 
   metros: Metros[] = [
-    {value: '15 metros', viewValue: '15 metros'},
-    {value: '30 metros', viewValue: '30 metros'},
-    {value: '45 metros', viewValue: '45 metros'},
-    {value: '60 metros', viewValue: '60 metros'},
-    {value: '75 metros', viewValue: '75 metros'},
-    {value: '90 metros', viewValue: '90 metros'},
+    { value: '15 metros', viewValue: '15 metros' },
+    { value: '30 metros', viewValue: '30 metros' },
+    { value: '45 metros', viewValue: '45 metros' },
+    { value: '60 metros', viewValue: '60 metros' },
+    { value: '75 metros', viewValue: '75 metros' },
+    { value: '90 metros', viewValue: '90 metros' },
   ];
 
   listaVolume!: string;
-  volumes: string[] = ['cx-5m³', 'cx-10m³', 'cx-15m³', 'lav-5m³', 'lav-10m³', 'lav-15m³'];
+  volumes: string[] = [
+    'cx-5m³',
+    'cx-10m³',
+    'cx-15m³',
+    'lav-5m³',
+    'lav-10m³',
+    'lav-15m³',
+  ];
 
   listaPreco!: string;
   precos!: string[];
@@ -147,7 +148,7 @@ list: any;
       this.consultaCepService.getConsultaCep(cep).subscribe((resultado) => {
         console.log(resultado);
         this.populandoEndereco(resultado, form);
-//INCLUIR IF PARA DIFERENCIAR
+        //INCLUIR IF PARA DIFERENCIAR
         this.populandoEnderecoEntrega(resultado, form);
       });
     }
@@ -174,12 +175,10 @@ list: any;
     });
   }
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-
-  // cadastrar(form: NgForm){
-  //   // console.log('Pedido cadastrado com sucesso!');
-  //   console.log(form.controls);
-  // }
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
 
   dataAtual: Date = new Date();
 
@@ -201,4 +200,4 @@ list: any;
   cancelar() {
     alert('Ação cancelada!');
   }
-}   
+}

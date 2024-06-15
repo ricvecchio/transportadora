@@ -10,9 +10,9 @@
     (ngSubmit)="cadastrar(form)"
     f
   >
-    <table class="full-width" cellspacing="0">
-      <td>
-        <mat-form-field class="full-width" appearance="fill">
+    <div class="row">
+      <div class="col-md-9">
+        <mat-form-field class="form-grid" appearance="fill">
           <mat-label>Buscar Cliente</mat-label>
           <input
             type="text"
@@ -26,9 +26,9 @@
             }
           </mat-autocomplete>
         </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="full-width" appearance="outline">
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="form-grid" appearance="outline">
           <mat-label>Código Cliente</mat-label>
           <input
             matInput
@@ -39,8 +39,8 @@
             [(ngModel)]="dadosPedido.id"
           />
         </mat-form-field>
-      </td>
-    </table>
+      </div>
+    </div>
 
     <br />
     <h6><strong>Informações Cliente:</strong></h6>
