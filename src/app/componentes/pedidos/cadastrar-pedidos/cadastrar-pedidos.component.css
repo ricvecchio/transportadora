@@ -1,144 +1,70 @@
- .cadastrar-pedidos {
-    padding: 2rem 0;
-  }
+.cadastrar-pedidos {
+  padding: 2rem 0;
+}
 
 .cadastrar-pedidos form {
-  background: #dde0e2;
-  border: none;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  width: 100%;
-}
-
-.table-linha {
-  width:100%;
-  display: grid;
-  padding: 0rem 2rem 0rem;
-}
-
-.form-campo-nome {
-  width: 620px;
-
-  /* grid-gap: 10px 120px; */
-  /* word-spacing: 4.25;
-  grid: 10%; */
-} 
-
-.form-campo-cpf {
-  width: 100%;
-}
-
-.example-form {
-  width: 100%;
+background: #dde0e2;
+border: none;
+border-radius: 20px;
+display: flex;
+flex-direction: column;
+padding: 2rem;
+width: 100%;
 }
 
 .example-full-width {
-  width: 100%;
-  /* padding: 0rem 2rem 0rem; */
-}
-
-.espaco-dentro {
-  padding: 0rem 2rem 0rem;
-}
-
-/* border-collapse: separate;
-border-spacing: 10px 0; */
-
-
-
-
-
-.exemplo-net {
-  display: grid;
-  /* aqui eu determino é são 3 colunas de tamanhos iguas, cada coluna tem uma fração */
-  grid-template-columns: repeat(3, 1fr);
-  /* esssa é a altura das linhas, se vc quiser pode apaga-la caso não queira uma altura definida */
-  grid-auto-rows: 100px;
-  /* espaço entre um elemento interno e outro */
-  grid-gap: 5px 8px;
-  /* margem interna que afasta os elementos da borda do grid */
-  padding: 20px 10px;
-}
-
-
-
-.example-section {
-  align-content: center;
-  align-items: center;
-  height: 60px;
-}
-
-.example-margin {
-  margin: 0 10px;
-}
-
-.mat-slide-toggle {
-  margin: 8px 10px;
-  display: block;
+width: 100%;
 }
 
 td {
-  padding-right: 8px;
+padding-right: 8px;
 }
 
-.mat-mdc-radio-button ~ .mat-mdc-radio-button {
-  margin-left: 16px;
+
+.buscar-coluna {
+width: 90%; /* Ajuste essa porcentagem conforme necessário */
 }
 
-.table-linha {
-  width:100%;
-  display: grid;
-  padding: 0rem 2rem 0rem;
-  /* width:200px;
-  height:200px;
-  padding:10px; */
+.codigo-coluna {
+width: 10%; /* Ajuste essa porcentagem conforme necessário */
 }
-  
+
+.nome-coluna {
+width: 70%; /* Ajuste essa porcentagem conforme necessário */
+}
+
+.cpf-coluna {
+width: 30%; /* Ajuste essa porcentagem conforme necessário */
+}
+
+.telefone-coluna {
+width: 30%;
+}
+
+.celular-coluna {
+width: 30%;
+}
+
+.email-coluna {
+width: 100%;
+}
+
+.cep-field {
+width: 30%;
+}
+.logradouro-coluna {
+width: 90%;
+}
+
+.numero-coluna {
+width: 10%;
+}
 
 
-.acoes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-  }
-  
-  .botao {
-    margin: 5px;
-    margin-top: 70px;
-    width: 200px;
-  }
- 
-  .modelo {
-    background:#d9e7ec;
-    padding: 1rem;
-    width: 100%;
-    margin: 0 0 6rem; 
-    border-radius: 20px;
-  }
+.complemento-coluna {
+width: 100%;
+}
 
-  .container-previa {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 2rem 0rem;
-  }
-  
-  .container-previa .imagem {
-    width: 920px;
-    height: 130px;
-    padding: 2rem;
-  }
-
-  .modelo1 {
-    box-shadow: 15px 15px 15px #154580;
-  }
-    
-  input[type='radio']:checked+.custom-radio {
-    border-color: #154580;
-  }
-  
-  input[type='radio']:checked+.custom-radio span {
-    background: #154580;
-  }
+.referencia-coluna {
+width: 100%;
+}
