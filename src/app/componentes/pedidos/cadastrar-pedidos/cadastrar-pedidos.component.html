@@ -511,7 +511,6 @@
           </mat-form-field>
         </div>
         <div class="col-md-2">
-          <strong></strong>
           <mat-form-field class="form-grid">
             <mat-label>Preço cx-10m³</mat-label>
             <input matInput name="preco2" [(ngModel)]="dadosPedido.preco" />
@@ -624,15 +623,16 @@
 
       <div class="row">
         <div class="col-md-4">
-            <b>VOLUME: </b>
-            {{ listaVolume }}
+          <b>VOLUME: </b>
+          {{ listaVolume }}
         </div>
         <div class="col-md-4">
-            <b>MANGUEIRA: </b>
-            {{ selectedMetros }}
+          <b>MANGUEIRA: </b>
+          {{ selectedMetros }}
         </div>
         <div class="col-md-4">
-            <b>PREÇO: </b>
+          <b>PREÇO: R$ </b>
+          {{ dadosPedido.preco }}
         </div>
       </div>
 
@@ -640,13 +640,13 @@
 
       <div class="row">
         <div class="col-md-4">
-            <b>MOTORISTA: </b>
+          <b>MOTORISTA: </b>
         </div>
         <div class="col-md-4">
-            <b>CAMINHÃO: </b>
+          <b>CAMINHÃO: </b>
         </div>
         <div class="col-md-4">
-            <b>PLACA: </b>
+          <b>PLACA: </b>
         </div>
       </div>
 
