@@ -8,42 +8,91 @@ import { MatTableDataSource } from '@angular/material/table';
 
 export interface UserData {
   id: string;
-  name: string;
-  progress: string;
-  fruit: string;
+  nome: string;
+  endereco: string;
+  volume: string;
+  mangueira: string;
+  valor: string;
+  status: string; 
 }
 
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
+const NOMES: string[] = [
+  'Ricardo Del Vecchio',
+  'Melina Kubo',
+  'Paulo de Oliveira',
+  'Carlos Alberto',
+  'Erick Souza',
+  'Paulo Nunes',
+  'Condominio Costa do Sol',
+  'Condominio Turquesa',
+  'Condominio Azaleia',
+  'Condominio Samambaia',
+  'Condominio Lurdes',
+  'Condominio Mome',
+  'Condominio Ipiranga',
+  'Condominio Saúde',
+  'Condominio Eldorado',
+  'Condominio Anchieta',
+  'Condominio Imigrantes',
+  'Condominio Conceição',
+  'Condominio Santos',
 ];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
+const ENDERECOS: string[] = [
+  'Rua Quinze de Setembro, 50 - Vila Saúde/SP',
+  'Rua Samambaia, 571 - Saúde/SP',
+  'Rua Maria Whitaquer, 10 - Mirandópolis/SP',
+  'Rua das Conchas, 244 - Santo André/SP',
+  'Rua Quinze de Setembro, 50 - Vila Saúde/SP',
+  'Rua Samambaia, 571 - Saúde/SP',
+  'Rua Maria Whitaquer, 10 - Mirandópolis/SP',
+  'Rua das Conchas, 244 - Santo André/SP',
+  'Rua Quinze de Setembro, 50 - Vila Saúde/SP',
+  'Rua Samambaia, 571 - Saúde/SP',
+  'Rua Maria Whitaquer, 10 - Mirandópolis/SP',
+  'Rua das Conchas, 244 - Santo André/SP',
+  'Rua Quinze de Setembro, 50 - Vila Saúde/SP',
+  'Rua Samambaia, 571 - Saúde/SP',
+  'Rua Maria Whitaquer, 10 - Mirandópolis/SP',
+  'Rua das Conchas, 244 - Santo André/SP',
+  'Rua Quinze de Setembro, 50 - Vila Saúde/SP',
+  'Rua Samambaia, 571 - Saúde/SP',
+  'Rua Maria Whitaquer, 10 - Mirandópolis/SP',
+  'Rua das Conchas, 244 - Santo André/SP',
 ];
+const VOLUMES: string[] = [
+  'cx-5m³',
+  'cx-10m³',
+  'cx-15m³',
+  'lav-5m³',
+  'lav-10m³h',
+  'lav-15m³',
+];
+const MANGUEIRAS: string[] = [
+  '15 Metros',
+  '30 Metros',
+  '45 Metros',
+  '60 Metros',
+  '75 Metros',
+  '90 Metros',
+];
+const VALORES: string[] = [
+  'R$ 150,00',
+  'R$ 130,00',
+  'R$  80,00',
+  'R$  50,00',
+  'R$ 110,00',
+  'R$  29,00',
+];
+const STATUS: string[] = [
+  'Em aberto',
+  'Pedido Emitido',
+  'Pedido Emitido',
+  'Pedido Emitido',
+  'Em aberto',
+  'Em aberto',
+  'Pedido Emitido',
+];
+
 
 @Component({
   selector: 'app-consultar-pedidos',
@@ -62,7 +111,7 @@ export class ConsultarPedidosComponent implements OnInit {
   // }
   ngOnInit(): void {}
 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
+  displayedColumns: string[] = ['id', 'nome', 'endereco', 'volume', 'mangueira', 'valor', 'status'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator)
@@ -94,16 +143,20 @@ export class ConsultarPedidosComponent implements OnInit {
 }
 
 function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
+  const nome =
+    NOMES[Math.round(Math.random() * (NOMES.length - 1))] +
     ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
+    NOMES[Math.round(Math.random() * (NOMES.length - 1))].charAt(0) +
     '.';
 
   return {
     id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
+    nome: nome,
+    endereco: ENDERECOS[Math.round(Math.random() * (VOLUMES.length - 1))],
+    volume: VOLUMES[Math.round(Math.random() * (VOLUMES.length - 1))],
+    mangueira: MANGUEIRAS[Math.round(Math.random() * (MANGUEIRAS.length - 1))],
+    valor: VALORES[Math.round(Math.random() * (VALORES.length - 1))],
+    status: STATUS[Math.round(Math.random() * (STATUS.length - 1))],
   };
 }
+
