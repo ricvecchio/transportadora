@@ -139,9 +139,6 @@ export class CadastrarPedidosComponent implements OnInit {
     'lav-15m³',
   ];
 
-  listaPreco!: string;
-  precos!: string[];
-
   consultaCEP(ev: any, form: NgForm) {
     const cep = ev.target.value;
     if (cep != '') {
