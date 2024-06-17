@@ -204,4 +204,8 @@ export class CadastrarPedidosComponent implements OnInit {
   onPaymentCheckBoxChange(event: any): void {
     this.isPaymentChecked = event.checked;
   }
+
+  onToggleChange(event: any): void {
+    this.isAdressChecked = event.checked;
+  }
 }

@@ -270,16 +270,18 @@
 
     <div class="espaco-dentro">
       Forma de Pagamento:
-        <div class="row">
-          <div class="col-md-2">
-            <mat-card-content>
-              <section class="form-grid">
-                <mat-checkbox class="checkbox-margin" (change)="onPaymentCheckBoxChange($event)"
-                  >Á Vista</mat-checkbox
-                >
-              </section>
-            </mat-card-content>
-          </div>
+      <div class="row">
+        <div class="col-md-2">
+          <mat-card-content>
+            <section class="form-grid">
+              <mat-checkbox
+                class="checkbox-margin"
+                (change)="onPaymentCheckBoxChange($event)"
+                >Á Vista</mat-checkbox
+              >
+            </section>
+          </mat-card-content>
+        </div>
         <div class="col-md-2">
           <mat-card-content>
             <section class="form-grid">
@@ -317,9 +319,15 @@
 
       <br />
 
-      <mat-slide-toggle color="blue" [(ngModel)]="isChecked"
-        >Entregar no mesmo endereço de cadastro:</mat-slide-toggle
-      >
+      <tr>
+        <mat-slide-toggle color="blue"
+          formControlName="deliveryAddress"
+          (change)="onToggleChange($event)"
+        >
+          Entregar no mesmo endereço de cadastro:
+        </mat-slide-toggle>
+      </tr>
+
       <br />
 
       <div class="row">
@@ -328,7 +336,7 @@
             <mat-label>CEP:</mat-label>
             <input
               disableRipple
-              [disabled]="isChecked"
+              [disabled]="isAdressChecked"
               matInput
               #postalCode
               minlength="8"
@@ -364,10 +372,9 @@
             <mat-label>Logradouro:</mat-label>
             <input
               disableRipple
-              [disabled]="isChecked"
+              [disabled]="isAdressChecked"
               matInput
               name="logradouro"
-              [(ngModel)]="dadosPedido.logradouro"
             />
           </mat-form-field>
         </div>
