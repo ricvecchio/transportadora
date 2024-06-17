@@ -145,16 +145,6 @@ export class CadastrarPedidosComponent implements OnInit {
     { value: 'lav-15m³', viewValue: 'lav-15m³' },
   ];
 
-  // listaVolume!: string;
-  // volumes: string[] = [
-  //   'cx-5m³',
-  //   'cx-10m³',
-  //   'cx-15m³',
-  //   'lav-5m³',
-  //   'lav-10m³',
-  //   'lav-15m³',
-  // ];
-
   consultaCEP(ev: any, form: NgForm) {
     const cep = ev.target.value;
     if (cep != '') {
