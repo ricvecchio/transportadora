@@ -24,25 +24,13 @@
   width: 100%;
 }
 
-.container-previa {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 2rem 0rem;
-}
-
-.container-previa .imagem {
-  width: 920px;
-  height: 130px;
-  padding: 2rem;
+.mat-slide-toggle {
+  margin: 8px 10px;
+  display: block;
 }
 
 .checkbox-margin {
   margin: 0 10px;
-}
-
-.mat-slide-toggle {
-  margin: 8px 10px;
-  display: block;
 }
 
 .acoes {
@@ -51,6 +39,7 @@
   align-items: center;
   align-content: center;
 }
+
 
 .botao {
   margin: 5px;
@@ -65,4 +54,16 @@
   margin: 0 0 6rem; 
   border-radius: 20px;
   box-shadow: 15px 15px 15px #154580;
+}
+
+.container-previa {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem 0rem;
+}
+
+.container-previa .imagem {
+  width: 920px;
+  height: 130px;
+  padding: 2rem;
 }
