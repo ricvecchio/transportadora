@@ -15,6 +15,11 @@ interface Metros {
   viewValue: string;
 }
 
+interface Volumes {
+  value: string;
+  viewValue: string;
+}
+
 export interface User {
   name: string;
 }
@@ -25,7 +30,6 @@ export interface User {
   styleUrl: './cadastrar-pedidos.component.css',
 })
 export class CadastrarPedidosComponent implements OnInit {
-  isChecked = true;
   formGroup = this._formBuilder.group({
     acceptTerms: ['', Validators.requiredTrue],
   });
@@ -122,7 +126,6 @@ export class CadastrarPedidosComponent implements OnInit {
   }
 
   selectedMetros!: string;
-
   metros: Metros[] = [
     { value: '15 metros', viewValue: '15 metros' },
     { value: '30 metros', viewValue: '30 metros' },
@@ -133,14 +136,24 @@ export class CadastrarPedidosComponent implements OnInit {
   ];
 
   listaVolume!: string;
-  volumes: string[] = [
-    'cx-5m³',
-    'cx-10m³',
-    'cx-15m³',
-    'lav-5m³',
-    'lav-10m³',
-    'lav-15m³',
+  volumes: Volumes[] = [
+    { value: 'cx-5m³', viewValue: 'cx-5m³' },
+    { value: 'cx-10m³', viewValue: 'cx-10m³' },
+    { value: 'cx-15m³', viewValue: 'cx-15m³' },
+    { value: 'lav-5m³', viewValue: 'lav-5m³' },
+    { value: 'lav-10m³', viewValue: 'lav-10m³' },
+    { value: 'lav-15m³', viewValue: 'lav-15m³' },
   ];
+
+  // listaVolume!: string;
+  // volumes: string[] = [
+  //   'cx-5m³',
+  //   'cx-10m³',
+  //   'cx-15m³',
+  //   'lav-5m³',
+  //   'lav-10m³',
+  //   'lav-15m³',
+  // ];
 
   consultaCEP(ev: any, form: NgForm) {
     const cep = ev.target.value;

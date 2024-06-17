@@ -383,7 +383,7 @@
             <mat-label>Número:</mat-label>
             <input
               disableRipple
-              [disabled]="isChecked"
+              [disabled]="isAdressChecked"
               matInput
               name="numero"
               [(ngModel)]="dadosPedido.numero"
@@ -398,7 +398,7 @@
             <mat-label>Complemento:</mat-label>
             <input
               disableRipple
-              [disabled]="isChecked"
+              [disabled]="isAdressChecked"
               matInput
               placeholder="Ex. Apto 64"
               name="complemento"
@@ -411,7 +411,7 @@
             <mat-label>Bairro:</mat-label>
             <input
               disableRipple
-              [disabled]="isChecked"
+              [disabled]="isAdressChecked"
               matInput
               name="bairro"
               [(ngModel)]="dadosPedido.bairro"
@@ -426,7 +426,7 @@
             <mat-label>Cidade:</mat-label>
             <input
               disableRipple
-              [disabled]="isChecked"
+              [disabled]="isAdressChecked"
               matInput
               placeholder="Ex. Santo André"
               name="cidade"
@@ -439,7 +439,7 @@
             <mat-label>UF:</mat-label>
             <input
               disableRipple
-              [disabled]="isChecked"
+              [disabled]="isAdressChecked"
               matInput
               placeholder="Ex. São Paulo"
               name="estado"
@@ -501,10 +501,9 @@
         <div class="col-md-12">
           <mat-radio-group
             aria-labelledby="example-radio-group-label"
-            [(ngModel)]="listaVolume"
-          >
+            [(ngModel)]="listaVolume" name="volume">          
             @for (volume of volumes; track volume) {
-              <mat-radio-button [value]="volume">{{ volume }}</mat-radio-button>
+              <mat-radio-button [value]="volume.value">{{ volume.viewValue }}</mat-radio-button>
             }
           </mat-radio-group>
         </div>
