@@ -497,9 +497,7 @@
             [(ngModel)]="listaVolume"
           >
             @for (volume of volumes; track volume) {
-              <mat-radio-button [value]="volume">{{
-                volume
-              }}</mat-radio-button>
+              <mat-radio-button [value]="volume">{{ volume }}</mat-radio-button>
             }
           </mat-radio-group>
         </div>
@@ -581,10 +579,12 @@
     </header>
     <div class="modelo ff-roboto-mono">
       <img
-        class="imagem"
+        class="col-md-12"
         src="../../../../assets/img/logo.png"
         alt="Logo São Tomé"
       />
+
+      <br />
 
       <mat-list>
         <mat-divider></mat-divider>
@@ -643,7 +643,7 @@
       <mat-list>
         <mat-divider></mat-divider>
       </mat-list>
-      
+
       <br />
 
       <img
