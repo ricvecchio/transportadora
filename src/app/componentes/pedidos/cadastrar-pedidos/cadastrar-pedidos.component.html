@@ -585,29 +585,28 @@
       />
 
       <br />
+      <br />
 
       <mat-list>
         <mat-divider></mat-divider>
       </mat-list>
 
-      <div class="campos_previa">
-        <p class="idPedido">
+      <div class="row">
+        <div class="col-md-9">
           <b>PEDIDO: </b>
           <!-- {{ dadosPedido.idPedido }} -->
-        </p>
-      </div>
-
-      <div class="campos_previa">
-        <p class="data">
+        </div>
+        <div class="col-md-3">
           <b>DATA: </b>
-          <!-- {{ dadosPedido.data }} -->
           {{ dataAtual | date: "dd/MM/yyyy" }}
-        </p>
+        </div>
       </div>
 
       <mat-list>
         <mat-divider></mat-divider>
       </mat-list>
+
+      <br />
 
       <div class="campos_previa">
         <p class="fantasia">

@@ -40,7 +40,6 @@
   align-content: center;
 }
 
-
 .botao {
   margin: 5px;
   margin-top: 70px;
@@ -65,12 +64,3 @@
 .container-previa .imagem {
   padding: 1rem;
 }
-/* 
-.previa_idpedido {
-  display: grid;
-}
-
-.previa_data {
-  display: grid;
-  justify-self: left;
-} */
