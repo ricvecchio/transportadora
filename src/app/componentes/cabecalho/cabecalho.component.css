@@ -8,6 +8,7 @@
     width: 100%;
     position: sticky;   
     top: 0; 
+    z-index: 1;
   }
   
   .cabecalho .logo {
@@ -32,20 +33,6 @@
     padding: 0rem 0.5rem 0rem;
   }
     
-  /* .cabecalho .logo img {
-    width: 100%;
-    max-width: 108px;
-
-    display: block;
-    margin-left: auto; 
-    margin-right: auto;
-  } */
-
-  /* .cabecalho p {
-    font-size: 1rem;
-    color: #6BD1FF;
-  } */
-  
   @media (max-width: 576px) {
     .cabecalho .logo {
       padding: 2rem;
