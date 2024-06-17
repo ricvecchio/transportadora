@@ -151,8 +151,6 @@ export class CadastrarPedidosComponent implements OnInit {
       this.consultaCepService.getConsultaCep(cep).subscribe((resultado) => {
         console.log(resultado);
         this.populandoEndereco(resultado, form);
-        //INCLUIR IF PARA DIFERENCIAR
-        this.populandoEnderecoEntrega(resultado, form);
       });
     }
   }
@@ -165,6 +163,16 @@ export class CadastrarPedidosComponent implements OnInit {
       cidade: dados.localidade,
       estado: dados.uf,
     });
+  }
+
+  consultaCEPEntrega(ev: any, form: NgForm) {
+    const cep = ev.target.value;
+    if (cep != '') {
+      this.consultaCepService.getConsultaCep(cep).subscribe((resultado) => {
+        console.log(resultado);
+        this.populandoEnderecoEntrega(resultado, form);
+      });
+    }
   }
 
   // REVER PARA NÃO DUPLICAR O MÉTODO

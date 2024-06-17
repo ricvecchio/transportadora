@@ -130,8 +130,8 @@
               minlength="8"
               maxlength="9"
               placeholder="Ex. 04053-070"
-              name="cepEntrega"
-              [(ngModel)]="dadosPedido.cepEntrega"
+              name="cep"
+              [(ngModel)]="dadosPedido.cep"
               ngModel
               required
               #cep="ngModel"
@@ -348,7 +348,7 @@
               required
               #cep="ngModel"
               pattern="^(\d{5})(-?\d{3})$"
-              (blur)="consultaCEP($event, form)"
+              (blur)="consultaCEPEntrega($event, form)"
               validadorCep
             />
             <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
@@ -374,7 +374,8 @@
               disableRipple
               [disabled]="isAdressChecked"
               matInput
-              name="logradouro"
+              name="logradouroEntrega"
+              [(ngModel)]="dadosPedido.logradouroEntrega"
             />
           </mat-form-field>
         </div>
@@ -385,8 +386,8 @@
               disableRipple
               [disabled]="isAdressChecked"
               matInput
-              name="numero"
-              [(ngModel)]="dadosPedido.numero"
+              name="numeroEntrega"
+              [(ngModel)]="dadosPedido.numeroEntrega"
             />
           </mat-form-field>
         </div>
@@ -401,8 +402,8 @@
               [disabled]="isAdressChecked"
               matInput
               placeholder="Ex. Apto 64"
-              name="complemento"
-              [(ngModel)]="dadosPedido.complemento"
+              name="complementoEntrega"
+              [(ngModel)]="dadosPedido.complementoEntrega"
             />
           </mat-form-field>
         </div>
@@ -413,8 +414,8 @@
               disableRipple
               [disabled]="isAdressChecked"
               matInput
-              name="bairro"
-              [(ngModel)]="dadosPedido.bairro"
+              name="bairroEntrega"
+              [(ngModel)]="dadosPedido.bairroEntrega"
             />
           </mat-form-field>
         </div>
@@ -429,8 +430,8 @@
               [disabled]="isAdressChecked"
               matInput
               placeholder="Ex. Santo André"
-              name="cidade"
-              [(ngModel)]="dadosPedido.cidade"
+              name="cidadeEntrega"
+              [(ngModel)]="dadosPedido.cidadeEntrega"
             />
           </mat-form-field>
         </div>
@@ -442,8 +443,8 @@
               [disabled]="isAdressChecked"
               matInput
               placeholder="Ex. São Paulo"
-              name="estado"
-              [(ngModel)]="dadosPedido.estado"
+              name="estadoEntrega"
+              [(ngModel)]="dadosPedido.estadoEntrega"
             />
           </mat-form-field>
         </div>
