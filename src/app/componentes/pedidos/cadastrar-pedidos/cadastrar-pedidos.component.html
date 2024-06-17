@@ -270,22 +270,22 @@
 
     <div class="espaco-dentro">
       Forma de Pagamento:
-      <div class="row">
-        <div class="col-md-2">
-          <mat-card-content>
-            <section class="form-grid">
-              <mat-checkbox class="checkbox-margin" [(ngModel)]="disabled"
-                >Á Vista</mat-checkbox
-              >
-            </section>
-          </mat-card-content>
-        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <mat-card-content>
+              <section class="form-grid">
+                <mat-checkbox class="checkbox-margin" (change)="onPaymentCheckBoxChange($event)"
+                  >Á Vista</mat-checkbox
+                >
+              </section>
+            </mat-card-content>
+          </div>
         <div class="col-md-2">
           <mat-card-content>
             <section class="form-grid">
               <mat-form-field>
                 <mat-label>Faturado:</mat-label>
-                <mat-select disableRipple [disabled]="disabled">
+                <mat-select [disabled]="isPaymentChecked">
                   <mat-option value="0"> </mat-option>
                   <mat-option value="1">10 dias</mat-option>
                   <mat-option value="2">11 dias</mat-option>

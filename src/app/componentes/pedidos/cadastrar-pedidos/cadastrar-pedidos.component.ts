@@ -30,6 +30,9 @@ export class CadastrarPedidosComponent implements OnInit {
     acceptTerms: ['', Validators.requiredTrue],
   });
 
+  isAdressChecked = false;
+  isPaymentChecked = false
+
   @Input() dadosPedido = {
     id: 1,
     nome: 'Ricardo Del Vecchio (TESTANDO)',
@@ -196,5 +199,9 @@ export class CadastrarPedidosComponent implements OnInit {
 
   cancelar() {
     alert('Ação cancelada!');
+  }
+
+  onPaymentCheckBoxChange(event: any): void {
+    this.isPaymentChecked = event.checked;
   }
 }
