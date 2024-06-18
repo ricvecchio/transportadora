@@ -28,7 +28,12 @@ export interface Pedido {
     mangueira: string
     ie: string
     volume: string
-    preco: string
+    preco1: string
+    preco2: string
+    preco3: string
+    preco4: string
+    preco5: string
+    preco6: string
     ajudanteHora: string
     observacao: string
     idPedido: string

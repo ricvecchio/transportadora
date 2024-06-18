@@ -76,7 +76,7 @@
         <div class="col-md-3">
           <mat-form-field class="form-grid">
             <mat-label>Telefone:</mat-label>
-            <span matTextPrefix>+55 &nbsp;</span>
+            <span matTextPrefix>+55</span>
             <input
               matInput
               placeholder="(11) 5555-1234"
@@ -88,7 +88,7 @@
         <div class="col-md-3">
           <mat-form-field class="form-grid">
             <mat-label>Celular:</mat-label>
-            <span matTextPrefix>+55 &nbsp;</span>
+            <span matTextPrefix>+55</span>
             <input
               matInput
               name="celular"
@@ -519,37 +519,43 @@
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço cx-5m³</mat-label>
-            <input matInput name="preco1" [(ngModel)]="dadosPedido.preco" />
+            <span matTextPrefix>R$ </span>
+            <input matInput name="preco1" [(ngModel)]="dadosPedido.preco1" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço cx-10m³</mat-label>
-            <input matInput name="preco2" [(ngModel)]="dadosPedido.preco" />
+            <span matTextPrefix>R$ </span>
+            <input matInput name="preco2" [(ngModel)]="dadosPedido.preco2" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço cx-15m³</mat-label>
-            <input matInput name="preco3" [(ngModel)]="dadosPedido.preco" />
+            <span matTextPrefix>R$ </span>
+            <input matInput name="preco3" [(ngModel)]="dadosPedido.preco3" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço lav-5m³</mat-label>
-            <input matInput name="preco4" [(ngModel)]="dadosPedido.preco" />
+            <span matTextPrefix>R$ </span>
+            <input matInput name="preco4" [(ngModel)]="dadosPedido.preco4" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço lav-10m³</mat-label>
-            <input matInput name="preco5" [(ngModel)]="dadosPedido.preco" />
+            <span matTextPrefix>R$ </span>
+            <input matInput name="preco5" [(ngModel)]="dadosPedido.preco5" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço lav-15m³</mat-label>
-            <input matInput name="preco6" [(ngModel)]="dadosPedido.preco" />
+            <span matTextPrefix>R$ </span>
+            <input matInput name="preco6" [(ngModel)]="dadosPedido.preco6" />
           </mat-form-field>
         </div>
       </div>
@@ -648,7 +654,7 @@
         </div>
         <div class="col-md-4">
           <b>PREÇO: R$ </b>
-          {{ dadosPedido.preco }}
+          {{ dadosPedido.preco1 }}
         </div>
       </div>
 
