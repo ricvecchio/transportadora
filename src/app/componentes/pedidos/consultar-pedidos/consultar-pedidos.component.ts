@@ -14,6 +14,7 @@ export interface UserData {
   mangueira: string;
   valor: string;
   status: string; 
+  acao: string; 
 }
 
 const NOMES: string[] = [
@@ -93,6 +94,10 @@ const STATUS: string[] = [
   'Pedido Emitido',
 ];
 
+const ACOES: string[] = [
+  '⋮',
+];
+
 
 @Component({
   selector: 'app-consultar-pedidos',
@@ -111,7 +116,7 @@ export class ConsultarPedidosComponent implements OnInit {
   // }
   ngOnInit(): void {}
 
-  displayedColumns: string[] = ['id', 'nome', 'endereco', 'volume', 'mangueira', 'valor', 'status'];
+  displayedColumns: string[] = ['id', 'nome', 'endereco', 'volume', 'mangueira', 'valor', 'status', 'acao'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator)
@@ -157,6 +162,7 @@ function createNewUser(id: number): UserData {
     mangueira: MANGUEIRAS[Math.round(Math.random() * (MANGUEIRAS.length - 1))],
     valor: VALORES[Math.round(Math.random() * (VALORES.length - 1))],
     status: STATUS[Math.round(Math.random() * (STATUS.length - 1))],
+    acao: ACOES[Math.round(Math.random() * (STATUS.length - 1))],
   };
 }
 
