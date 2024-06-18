@@ -64,7 +64,7 @@ const VOLUMES: string[] = [
   'cx-10m³',
   'cx-15m³',
   'lav-5m³',
-  'lav-10m³h',
+  'lav-10m³',
   'lav-15m³',
 ];
 const MANGUEIRAS: string[] = [

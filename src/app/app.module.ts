@@ -1,3 +1,4 @@
+import { ConsultarPedidosComponent } from './componentes/pedidos/consultar-pedidos/consultar-pedidos.component';
 import { NgModule, importProvidersFrom } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
@@ -12,7 +13,6 @@ import { ConsultarClientesComponent } from './componentes/clientes/consultar-cli
 import { EditarClientesComponent } from './componentes/clientes/editar-clientes/editar-clientes.component';
 import { ExcluirClientesComponent } from './componentes/clientes/excluir-clientes/excluir-clientes.component';
 import { CadastrarPedidosComponent } from './componentes/pedidos/cadastrar-pedidos/cadastrar-pedidos.component';
-import { ConsultarPedidosComponent } from './componentes/pedidos/consultar-pedidos/consultar-pedidos.component';
 import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-pedido.component';
 import { ValidandoCepDirective } from './directives/validando-cep.directive';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +40,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,8 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   providers: [
     provideAnimations(),

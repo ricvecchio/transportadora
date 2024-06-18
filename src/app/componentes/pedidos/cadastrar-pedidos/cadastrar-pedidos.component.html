@@ -320,7 +320,8 @@
       <br />
 
       <tr>
-        <mat-slide-toggle color="blue"
+        <mat-slide-toggle
+          color="blue"
           formControlName="deliveryAddress"
           (change)="onToggleChange($event)"
         >
@@ -502,9 +503,13 @@
         <div class="col-md-12">
           <mat-radio-group
             aria-labelledby="example-radio-group-label"
-            [(ngModel)]="listaVolume" name="volume">          
+            [(ngModel)]="listaVolume"
+            name="volume"
+          >
             @for (volume of volumes; track volume) {
-              <mat-radio-button [value]="volume.value">{{ volume.viewValue }}</mat-radio-button>
+              <mat-radio-button [value]="volume.value">{{
+                volume.viewValue
+              }}</mat-radio-button>
             }
           </mat-radio-group>
         </div>
@@ -599,8 +604,7 @@
 
       <div class="row">
         <div class="col-md-9">
-          <b>PEDIDO: </b>
-          <!-- {{ dadosPedido.idPedido }} -->
+          <h4>PEDIDO: {{ dadosPedido.idPedido }}</h4>
         </div>
         <div class="col-md-3">
           <b>DATA: </b>
@@ -617,15 +621,19 @@
       <div class="campos_previa">
         <p class="fantasia">
           <b>CLIENTE: </b>
-          {{ dadosPedido.fantasia }} - CNPJ: {{ dadosPedido.cnpj }}
+          {{ dadosPedido.fantasia }}
+          <small> - CNPJ: {{ dadosPedido.cnpj }}</small>
         </p>
       </div>
 
       <div class="campos_previa">
         <p class="endereco">
           <b>ENDEREÇO: </b>
-          {{ dadosPedido.logradouro }}, {{ dadosPedido.numero }} - {{ dadosPedido.complemento }} -
-          {{ dadosPedido.bairro }} - {{ dadosPedido.cidade }}/{{ dadosPedido.estado }} - CEP: {{ dadosPedido.cep }}
+          {{ dadosPedido.logradouro }}, {{ dadosPedido.numero }} -
+          {{ dadosPedido.complemento }} - {{ dadosPedido.bairro }}/{{
+            dadosPedido.estado
+          }}
+          - CEP: {{ dadosPedido.cep }}
         </p>
       </div>
 

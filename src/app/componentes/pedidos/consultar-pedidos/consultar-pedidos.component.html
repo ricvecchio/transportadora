@@ -84,3 +84,22 @@
       ></mat-paginator>
     </div>
   </section>
+
+
+  
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>teste</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <span>Imprimir</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>
+      <span>Editar</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>
+      <span>Excluir</span>
+    </button>
+  </mat-menu>

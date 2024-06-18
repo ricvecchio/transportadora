@@ -70,6 +70,7 @@ export class CadastrarPedidosComponent implements OnInit {
     preco: '',
     ajudanteHora: '',
     observacao: '',
+    idPedido: 1,
     modelo: 'modelo1',
   };
 

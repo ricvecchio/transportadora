@@ -31,5 +31,6 @@ export interface Pedido {
     preco: string
     ajudanteHora: string
     observacao: string
+    idPedido: string
     modelo: string
   }
