@@ -617,14 +617,15 @@
       <div class="campos_previa">
         <p class="fantasia">
           <b>CLIENTE: </b>
-          {{ dadosPedido.fantasia }}
+          {{ dadosPedido.fantasia }} - CNPJ: {{ dadosPedido.cnpj }}
         </p>
       </div>
 
       <div class="campos_previa">
         <p class="endereco">
           <b>ENDEREÇO: </b>
-          <!-- {{ dadosPedido.endereco }} -->
+          {{ dadosPedido.logradouro }}, {{ dadosPedido.numero }} - {{ dadosPedido.complemento }} -
+          {{ dadosPedido.bairro }} - {{ dadosPedido.cidade }}/{{ dadosPedido.estado }} - CEP: {{ dadosPedido.cep }}
         </p>
       </div>
 
