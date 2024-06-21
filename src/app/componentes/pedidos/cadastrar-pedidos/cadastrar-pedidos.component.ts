@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { ConsultaCepService } from '../../../service/consulta-cep.service';
 import { Observable, map, of, startWith } from 'rxjs';
+import { PedidoService } from '../pedido.service';
 
 interface Metros {
   value: string;
@@ -34,12 +35,14 @@ export class CadastrarPedidosComponent implements OnInit {
     acceptTerms: ['', Validators.requiredTrue],
   });
 
+  formulario!: FormGroup;
+
   isAdressChecked = false;
   isPaymentChecked = false
 
   @Input() dadosPedido = {
     id: 1,
-    nome: 'Ricardo Del Vecchio (TESTANDO)',
+    nome: '',
     cpf: '',
     telefone: '',
     celular: '',
@@ -51,9 +54,9 @@ export class CadastrarPedidosComponent implements OnInit {
     bairro: '',
     cidade: '',
     estado: '',
-    fantasia: 'Condomínio Residencial Turquesa',
-    razaoSocial: 'Condomínio Turquesa',
-    cnpj: '43.254.354/0001-75',
+    fantasia: '',
+    razaoSocial: '',
+    cnpj: '',
     tipoPgto: '',
     cepEntrega: '',
     logradouroEntrega: '',
@@ -79,7 +82,6 @@ export class CadastrarPedidosComponent implements OnInit {
     modelo: 'modelo1',
   };
 
-  // formulario!: FormGroup;
 
   myControl = new FormControl<string | User>('');
 
@@ -101,8 +103,8 @@ export class CadastrarPedidosComponent implements OnInit {
   constructor(
     private router: Router,
     private consultaCepService: ConsultaCepService,
-    // private formBuilder: FormBuilder,
     private _formBuilder: FormBuilder,
+    private service: PedidoService,
   ) {}
 
   alertFormValues(formGroup: FormGroup) {
@@ -197,6 +199,22 @@ export class CadastrarPedidosComponent implements OnInit {
     Validators.email,
   ]);
 
+  nomeFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  nomeFantasiaFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  razaoSocialFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  mangueiraFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
   dataAtual: Date = new Date();
 
   checked = false;
@@ -211,6 +229,11 @@ export class CadastrarPedidosComponent implements OnInit {
     } else {
       console.log('Formulário inválido');
       alert('Formulário inválido!');
+    }
+    if(form.valid){
+      this.service.criar(this.formulario.value).subscribe(() => {
+        this.router.navigate(['/consultar-pedidos'])
+      })
     }
   }
 

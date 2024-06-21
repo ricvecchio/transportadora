@@ -10,6 +10,13 @@
     (ngSubmit)="cadastrar(form)"
     f
   >
+    <!-- <form
+    class="full-width"
+    [formGroup]="formulario"
+    id="formulario"
+    #form="ngForm"
+    (ngSubmit)="cadastrar(form)"
+  > -->
     <div class="row">
       <div class="col-md-9">
         <mat-form-field class="form-grid" appearance="fill">
@@ -53,12 +60,17 @@
             <mat-label>Nome:</mat-label>
             <input
               matInput
+              [formControl]="nomeFormControl"
               name="nome"
               placeholder="Digite o nome do cliente"
               [(ngModel)]="dadosPedido.nome"
             />
+            @if (nomeFormControl.hasError("required")) {
+              <mat-error>Nome é obrigatório</mat-error>
+            }
           </mat-form-field>
         </div>
+
         <div class="col-md-3">
           <mat-form-field class="form-grid">
             <mat-label>CPF:</mat-label>
@@ -230,10 +242,14 @@
             <mat-label>Nome Fantasia:</mat-label>
             <input
               matInput
+              [formControl]="nomeFantasiaFormControl"
               name="fantasia"
               placeholder="Digite o nome fantasia"
               [(ngModel)]="dadosPedido.fantasia"
             />
+            @if (nomeFantasiaFormControl.hasError("required")) {
+              <mat-error>Nome Fantasia é obrigatório</mat-error>
+            }
           </mat-form-field>
         </div>
       </div>
@@ -244,10 +260,14 @@
             <mat-label>Razão Social:</mat-label>
             <input
               matInput
+              [formControl]="razaoSocialFormControl"
               name="razaoSocial"
               placeholder="Digite a Razão Social"
               [(ngModel)]="dadosPedido.razaoSocial"
             />
+            @if (razaoSocialFormControl.hasError("required")) {
+              <mat-error>Razão Social é obrigatório</mat-error>
+            }
           </mat-form-field>
         </div>
         <div class="col-md-3">
