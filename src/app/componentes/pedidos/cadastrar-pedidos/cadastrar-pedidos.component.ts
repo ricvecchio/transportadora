@@ -1,14 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  NgForm,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { map, Observable, of, startWith } from 'rxjs';
+
 import { ConsultaCepService } from '../../../service/consulta-cep.service';
-import { Observable, map, of, startWith } from 'rxjs';
 import { PedidoService } from '../pedido.service';
 
 interface Metros {

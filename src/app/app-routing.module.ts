@@ -1,16 +1,17 @@
-import { EditarClientesComponent } from './componentes/clientes/editar-clientes/editar-clientes.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { CadastrarClientesComponent } from './componentes/clientes/cadastrar-clientes/cadastrar-clientes.component';
 import { ConsultarClientesComponent } from './componentes/clientes/consultar-clientes/consultar-clientes.component';
-import { NgModule, Component } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { EditarClientesComponent } from './componentes/clientes/editar-clientes/editar-clientes.component';
+import { ExcluirClientesComponent } from './componentes/clientes/excluir-clientes/excluir-clientes.component';
 import { MenuComponent } from './componentes/menu/menu.component';
+import { CadastrarPedidosComponent } from './componentes/pedidos/cadastrar-pedidos/cadastrar-pedidos.component';
+import { ConsultarPedidosComponent } from './componentes/pedidos/consultar-pedidos/consultar-pedidos.component';
+import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-pedido.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
-import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-pedido.component';
-import { CadastrarClientesComponent } from './componentes/clientes/cadastrar-clientes/cadastrar-clientes.component';
-import { ExcluirClientesComponent } from './componentes/clientes/excluir-clientes/excluir-clientes.component';
-import { ConsultarPedidosComponent } from './componentes/pedidos/consultar-pedidos/consultar-pedidos.component';
-import { CadastrarPedidosComponent } from './componentes/pedidos/cadastrar-pedidos/cadastrar-pedidos.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,7 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent
-  },  
+  },
   {
     path: 'cadastrar-clientes',
     component: CadastrarClientesComponent

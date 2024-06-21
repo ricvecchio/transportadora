@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Pedido } from '../pedido';
-import { PedidoService } from '../pedido.service';
-import { AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,8 +10,8 @@ export interface UserData {
   volume: string;
   mangueira: string;
   valor: string;
-  status: string; 
-  acao: string; 
+  status: string;
+  acao: string;
 }
 
 const NOMES: string[] = [
