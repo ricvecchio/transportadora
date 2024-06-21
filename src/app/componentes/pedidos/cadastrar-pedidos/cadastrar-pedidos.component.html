@@ -10,13 +10,6 @@
     (ngSubmit)="cadastrar(form)"
     f
   >
-    <!-- <form
-    class="full-width"
-    [formGroup]="formulario"
-    id="formulario"
-    #form="ngForm"
-    (ngSubmit)="cadastrar(form)"
-  > -->
     <div class="row">
       <div class="col-md-9">
         <mat-form-field class="form-grid" appearance="fill">
@@ -26,7 +19,9 @@
             matInput
             [formControl]="myControl"
             [matAutocomplete]="auto"
+            autofocus
           />
+          
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             @for (option of filteredOptions | async; track option) {
               <mat-option [value]="option">{{ option.name }}</mat-option>
