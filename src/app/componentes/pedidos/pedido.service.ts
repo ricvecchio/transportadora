@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { Pedido } from './pedido';
 
 @Injectable({
@@ -10,29 +11,29 @@ export class PedidoService {
 
   private readonly API = 'http://localhost:2500/pedidos'
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   listar(): Observable<Pedido[]> {
-    return this.http.get<Pedido[]>(this.API)
+    return this.httpClient.get<Pedido[]>(this.API)
   }
 
   criar(pedido: Pedido): Observable<Pedido> {
-    return this.http.post<Pedido>(this.API, pedido)
+    return this.httpClient.post<Pedido>(this.API, pedido)
   }
 
   editar(pedido: Pedido): Observable<Pedido> {
     const url = `${this.API}/${pedido.id}`
-    return this.http.put<Pedido>(url, pedido)
+    return this.httpClient.put<Pedido>(url, pedido)
   }
 
   excluir(id: number): Observable<Pedido> {
     const url = `${this.API}/${id}`
-    return this.http.delete<Pedido>(url)
+    return this.httpClient.delete<Pedido>(url)
   }
 
   buscarPorId(id: number): Observable<Pedido> {
     const url = `${this.API}/${id}`
-    return this.http.get<Pedido>(url)
+    return this.httpClient.get<Pedido>(url)
   }
 
 }
