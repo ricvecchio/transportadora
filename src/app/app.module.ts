@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { _MatSlideToggleRequiredValidatorModule, MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -88,6 +89,7 @@ import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component
     MatPaginatorModule,
     MatMenuModule,
     MatIconModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     provideAnimations(),
