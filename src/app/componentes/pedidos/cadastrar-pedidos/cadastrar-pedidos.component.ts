@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, NgForm, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { map, Observable, of, startWith } from 'rxjs';
 
@@ -26,17 +28,83 @@ export interface User {
   styleUrl: './cadastrar-pedidos.component.css',
 })
 export class CadastrarPedidosComponent implements OnInit {
-  formGroup = this._formBuilder.group({
-    acceptTerms: ['', Validators.requiredTrue],
-  });
+  [x: string]: any;
 
-  formulario!: FormGroup;
+  formulario = this.formBuilder.group({
+      nome: [''],
+      cpf: [''],
+      telefone: [''],
+      celular: [''],
+      email: [''],
+      cep: [''],
+      logradouro: [''],
+      numero: [''],
+      complemento: [''],
+      referencia: [''],
+      bairro: [''],
+      cidade: [''],
+      estado: [''],
+      fantasia: [''],
+      razaoSocial: [''],
+      cnpj: [''],
+      tipoPgto: [''],
+      cepEntrega: [''],
+      logradouroEntrega: [''],
+      numeroEntrega: [''],
+      complementoEntrega: [''],
+      bairroEntrega: [''],
+      cidadeEntrega: [''],
+      estadoEntrega: [''],
+      sfobras: [''],
+      cno: [''],
+      mangueira: [''],
+      ie: [''],
+      volume: [''],
+      preco1: [''],
+      preco2: [''],
+      preco3: [''],
+      preco4: [''],
+      preco5: [''],
+      preco6: [''],
+      ajudanteHora: [''],
+      observacao: [''],
+      idPedido: [''],
+      modelo: ['']
+    });
+
+  constructor(
+    private router: Router,
+    private consultaCepService: ConsultaCepService,
+    private formBuilder: NonNullableFormBuilder,
+    private service: PedidoService,
+    private snackBar: MatSnackBar,
+    private location: Location) {
+  }
+
+  ngOnInit(): void {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map((value) => {
+        const name = typeof value === 'string' ? value : value?.name;
+        return name ? this._filter(name as string) : this.options.slice();
+      }),
+    );
+  }
 
   isAdressChecked = false;
-  isPaymentChecked = false
+  isPaymentChecked = false;
 
-  @Input() dadosPedido = {
-    id: 1,
+
+  // formGroup = this.formBuilder.group({
+  //   acceptTerms: ['', Validators.requiredTrue],
+  // });
+
+
+  nome = new FormControl('', [Validators.required]);
+
+dadosPedido: any = {
+//  dadosPedido = {
+    id: '2',
     nome: '',
     cpf: '',
     telefone: '',
@@ -74,9 +142,51 @@ export class CadastrarPedidosComponent implements OnInit {
     ajudanteHora: '',
     observacao: '',
     idPedido: 1,
-    modelo: 'modelo1',
+    modelo: 'modelo1'
   };
 
+  formGroup = this.formBuilder.group({
+    idCliente: [{ value: this.dadosPedido.id, disabled: true }],
+    buscarCliente: ['', Validators.required],
+    nome: ['', Validators.required],
+    cpf: ['', Validators.required],
+    telefone: ['', Validators.required],
+    celular: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
+    logradouro: ['', Validators.required],
+    numero: ['', Validators.required],
+    complemento: [''],
+    bairro: ['', Validators.required],
+    cidade: ['', Validators.required],
+    estado: ['', Validators.required],
+    fantasia: [''],
+    razaoSocial: [''],
+    cnpj: [''],
+    tipoPgto: [''],
+    cepEntrega: [''],
+    logradouroEntrega: [''],
+    numeroEntrega: [''],
+    complementoEntrega: [''],
+    bairroEntrega: [''],
+    cidadeEntrega: [''],
+    estadoEntrega: [''],
+    sfobras: [''],
+    cno: [''],
+    mangueira: [''],
+    ie: [''],
+    volume: [''],
+    preco1: [''],
+    preco2: [''],
+    preco3: [''],
+    preco4: [''],
+    preco5: [''],
+    preco6: [''],
+    ajudanteHora: [''],
+    observacao: [''],
+    idPedido:  [''],
+    modelo:  ['']
+  });
 
   myControl = new FormControl<string | User>('');
 
@@ -95,25 +205,8 @@ export class CadastrarPedidosComponent implements OnInit {
   filteredOptions: Observable<User[]> = of([]);
   list: any;
 
-  constructor(
-    private router: Router,
-    private consultaCepService: ConsultaCepService,
-    private _formBuilder: FormBuilder,
-    private service: PedidoService,
-  ) {}
-
   alertFormValues(formGroup: FormGroup) {
     alert(JSON.stringify(formGroup.value, null, 2));
-  }
-
-  ngOnInit(): void {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => {
-        const name = typeof value === 'string' ? value : value?.name;
-        return name ? this._filter(name as string) : this.options.slice();
-      }),
-    );
   }
 
   displayFn(user: User): string {
@@ -189,48 +282,16 @@ export class CadastrarPedidosComponent implements OnInit {
     });
   }
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-
-  nomeFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
-  nomeFantasiaFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
-  razaoSocialFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
-  mangueiraFormControl = new FormControl('', [
-    Validators.required,
-  ]);
+  emailFormControl = new FormControl('', [Validators.required,Validators.email,]);
+  nomeFormControl = new FormControl('', [Validators.required]);
+  nomeFantasiaFormControl = new FormControl('', [Validators.required]);
+  razaoSocialFormControl = new FormControl('', [Validators.required]);
+  mangueiraFormControl = new FormControl('', [Validators.required]);
 
   dataAtual: Date = new Date();
 
   checked = false;
   disabled = false;
-
-  cadastrar(form: any) {
-    console.log(form);
-    if (form.valid) {
-      this.router.navigate(['sucesso']);
-      console.log('Formulário enviado');
-      alert('Formulário enviado');
-    } else {
-      console.log('Formulário inválido');
-      alert('Formulário inválido!');
-    }
-    if(form.valid){
-      this.service.criar(this.formulario.value).subscribe(() => {
-        this.router.navigate(['/consultar-pedidos'])
-      })
-    }
-  }
 
   cancelar() {
     alert('Ação cancelada!');
@@ -242,5 +303,32 @@ export class CadastrarPedidosComponent implements OnInit {
 
   onToggleChange(event: any): void {
     this.isAdressChecked = event.checked;
+  }
+
+  onCancel() {
+    this.location.back();
+  }
+
+  onSubmit() {
+    this.service.salvar(this.formulario.value)
+    .subscribe(result => this.onSucess(), error => this.onError());
+  }
+
+  // onSubmit() {
+  //   if (this.formulario.valid) {
+  //     this.service.salvar(this.formulario.value)
+  //       .subscribe(result => this.onSucess(), error => this.onError());
+  //   } else {
+  //     this.formUtils.validateAllFormFields(this.formulario);
+  //   }
+  // }
+
+  private onSucess() {
+    this.snackBar.open('Pedido Salvo com sucesso!', '', { duration: 5000 });
+    this.onCancel();
+  }
+
+  private onError() {
+    this.snackBar.open('Erro ao salvar o pedido!', '', { duration: 5000 });
   }
 }

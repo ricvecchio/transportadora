@@ -1,30 +1,53 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, delay, first, tap } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 import { Pedido } from './pedido';
+import { PedidoPage } from './model/pedido-page';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PedidoService {
 
-  private readonly API = 'http://localhost:2500/pedidos'
+  private readonly API = 'api/pedidos'
+  // private readonly API = 'http://localhost:2000/pedidos'
+  // private readonly API = '/backend/db.json';
 
   constructor(private httpClient: HttpClient) { }
 
-  listar(): Observable<Pedido[]> {
+  listar(page = 0, pageSize = 10) {
     return this.httpClient.get<Pedido[]>(this.API)
+      .pipe(
+        first(),
+        // delay(5000),
+        tap(pedidos => console.log(pedidos))
+      );
   }
 
-  criar(pedido: Pedido): Observable<Pedido> {
-    return this.httpClient.post<Pedido>(this.API, pedido)
+  salvar(pedido: Partial<Pedido>){
+    return this.httpClient.post<Pedido>(this.API, pedido);
   }
 
-  editar(pedido: Pedido): Observable<Pedido> {
-    const url = `${this.API}/${pedido.id}`
-    return this.httpClient.put<Pedido>(url, pedido)
-  }
+  // salvar(pedido: Partial<Pedido>): Observable<Pedido> {
+  //   return this.httpClient.post<Pedido>(this.API, pedido);
+  // }
+
+  // salvar(pedido: Partial<Pedido>) {
+  //   return this.create(pedido);
+  // }
+
+  // private create(pedido: Partial<Pedido>) {
+  //   return this.httpClient.post<Pedido>(this.API, pedido);
+  // }
+
+
+
+  // editar(pedido: Pedido): Observable<Pedido> {
+  //   const url = `${this.API}/${pedido.id}`
+  //   return this.httpClient.put<Pedido>(url, pedido)
+  // }
 
   excluir(id: number): Observable<Pedido> {
     const url = `${this.API}/${id}`

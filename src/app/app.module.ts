@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -23,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { _MatSlideToggleRequiredValidatorModule, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -43,6 +45,7 @@ import { ValidandoCepDirective } from './directives/validando-cep.directive';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -90,6 +93,9 @@ import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component
     MatMenuModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatDialogModule,
+    MatSnackBarModule,
   ],
   providers: [
     provideAnimations(),
