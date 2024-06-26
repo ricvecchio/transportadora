@@ -39,7 +39,6 @@ export class CadastrarPedidosComponent implements OnInit {
       logradouro: [''],
       numero: [''],
       complemento: [''],
-      referencia: [''],
       bairro: [''],
       cidade: [''],
       estado: [''],
@@ -59,6 +58,7 @@ export class CadastrarPedidosComponent implements OnInit {
       mangueira: [''],
       ie: [''],
       volume: [''],
+      valor: [''],
       preco1: [''],
       preco2: [''],
       preco3: [''],
@@ -67,7 +67,8 @@ export class CadastrarPedidosComponent implements OnInit {
       preco6: [''],
       ajudanteHora: [''],
       observacao: [''],
-      idPedido: ['']
+      idPedido: [''],
+      status: ['Em Aberto']
     });
 
   constructor(
