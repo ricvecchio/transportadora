@@ -28,7 +28,6 @@ export interface User {
   styleUrl: './cadastrar-pedidos.component.css',
 })
 export class CadastrarPedidosComponent implements OnInit {
-  [x: string]: any;
 
   formulario = this.formBuilder.group({
       nome: [''],
@@ -68,8 +67,7 @@ export class CadastrarPedidosComponent implements OnInit {
       preco6: [''],
       ajudanteHora: [''],
       observacao: [''],
-      idPedido: [''],
-      modelo: ['']
+      idPedido: ['']
     });
 
   constructor(
@@ -89,21 +87,21 @@ export class CadastrarPedidosComponent implements OnInit {
         return name ? this._filter(name as string) : this.options.slice();
       }),
     );
+    // this.isAdressChecked = this.formGroup.get('deliveryAddress')?.value || false;
+    // this.formGroup.get('deliveryAddress')?.valueChanges.subscribe(value => {
+    //   this.isAdressChecked = value || false;
+    // });
+
+    // this.isPaymentChecked = this.formGroup.get('cashPayment')?.value || false;
+    // this.formGroup.get('cashPayment')?.valueChanges.subscribe(value => {
+    //   this.isPaymentChecked = value || false;
+    // });
   }
 
   isAdressChecked = false;
   isPaymentChecked = false;
 
-
-  // formGroup = this.formBuilder.group({
-  //   acceptTerms: ['', Validators.requiredTrue],
-  // });
-
-
-  nome = new FormControl('', [Validators.required]);
-
 dadosPedido: any = {
-//  dadosPedido = {
     id: '2',
     nome: '',
     cpf: '',
@@ -164,6 +162,8 @@ dadosPedido: any = {
     razaoSocial: [''],
     cnpj: [''],
     tipoPgto: [''],
+    cashPayment: [false, Validators.requiredTrue],
+    deliveryAddress: [false, Validators.requiredTrue],
     cepEntrega: [''],
     logradouroEntrega: [''],
     numeroEntrega: [''],
@@ -184,8 +184,7 @@ dadosPedido: any = {
     preco6: [''],
     ajudanteHora: [''],
     observacao: [''],
-    idPedido:  [''],
-    modelo:  ['']
+    idPedido:  ['']
   });
 
   myControl = new FormControl<string | User>('');
@@ -282,12 +281,6 @@ dadosPedido: any = {
     });
   }
 
-  emailFormControl = new FormControl('', [Validators.required,Validators.email,]);
-  nomeFormControl = new FormControl('', [Validators.required]);
-  nomeFantasiaFormControl = new FormControl('', [Validators.required]);
-  razaoSocialFormControl = new FormControl('', [Validators.required]);
-  mangueiraFormControl = new FormControl('', [Validators.required]);
-
   dataAtual: Date = new Date();
 
   checked = false;
@@ -303,10 +296,6 @@ dadosPedido: any = {
 
   onToggleChange(event: any): void {
     this.isAdressChecked = event.checked;
-  }
-
-  onCancel() {
-    this.location.back();
   }
 
   onSubmit() {
@@ -326,6 +315,10 @@ dadosPedido: any = {
   private onSucess() {
     this.snackBar.open('Pedido Salvo com sucesso!', '', { duration: 5000 });
     this.onCancel();
+  }
+
+  onCancel() {
+    this.location.back();
   }
 
   private onError() {
