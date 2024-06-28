@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 
 import { ErrorDialogComponent } from '../../../directives/error-dialog/error-dialog.component';
 import { Pedido } from '../pedido';
 import { PedidoService } from '../pedido.service';
+import { CadastrarPedidosComponent } from '../cadastrar-pedidos/cadastrar-pedidos.component';
 
 export interface UserData {
   id: string;
@@ -21,9 +22,11 @@ export interface UserData {
 @Component({
   selector: 'app-consultar-pedidos',
   templateUrl: './consultar-pedidos.component.html',
-  styleUrl: './consultar-pedidos.component.css'
+  styleUrl: './consultar-pedidos.component.css',
 })
 export class ConsultarPedidosComponent implements OnInit {
+
+  // @Output() add = new EventEmitter(false);
 
   pedidos$: Observable<Pedido[]>;
   readonly displayedColumns: string[] = [
@@ -34,15 +37,14 @@ export class ConsultarPedidosComponent implements OnInit {
     'mangueira',
     'valor',
     'status',
-    'acao'
+    'acao',
   ];
-
 
   constructor(
     private pedidosService: PedidoService,
     public dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {
     this.pedidos$ = this.pedidosService.listar().pipe(
       catchError((error) => {
@@ -50,7 +52,6 @@ export class ConsultarPedidosComponent implements OnInit {
         return of([]);
       }),
     );
-
   }
 
   onError(errorMsg: string) {
@@ -62,8 +63,7 @@ export class ConsultarPedidosComponent implements OnInit {
   ngOnInit(): void {}
 
   onAdd() {
-    this.router.navigate(['new'], {relativeTo: this.route});
-
-    }
-
+    // this.add.emit(true);
+    this.router.navigate(['/cadastrar-pedidos'], { relativeTo: this.route });
+  }
 }
