@@ -1,17 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { Observable, catchError, of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, Observable, of } from 'rxjs';
+
+import { ErrorDialogComponent } from '../../../directives/error-dialog/error-dialog.component';
 import { Pedido } from '../pedido';
 import { PedidoService } from '../pedido.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ErrorDialogComponent } from '../../../directives/error-dialog/error-dialog.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AsyncPipe } from '@angular/common';
-import { ActivatedRoute, Route, Router } from '@angular/router';
 
 export interface UserData {
   id: string;
@@ -32,7 +26,7 @@ export interface UserData {
 export class ConsultarPedidosComponent implements OnInit {
 
   pedidos$: Observable<Pedido[]>;
-  displayedColumns: string[] = [
+  readonly displayedColumns: string[] = [
     'id',
     'nome',
     'endereco',
