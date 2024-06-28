@@ -97,10 +97,11 @@
             mat-icon-button
             color="primary"
             aria-label="Editando um Pedido"
+            (click)="onEdit(pedido)"
           >
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="warn" aria-label="Deletando um Pedido">
+          <button mat-icon-button color="warn" aria-label="Deletando um Pedido" (click)="onDelete(pedido)">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-cell>

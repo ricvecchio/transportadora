@@ -30,33 +30,19 @@ export class PedidoService {
     return this.httpClient.post<Pedido>(this.API, pedido);
   }
 
-  // salvar(pedido: Partial<Pedido>): Observable<Pedido> {
-  //   return this.httpClient.post<Pedido>(this.API, pedido);
-  // }
-
-  // salvar(pedido: Partial<Pedido>) {
-  //   return this.create(pedido);
-  // }
-
-  // private create(pedido: Partial<Pedido>) {
-  //   return this.httpClient.post<Pedido>(this.API, pedido);
-  // }
-
-
-
-  // editar(pedido: Pedido): Observable<Pedido> {
-  //   const url = `${this.API}/${pedido.id}`
-  //   return this.httpClient.put<Pedido>(url, pedido)
-  // }
-
-  excluir(id: number): Observable<Pedido> {
-    const url = `${this.API}/${id}`
-    return this.httpClient.delete<Pedido>(url)
-  }
-
-  buscarPorId(id: number): Observable<Pedido> {
+  buscarPorId(id: string): Observable<Pedido> {
     const url = `${this.API}/${id}`
     return this.httpClient.get<Pedido>(url)
+  }
+
+  editar(pedido: Pedido): Observable<Pedido> {
+    const url = `${this.API}/${pedido.id}`
+    return this.httpClient.put<Pedido>(url, pedido)
+  }
+
+  excluir(id: string) {
+    const url = `${this.API}/${id}`
+    return this.httpClient.delete<Pedido>(url)
   }
 
 }

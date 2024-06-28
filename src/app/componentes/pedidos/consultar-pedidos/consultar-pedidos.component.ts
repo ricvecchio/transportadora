@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -25,10 +26,12 @@ export interface UserData {
   styleUrl: './consultar-pedidos.component.css',
 })
 export class ConsultarPedidosComponent implements OnInit {
-
+  // @Input() courses: Course[] = [];
   // @Output() add = new EventEmitter(false);
+  // @Output() edit = new EventEmitter(false);
+  // @Output() remove = new EventEmitter(false);
 
-  pedidos$: Observable<Pedido[]>;
+  pedidos$: Observable<Pedido[]> | null = null;
   readonly displayedColumns: string[] = [
     'id',
     'nome',
@@ -45,13 +48,9 @@ export class ConsultarPedidosComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
   ) {
-    this.pedidos$ = this.pedidosService.listar().pipe(
-      catchError((error) => {
-        this.onError('Erro ao carregar os pedidos.');
-        return of([]);
-      }),
-    );
+    this.refresh();
   }
 
   onError(errorMsg: string) {
@@ -63,7 +62,34 @@ export class ConsultarPedidosComponent implements OnInit {
   ngOnInit(): void {}
 
   onAdd() {
-    // this.add.emit(true);
     this.router.navigate(['/cadastrar-pedidos'], { relativeTo: this.route });
+  }
+
+  onEdit(pedido: Pedido) {
+    this.router.navigate(['/pedidos/editar-pedidos/:id', pedido.id], {
+      relativeTo: this.route,
+    });
+  }
+
+  onDelete(pedido: Pedido) {
+    this.pedidosService.excluir(pedido.id).subscribe(() => {
+      this.refresh();
+      this.snackBar.open('Pedido removido com sucesso!', 'X', {
+        duration: 5000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center',
+      });
+    },
+    () => this.onError('Erro ao tentar remover curso.')
+  );
+  }
+
+  refresh(){
+    this.pedidos$ = this.pedidosService.listar().pipe(
+      catchError((error) => {
+        this.onError('Erro ao carregar os pedidos.');
+        return of([]);
+      }),
+    );
   }
 }

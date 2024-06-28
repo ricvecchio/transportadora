@@ -12,6 +12,7 @@ import { EmitePedidoComponent } from './componentes/pedidos/emite-pedido/emite-p
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
+import { EditarPedidosComponent } from './componentes/pedidos/editar-pedidos/editar-pedidos.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,10 @@ const routes: Routes = [
   {
     path: 'consultar-pedidos',
     component: ConsultarPedidosComponent
+  },
+  {
+    path: 'editar-pedidos/:id',
+    component: EditarPedidosComponent
   },
   {
     path: 'pedidos/emite-pedido',
