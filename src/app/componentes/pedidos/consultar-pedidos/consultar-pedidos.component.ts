@@ -8,6 +8,7 @@ import { ErrorDialogComponent } from '../../../directives/error-dialog/error-dia
 import { Pedido } from '../pedido';
 import { PedidoService } from '../pedido.service';
 import { CadastrarPedidosComponent } from '../cadastrar-pedidos/cadastrar-pedidos.component';
+import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
 
 export interface UserData {
   id: string;
@@ -72,19 +73,28 @@ export class ConsultarPedidosComponent implements OnInit {
   }
 
   onDelete(pedido: Pedido) {
-    this.pedidosService.excluir(pedido.id).subscribe(() => {
-      this.refresh();
-      this.snackBar.open('Pedido removido com sucesso!', 'X', {
-        duration: 5000,
-        verticalPosition: 'top',
-        horizontalPosition: 'center',
-      });
-    },
-    () => this.onError('Erro ao tentar remover curso.')
-  );
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: 'Tem certeza que deseja remover esse pedido?',
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.pedidosService.excluir(pedido.id).subscribe(
+          () => {
+            this.refresh();
+            this.snackBar.open('Pedido removido com sucesso!', 'X', {
+              duration: 5000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+            });
+          },
+          () => this.onError('Erro ao tentar remover o pedido.'),
+        );
+      }
+    });
   }
 
-  refresh(){
+  refresh() {
     this.pedidos$ = this.pedidosService.listar().pipe(
       catchError((error) => {
         this.onError('Erro ao carregar os pedidos.');
