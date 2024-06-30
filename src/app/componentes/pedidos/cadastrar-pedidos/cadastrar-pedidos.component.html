@@ -26,12 +26,12 @@
         <mat-form-field class="form-grid" appearance="outline">
           <mat-label>Código Cliente</mat-label>
           <input
-          matInput
-          [disabled]="true"
-          value="1"
-          name="idPedido"
-          formControlName="idPedido"
-        />
+            matInput
+            [disabled]="true"
+            value="1"
+            name="idPedido"
+            formControlName="idPedido"
+          />
         </mat-form-field>
       </div>
     </div>
@@ -51,6 +51,16 @@
               placeholder="Digite o Nome"
               formControlName="nome"
             />
+            <div
+              *ngIf="
+                formulario.get('nome')?.invalid &&
+                formulario.get('nome')?.touched
+              "
+            >
+              <span *ngIf="formulario.get('nome')?.errors?.['required']"
+                >Nome é obrigatório.</span
+              >
+            </div>
           </mat-form-field>
         </div>
 
@@ -101,6 +111,11 @@
               placeholder="Ex. pat@example.com"
               formControlName="email"
             />
+            <div *ngIf="(formulario?.invalid && formulario?.touched) || formulario?.dirty">
+              <mat-error *ngIf="formulario.hasError('email') && !formulario.hasError('required')">
+                E-mail é obrigatório.
+              </mat-error>
+            </div>
           </mat-form-field>
         </div>
       </div>
@@ -116,9 +131,10 @@
               formControlName="cep"
               (blur)="consultaCEP()"
             />
-            <div *ngIf="formulario.get('cep')?.invalid && formulario.get('cep')?.touched">
-              <span *ngIf="formulario.get('cep')?.errors?.['required']">CEP é obrigatório.</span>
-              <span *ngIf="formulario.get('cep')?.errors?.['validadorCep']">CEP inválido.</span>
+            <div *ngIf="(formulario?.invalid && formulario?.touched) || formulario?.dirty">
+              <mat-error *ngIf="formulario.hasError('cep') && !formulario.hasError('required')">
+                O campo de CEP é obrigatório
+              </mat-error>
             </div>
           </mat-form-field>
         </div>

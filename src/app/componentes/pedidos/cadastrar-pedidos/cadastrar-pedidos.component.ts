@@ -33,7 +33,7 @@ export class CadastrarPedidosComponent implements OnInit {
     cpf: ['', Validators.required],
     telefone: [''],
     celular: [''],
-    email: [''],
+    email: ['', [Validators.required, Validators.email]],
     cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
     logradouro: [''],
     numero: [''],
