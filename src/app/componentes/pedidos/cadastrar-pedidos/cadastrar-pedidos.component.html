@@ -95,52 +95,23 @@
               placeholder="Ex. pat@example.com"
               formControlName="email"
             />
-            <!-- @if (
-              emailFormControl.hasError("email") &&
-              !emailFormControl.hasError("required")
-            ) {
-              <mat-error>E-mail inválido.</mat-error>
-            }
-            @if (emailFormControl.hasError("required")) {
-              <mat-error>Email é <strong>obrigatório</strong></mat-error>
-            } -->
           </mat-form-field>
         </div>
       </div>
 
-      <!-- <div class="row">
+      <div class="row">
         <div class="col-md-3">
           <mat-form-field class="form-grid">
             <mat-label>CEP:</mat-label>
             <input
               matInput
-              #postalCode
-              minlength="8"
-              maxlength="9"
-              placeholder="Ex. 04053-070"
               name="cep"
-              [(ngModel)]="dadosPedido.cep"
-              ngModel
-              required
-              #cep="ngModel"
-              pattern="^(\d{5})(-?\d{3})$"
-              (blur)="consultaCEP($event, form)"
-              validadorCep
+              formControlName="cep"
+              placeholder="Digite o CEP"
             />
-            <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
-              <app-mensagem
-                *ngIf="cep?.errors?.['required']"
-                mensagem="O campo de CEP é obrigatório"
-              ></app-mensagem>
-              <app-mensagem
-                *ngIf="cep?.errors?.['validadorCep']"
-                mensagem="O Cep informado não existe."
-              ></app-mensagem>
-            </div>
-            <mat-hint align="end">{{ postalCode.value.length }} / 9</mat-hint>
           </mat-form-field>
         </div>
-      </div> -->
+      </div>
 
       <div class="row">
         <div class="col-md-9">
@@ -315,41 +286,19 @@
 
       <br />
 
-      <!-- <div class="row">
+      <div class="row">
         <div class="col-md-3">
           <mat-form-field class="form-grid">
             <mat-label>CEP:</mat-label>
             <input
-              disableRipple
-              [disabled]="isAdressChecked"
               matInput
-              #postalCode
-              minlength="8"
-              maxlength="9"
-              placeholder="Ex. 04053-070"
-              name="cepEntrega"
-              [(ngModel)]="dadosPedido.cepEntrega"
-              ngModel
-              required
-              #cep="ngModel"
-              pattern="^(\d{5})(-?\d{3})$"
-              (blur)="consultaCEPEntrega($event, form)"
-              validadorCep
+              name="cep"
+              formControlName="cep"
+              placeholder="Digite o CEP"
             />
-            <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
-              <app-mensagem
-                *ngIf="cep?.errors?.['required']"
-                mensagem="O campo de CEP é obrigatório"
-              ></app-mensagem>
-              <app-mensagem
-                *ngIf="cep?.errors?.['validadorCep']"
-                mensagem="O Cep informado não existe."
-              ></app-mensagem>
-            </div>
-            <mat-hint align="end">{{ postalCode.value.length }} / 9</mat-hint>
           </mat-form-field>
         </div>
-      </div> -->
+      </div>
 
       <div class="row">
         <div class="col-md-9">
