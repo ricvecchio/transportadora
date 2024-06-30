@@ -9,7 +9,7 @@ export class ConsultaCepService {
   url_API = 'https://viacep.com.br/ws/'
   constructor(private http: HttpClient) { }
 
-  getConsultaCep(cep: string){
+  getConsultaCep(cep: string | undefined){
       return this.http.get(`${this.url_API}${cep}/json`);
   }
 

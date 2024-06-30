@@ -106,8 +106,9 @@
             <input
               matInput
               name="cep"
-              formControlName="cep"
               placeholder="Digite o CEP"
+              formControlName="cep"
+              (blur)="consultaCEP()"
             />
           </mat-form-field>
         </div>

@@ -1,6 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, NonNullableFormBuilder, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  NgForm,
+  NonNullableFormBuilder,
+  Validators,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { map, Observable, of, startWith } from 'rxjs';
@@ -28,48 +34,47 @@ export interface User {
   styleUrl: './cadastrar-pedidos.component.css',
 })
 export class CadastrarPedidosComponent implements OnInit {
-
   formulario = this.formBuilder.group({
-      nome: [''],
-      cpf: [''],
-      telefone: [''],
-      celular: [''],
-      email: [''],
-      cep: [''],
-      logradouro: [''],
-      numero: [''],
-      complemento: [''],
-      bairro: [''],
-      cidade: [''],
-      estado: [''],
-      fantasia: [''],
-      razaoSocial: [''],
-      cnpj: [''],
-      tipoPgto: [''],
-      cepEntrega: [''],
-      logradouroEntrega: [''],
-      numeroEntrega: [''],
-      complementoEntrega: [''],
-      bairroEntrega: [''],
-      cidadeEntrega: [''],
-      estadoEntrega: [''],
-      sfobras: [''],
-      cno: [''],
-      mangueira: [''],
-      ie: [''],
-      volume: [''],
-      valor: [''],
-      preco1: [''],
-      preco2: [''],
-      preco3: [''],
-      preco4: [''],
-      preco5: [''],
-      preco6: [''],
-      ajudanteHora: [''],
-      observacao: [''],
-      idPedido: [''],
-      status: ['Em Aberto']
-    });
+    nome: [''],
+    cpf: [''],
+    telefone: [''],
+    celular: [''],
+    email: [''],
+    cep: [''],
+    logradouro: [''],
+    numero: [''],
+    complemento: [''],
+    bairro: [''],
+    cidade: [''],
+    estado: [''],
+    fantasia: [''],
+    razaoSocial: [''],
+    cnpj: [''],
+    tipoPgto: [''],
+    cepEntrega: [''],
+    logradouroEntrega: [''],
+    numeroEntrega: [''],
+    complementoEntrega: [''],
+    bairroEntrega: [''],
+    cidadeEntrega: [''],
+    estadoEntrega: [''],
+    sfobras: [''],
+    cno: [''],
+    mangueira: [''],
+    ie: [''],
+    volume: [''],
+    valor: [''],
+    preco1: [''],
+    preco2: [''],
+    preco3: [''],
+    preco4: [''],
+    preco5: [''],
+    preco6: [''],
+    ajudanteHora: [''],
+    observacao: [''],
+    idPedido: [''],
+    status: ['Em Aberto'],
+  });
 
   constructor(
     private router: Router,
@@ -77,8 +82,8 @@ export class CadastrarPedidosComponent implements OnInit {
     private formBuilder: NonNullableFormBuilder,
     private service: PedidoService,
     private snackBar: MatSnackBar,
-    private location: Location) {
-  }
+    private location: Location,
+  ) {}
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -97,13 +102,12 @@ export class CadastrarPedidosComponent implements OnInit {
     // this.formGroup.get('cashPayment')?.valueChanges.subscribe(value => {
     //   this.isPaymentChecked = value || false;
     // });
-
   }
 
   isAdressChecked = false;
   isPaymentChecked = false;
 
-dadosPedido: any = {
+  dadosPedido: any = {
     id: '2',
     nome: '',
     cpf: '',
@@ -142,7 +146,7 @@ dadosPedido: any = {
     ajudanteHora: '',
     observacao: '',
     idPedido: 1,
-    modelo: 'modelo1'
+    modelo: 'modelo1',
   };
 
   formGroup = this.formBuilder.group({
@@ -186,7 +190,7 @@ dadosPedido: any = {
     preco6: [''],
     ajudanteHora: [''],
     observacao: [''],
-    idPedido:  ['']
+    idPedido: [''],
   });
 
   myControl = new FormControl<string | User>('');
@@ -242,45 +246,19 @@ dadosPedido: any = {
     { value: 'lav-15m³', viewValue: 'lav-15m³' },
   ];
 
-  consultaCEP(ev: any, form: NgForm) {
-    const cep = ev.target.value;
+  consultaCEP() {
+    const cep = this.formulario.get('cep')?.value;
     if (cep != '') {
-      this.consultaCepService.getConsultaCep(cep).subscribe((resultado) => {
-        console.log(resultado);
-        this.populandoEndereco(resultado, form);
+      this.consultaCepService.getConsultaCep(cep).subscribe((dados: any) => {
+        this.formulario.patchValue({
+          logradouro: dados.logradouro,
+          complemento: dados.complemento,
+          bairro: dados.bairro,
+          cidade: dados.localidade,
+          estado: dados.uf
+        });
       });
     }
-  }
-
-  populandoEndereco(dados: any, form: NgForm) {
-    form.form.patchValue({
-      logradouro: dados.logradouro,
-      complemento: dados.complemento,
-      bairro: dados.bairro,
-      cidade: dados.localidade,
-      estado: dados.uf,
-    });
-  }
-
-  consultaCEPEntrega(ev: any, form: NgForm) {
-    const cep = ev.target.value;
-    if (cep != '') {
-      this.consultaCepService.getConsultaCep(cep).subscribe((resultado) => {
-        console.log(resultado);
-        this.populandoEnderecoEntrega(resultado, form);
-      });
-    }
-  }
-
-  // REVER PARA NÃO DUPLICAR O MÉTODO
-  populandoEnderecoEntrega(dados: any, form: NgForm) {
-    form.form.patchValue({
-      logradouroEntrega: dados.logradouro,
-      complementoEntrega: dados.complemento,
-      bairroEntrega: dados.bairro,
-      cidadeEntrega: dados.localidade,
-      estadoEntrega: dados.uf,
-    });
   }
 
   dataAtual: Date = new Date();
@@ -297,18 +275,11 @@ dadosPedido: any = {
   }
 
   onSubmit() {
-    this.service.salvar(this.formulario.value)
-    .subscribe(result => this.onSucess(), error => this.onError());
+    this.service.salvar(this.formulario.value).subscribe(
+      (result) => this.onSucess(),
+      (error) => this.onError(),
+    );
   }
-
-  // onSubmit() {
-  //   if (this.formulario.valid) {
-  //     this.service.salvar(this.formulario.value)
-  //       .subscribe(result => this.onSucess(), error => this.onError());
-  //   } else {
-  //     this.formUtils.validateAllFormFields(this.formulario);
-  //   }
-  // }
 
   private onSucess() {
     this.snackBar.open('Pedido Salvo com sucesso!', '', { duration: 5000 });
