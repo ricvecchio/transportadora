@@ -1,12 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  NgForm,
-  NonNullableFormBuilder,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { map, Observable, of, startWith } from 'rxjs';
@@ -40,7 +34,7 @@ export class CadastrarPedidosComponent implements OnInit {
     telefone: [''],
     celular: [''],
     email: [''],
-    cep: [''],
+    cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
     logradouro: [''],
     numero: [''],
     complemento: [''],
@@ -107,50 +101,50 @@ export class CadastrarPedidosComponent implements OnInit {
   isAdressChecked = false;
   isPaymentChecked = false;
 
-  dadosPedido: any = {
-    id: '2',
-    nome: '',
-    cpf: '',
-    telefone: '',
-    celular: '',
-    email: '',
-    cep: '',
-    logradouro: '',
-    numero: '',
-    complemento: '',
-    bairro: '',
-    cidade: '',
-    estado: '',
-    fantasia: '',
-    razaoSocial: '',
-    cnpj: '',
-    tipoPgto: '',
-    cepEntrega: '',
-    logradouroEntrega: '',
-    numeroEntrega: '',
-    complementoEntrega: '',
-    bairroEntrega: '',
-    cidadeEntrega: '',
-    estadoEntrega: '',
-    sfobras: '',
-    cno: '',
-    mangueira: '',
-    ie: '',
-    volume: '',
-    preco1: '',
-    preco2: '',
-    preco3: '',
-    preco4: '',
-    preco5: '',
-    preco6: '',
-    ajudanteHora: '',
-    observacao: '',
-    idPedido: 1,
-    modelo: 'modelo1',
-  };
+  // dadosPedido: any = {
+  //   id: '2',
+  //   nome: '',
+  //   cpf: '',
+  //   telefone: '',
+  //   celular: '',
+  //   email: '',
+  //   cep: '',
+  //   logradouro: '',
+  //   numero: '',
+  //   complemento: '',
+  //   bairro: '',
+  //   cidade: '',
+  //   estado: '',
+  //   fantasia: '',
+  //   razaoSocial: '',
+  //   cnpj: '',
+  //   tipoPgto: '',
+  //   cepEntrega: '',
+  //   logradouroEntrega: '',
+  //   numeroEntrega: '',
+  //   complementoEntrega: '',
+  //   bairroEntrega: '',
+  //   cidadeEntrega: '',
+  //   estadoEntrega: '',
+  //   sfobras: '',
+  //   cno: '',
+  //   mangueira: '',
+  //   ie: '',
+  //   volume: '',
+  //   preco1: '',
+  //   preco2: '',
+  //   preco3: '',
+  //   preco4: '',
+  //   preco5: '',
+  //   preco6: '',
+  //   ajudanteHora: '',
+  //   observacao: '',
+  //   idPedido: 1,
+  //   modelo: 'modelo1',
+  // };
 
   formGroup = this.formBuilder.group({
-    idCliente: [{ value: this.dadosPedido.id, disabled: true }],
+    idCliente: [{ value: 1, disabled: true }],
     buscarCliente: ['', Validators.required],
     nome: ['', Validators.required],
     cpf: ['', Validators.required],
@@ -208,7 +202,6 @@ export class CadastrarPedidosComponent implements OnInit {
   ];
 
   filteredOptions: Observable<User[]> = of([]);
-  list: any;
 
   alertFormValues(formGroup: FormGroup) {
     alert(JSON.stringify(formGroup.value, null, 2));

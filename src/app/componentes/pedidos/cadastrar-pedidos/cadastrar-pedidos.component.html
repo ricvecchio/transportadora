@@ -25,7 +25,13 @@
       <div class="col-md-3">
         <mat-form-field class="form-grid" appearance="outline">
           <mat-label>Código Cliente</mat-label>
-          <input matInput disabled value="1" name="idCliente" />
+          <input
+          matInput
+          [disabled]="true"
+          value="1"
+          name="idPedido"
+          formControlName="idPedido"
+        />
         </mat-form-field>
       </div>
     </div>
@@ -110,6 +116,10 @@
               formControlName="cep"
               (blur)="consultaCEP()"
             />
+            <div *ngIf="formGroup.get('cep')?.invalid && formGroup.get('cep')?.touched">
+              <span *ngIf="formGroup.get('cep')?.errors?.['required']">CEP é obrigatório.</span>
+              <span *ngIf="formGroup.get('cep')?.errors?.['validadorCep']">CEP inválido.</span>
+            </div>
           </mat-form-field>
         </div>
       </div>
@@ -543,7 +553,7 @@
 
       <div class="row">
         <div class="col-md-9">
-          <h4>PEDIDO: {{ dadosPedido.id }}</h4>
+          <h4>PEDIDO: {{ formulario.controls.idPedido.value }}</h4>
         </div>
         <div class="col-md-3">
           <b>DATA: </b>
