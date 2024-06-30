@@ -46,6 +46,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { EditarPedidosComponent } from './componentes/pedidos/editar-pedidos/editar-pedidos.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ConsultarPedidosComponent,
     EmitePedidoComponent,
     ValidandoCepDirective,
+    EditarPedidosComponent,
   ],
   imports: [
     AppRoutingModule,

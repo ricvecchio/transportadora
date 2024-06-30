@@ -67,9 +67,9 @@ export class ConsultarPedidosComponent implements OnInit {
   }
 
   onEdit(pedido: Pedido) {
-    this.router.navigate(['/pedidos/editar-pedidos/:id', pedido.id], {
-      relativeTo: this.route,
-    });
+    this.router.navigate(['/editar-pedidos/', pedido.id], { relativeTo: this.route });
+    // this.edit.emit(pedido);
+    // });
   }
 
   onDelete(pedido: Pedido) {

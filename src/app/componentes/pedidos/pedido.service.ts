@@ -30,7 +30,7 @@ export class PedidoService {
     return this.httpClient.post<Pedido>(this.API, pedido);
   }
 
-  buscarPorId(id: string): Observable<Pedido> {
+  buscarPorId(id: string) {
     const url = `${this.API}/${id}`
     return this.httpClient.get<Pedido>(url)
   }

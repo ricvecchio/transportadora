@@ -64,7 +64,7 @@ const routes: Routes = [
   },
   {
     path: 'editar-pedidos/:id',
-    component: EditarPedidosComponent
+    component: EditarPedidosComponent, resolve: { pedido: EditarPedidosComponent }
   },
   {
     path: 'pedidos/emite-pedido',

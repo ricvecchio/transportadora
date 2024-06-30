@@ -97,6 +97,7 @@ export class CadastrarPedidosComponent implements OnInit {
     // this.formGroup.get('cashPayment')?.valueChanges.subscribe(value => {
     //   this.isPaymentChecked = value || false;
     // });
+
   }
 
   isAdressChecked = false;
@@ -286,10 +287,6 @@ dadosPedido: any = {
 
   checked = false;
   disabled = false;
-
-  cancelar() {
-    alert('Ação cancelada!');
-  }
 
   onPaymentCheckBoxChange(event: any): void {
     this.isPaymentChecked = event.checked;
