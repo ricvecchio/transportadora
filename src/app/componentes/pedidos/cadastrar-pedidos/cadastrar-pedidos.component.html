@@ -116,9 +116,9 @@
               formControlName="cep"
               (blur)="consultaCEP()"
             />
-            <div *ngIf="formGroup.get('cep')?.invalid && formGroup.get('cep')?.touched">
-              <span *ngIf="formGroup.get('cep')?.errors?.['required']">CEP é obrigatório.</span>
-              <span *ngIf="formGroup.get('cep')?.errors?.['validadorCep']">CEP inválido.</span>
+            <div *ngIf="formulario.get('cep')?.invalid && formulario.get('cep')?.touched">
+              <span *ngIf="formulario.get('cep')?.errors?.['required']">CEP é obrigatório.</span>
+              <span *ngIf="formulario.get('cep')?.errors?.['validadorCep']">CEP inválido.</span>
             </div>
           </mat-form-field>
         </div>
