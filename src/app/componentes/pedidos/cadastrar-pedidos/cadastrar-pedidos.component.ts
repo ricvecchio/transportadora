@@ -87,13 +87,14 @@ export class CadastrarPedidosComponent implements OnInit {
         return name ? this._filter(name as string) : this.options.slice();
       }),
     );
-    // this.isAdressChecked = this.formGroup.get('deliveryAddress')?.value || false;
-    // this.formGroup.get('deliveryAddress')?.valueChanges.subscribe(value => {
+
+    // this.isAdressChecked = this.formulario.get('deliveryAddress')?.value || false;
+    // this.formulario.get('deliveryAddress')?.valueChanges.subscribe(value => {
     //   this.isAdressChecked = value || false;
     // });
 
-    // this.isPaymentChecked = this.formGroup.get('cashPayment')?.value || false;
-    // this.formGroup.get('cashPayment')?.valueChanges.subscribe(value => {
+    // this.isPaymentChecked = this.formulario.get('cashPayment')?.value || false;
+    // this.formulario.get('cashPayment')?.valueChanges.subscribe(value => {
     //   this.isPaymentChecked = value || false;
     // });
   }

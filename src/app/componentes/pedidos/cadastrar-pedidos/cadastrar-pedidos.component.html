@@ -27,7 +27,7 @@
           <mat-label>Código Cliente</mat-label>
           <input
             matInput
-            [disabled]="true"
+            disableRipple
             value="1"
             name="idPedido"
             formControlName="idPedido"
@@ -111,8 +111,18 @@
               placeholder="Ex. pat@example.com"
               formControlName="email"
             />
-            <div *ngIf="(formulario?.invalid && formulario?.touched) || formulario?.dirty">
-              <mat-error *ngIf="formulario.hasError('email') && !formulario.hasError('required')">
+            <div
+              *ngIf="
+                (formulario?.invalid && formulario?.touched) ||
+                formulario?.dirty
+              "
+            >
+              <mat-error
+                *ngIf="
+                  formulario.hasError('email') &&
+                  !formulario.hasError('required')
+                "
+              >
                 E-mail é obrigatório.
               </mat-error>
             </div>
@@ -131,8 +141,17 @@
               formControlName="cep"
               (blur)="consultaCEP()"
             />
-            <div *ngIf="(formulario?.invalid && formulario?.touched) || formulario?.dirty">
-              <mat-error *ngIf="formulario.hasError('cep') && !formulario.hasError('required')">
+            <div
+              *ngIf="
+                (formulario?.invalid && formulario?.touched) ||
+                formulario?.dirty
+              "
+            >
+              <mat-error
+                *ngIf="
+                  formulario.hasError('cep') && !formulario.hasError('required')
+                "
+              >
                 O campo de CEP é obrigatório
               </mat-error>
             </div>
@@ -301,15 +320,14 @@
 
       <br />
 
-      <!-- <tr>
+      <tr>
         <mat-slide-toggle
           color="blue"
-          formControlName="deliveryAddress"
           (change)="onToggleChange($event)"
         >
           Entregar no mesmo endereço de cadastro:
         </mat-slide-toggle>
-      </tr> -->
+      </tr>
 
       <br />
 
@@ -319,6 +337,7 @@
             <mat-label>CEP:</mat-label>
             <input
               matInput
+              [disabled]="isAdressChecked"
               name="cep"
               formControlName="cep"
               placeholder="Digite o CEP"
@@ -347,7 +366,7 @@
               disableRipple
               [disabled]="isAdressChecked"
               matInput
-              name="numeroEntrega"
+              name="numero"
               formControlName="numeroEntrega"
             />
           </mat-form-field>
