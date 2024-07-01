@@ -51,7 +51,7 @@ export class CadastrarPedidosComponent implements OnInit {
     cnpj: [''],
     tipoPgto: [''],
     // cashPayment: [false, Validators.requiredTrue],
-    // deliveryAddress: [false, Validators.requiredTrue],
+    deliveryAddress: [false, Validators.requiredTrue],
     cepEntrega: ['', Validators.pattern('true')],
     logradouroEntrega: [''],
     numeroEntrega: [''],
@@ -95,10 +95,10 @@ export class CadastrarPedidosComponent implements OnInit {
       }),
     );
 
-    this.isAdressChecked = this.formulario.get('deliveryAddress')?.value || false;
-    this.formulario.get('deliveryAddress')?.valueChanges.subscribe(value => {
-      this.isAdressChecked = value || false;
-    });
+    // this.isAdressChecked = this.formulario.get('deliveryAddress')?.value || false;
+    // this.formulario.get('deliveryAddress')?.valueChanges.subscribe(value => {
+    //   this.isAdressChecked = value || false;
+    // });
 
     // this.isPaymentChecked = this.formulario.get('cashPayment')?.value || false;
     // this.formulario.get('cashPayment')?.valueChanges.subscribe(value => {
