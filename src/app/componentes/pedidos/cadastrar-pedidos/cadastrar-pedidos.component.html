@@ -50,17 +50,13 @@
               name="nome"
               placeholder="Digite o Nome"
               formControlName="nome"
+              #nome
             />
-            <div
-              *ngIf="
-                formulario.get('nome')?.invalid &&
-                formulario.get('nome')?.touched
-              "
-            >
-              <span *ngIf="formulario.get('nome')?.errors?.['required']"
-                >Nome é obrigatório.</span
-              >
-            </div>
+            <!-- <div *ngIf="formulario.get('nome')?.invalid && formulario.get('nome')?.touched">
+              <span *ngIf="formulario.get('nome')?.errors?.['required']">Nome é obrigatório.</span>
+            </div> -->
+            <mat-hint align="end">{{nome.value?.length || 0}} / 100</mat-hint>
+            <mat-error *ngIf="formulario.get('nome')?.invalid"> {{getMensagemErro("nome")}}</mat-error>
           </mat-form-field>
         </div>
 
