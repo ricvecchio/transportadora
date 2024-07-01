@@ -141,17 +141,8 @@
               formControlName="cep"
               (blur)="consultaCEP()"
             />
-            <div
-              *ngIf="
-                (formulario?.invalid && formulario?.touched) ||
-                formulario?.dirty
-              "
-            >
-              <mat-error
-                *ngIf="
-                  formulario.hasError('cep') && !formulario.hasError('required')
-                "
-              >
+            <div *ngIf="(formulario?.invalid && formulario?.touched) || formulario?.dirty">
+              <mat-error *ngIf="formulario.hasError('cep') && !formulario.hasError('required')">
                 O campo de CEP é obrigatório
               </mat-error>
             </div>
@@ -323,10 +314,13 @@
       <tr>
         <mat-slide-toggle
           color="blue"
+          formControlName="deliveryAddress"
+          [checked]="isAdressChecked"
           (change)="onToggleChange($event)"
         >
           Entregar no mesmo endereço de cadastro:
         </mat-slide-toggle>
+        {{isAdressChecked}}
       </tr>
 
       <br />
@@ -336,12 +330,17 @@
           <mat-form-field class="form-grid">
             <mat-label>CEP:</mat-label>
             <input
-              matInput
               [disabled]="isAdressChecked"
-              name="cep"
-              formControlName="cep"
-              placeholder="Digite o CEP"
+              matInput
+              name="cepEntrega"
+              formControlName="cepEntrega"
+              (blur)="consultaCEP()"
             />
+            <div *ngIf="(formulario?.invalid && formulario?.touched) || formulario?.dirty">
+              <mat-error *ngIf="formulario.hasError('cep') && !formulario.hasError('required')">
+                O campo de CEP é obrigatório
+              </mat-error>
+            </div>
           </mat-form-field>
         </div>
       </div>
@@ -351,7 +350,6 @@
           <mat-form-field class="form-grid">
             <mat-label>Logradouro:</mat-label>
             <input
-              disableRipple
               [disabled]="isAdressChecked"
               matInput
               name="logradouroEntrega"
@@ -366,7 +364,7 @@
               disableRipple
               [disabled]="isAdressChecked"
               matInput
-              name="numero"
+              name="numeroEntrega"
               formControlName="numeroEntrega"
             />
           </mat-form-field>

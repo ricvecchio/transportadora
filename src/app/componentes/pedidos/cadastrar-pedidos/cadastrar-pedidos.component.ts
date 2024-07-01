@@ -7,6 +7,7 @@ import { map, Observable, of, startWith } from 'rxjs';
 
 import { ConsultaCepService } from '../../../service/consulta-cep.service';
 import { PedidoService } from '../pedido.service';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 interface Metros {
   value: string;
@@ -28,6 +29,10 @@ export interface User {
   styleUrl: './cadastrar-pedidos.component.css',
 })
 export class CadastrarPedidosComponent implements OnInit {
+
+  isAdressChecked = false;
+  isPaymentChecked = false;
+
   formulario = this.formBuilder.group({
     nome: ['', Validators.required],
     cpf: ['', Validators.required],
@@ -45,6 +50,8 @@ export class CadastrarPedidosComponent implements OnInit {
     razaoSocial: [''],
     cnpj: [''],
     tipoPgto: [''],
+    // cashPayment: [false, Validators.requiredTrue],
+    deliveryAddress: [{value: '', disabled: false}],
     cepEntrega: [''],
     logradouroEntrega: [''],
     numeroEntrega: [''],
@@ -67,7 +74,7 @@ export class CadastrarPedidosComponent implements OnInit {
     ajudanteHora: [''],
     observacao: [''],
     idPedido: [''],
-    status: ['Em Aberto'],
+    status: ['Em Aberto']
   });
 
   constructor(
@@ -98,9 +105,6 @@ export class CadastrarPedidosComponent implements OnInit {
     //   this.isPaymentChecked = value || false;
     // });
   }
-
-  isAdressChecked = false;
-  isPaymentChecked = false;
 
   // dadosPedido: any = {
   //   id: '2',
@@ -264,7 +268,10 @@ export class CadastrarPedidosComponent implements OnInit {
     this.isPaymentChecked = event.checked;
   }
 
-  onToggleChange(event: any): void {
+  // onToggleChange(event: any): void {
+  //   this.isAdressChecked = event.checked;
+  // }
+  onToggleChange(event: MatSlideToggleChange) {
     this.isAdressChecked = event.checked;
   }
 
