@@ -51,8 +51,8 @@ export class CadastrarPedidosComponent implements OnInit {
     cnpj: [''],
     tipoPgto: [''],
     // cashPayment: [false, Validators.requiredTrue],
-    deliveryAddress: [{value: '', disabled: false}],
-    cepEntrega: [''],
+    // deliveryAddress: [false, Validators.requiredTrue],
+    cepEntrega: ['', Validators.pattern('true')],
     logradouroEntrega: [''],
     numeroEntrega: [''],
     complementoEntrega: [''],
@@ -95,10 +95,10 @@ export class CadastrarPedidosComponent implements OnInit {
       }),
     );
 
-    // this.isAdressChecked = this.formulario.get('deliveryAddress')?.value || false;
-    // this.formulario.get('deliveryAddress')?.valueChanges.subscribe(value => {
-    //   this.isAdressChecked = value || false;
-    // });
+    this.isAdressChecked = this.formulario.get('deliveryAddress')?.value || false;
+    this.formulario.get('deliveryAddress')?.valueChanges.subscribe(value => {
+      this.isAdressChecked = value || false;
+    });
 
     // this.isPaymentChecked = this.formulario.get('cashPayment')?.value || false;
     // this.formulario.get('cashPayment')?.valueChanges.subscribe(value => {
@@ -268,10 +268,7 @@ export class CadastrarPedidosComponent implements OnInit {
     this.isPaymentChecked = event.checked;
   }
 
-  // onToggleChange(event: any): void {
-  //   this.isAdressChecked = event.checked;
-  // }
-  onToggleChange(event: MatSlideToggleChange) {
+  onToggleChange(event: any): void {
     this.isAdressChecked = event.checked;
   }
 
