@@ -86,8 +86,8 @@
       </ng-container>
 
       <ng-container matColumnDef="acao">
-        <mat-header-cell *matHeaderCellDef>
-          <button mat-mini-fab color="accent" aria-label="Adicionar um Pedido" (click)="onAdd()">
+        <mat-header-cell *matHeaderCellDef class="action-column">
+          <button mat-mini-fab color="accent" aria-label="Adicionar um Pedido" (click)="onAdd()" class="action-column-header">
             <mat-icon>add</mat-icon>
           </button>
         </mat-header-cell>

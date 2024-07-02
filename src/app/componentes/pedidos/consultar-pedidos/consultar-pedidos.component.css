@@ -13,6 +13,14 @@ mat-card {
     justify-content: center;
 }
 
+.action-column {
+  flex: 0 0 125px;
+}
+
+.action-column-header {
+  margin: 0 auto;
+}
+
 /* .column-flex {
   display: flex;
   flex-direction: column;

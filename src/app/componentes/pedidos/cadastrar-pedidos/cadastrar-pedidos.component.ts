@@ -30,6 +30,35 @@ export interface User {
 })
 export class CadastrarPedidosComponent implements OnInit {
 
+  constructor(
+    private formBuilder: NonNullableFormBuilder,
+    private router: Router,
+    private consultaCepService: ConsultaCepService,
+    private service: PedidoService,
+    private snackBar: MatSnackBar,
+    private location: Location,
+  ) {}
+
+  ngOnInit(): void {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map((value) => {
+        const name = typeof value === 'string' ? value : value?.name;
+        return name ? this._filter(name as string) : this.options.slice();
+      }),
+    );
+
+    // this.isAdressChecked = this.formulario.get('deliveryAddress')?.value || false;
+    // this.formulario.get('deliveryAddress')?.valueChanges.subscribe(value => {
+    //   this.isAdressChecked = value || false;
+    // });
+
+    // this.isPaymentChecked = this.formulario.get('cashPayment')?.value || false;
+    // this.formulario.get('cashPayment')?.valueChanges.subscribe(value => {
+    //   this.isPaymentChecked = value || false;
+    // });
+  }
+
   isAdressChecked = false;
   isPaymentChecked = false;
 
@@ -76,35 +105,6 @@ export class CadastrarPedidosComponent implements OnInit {
     idPedido: [''],
     status: ['Em Aberto']
   });
-
-  constructor(
-    private router: Router,
-    private consultaCepService: ConsultaCepService,
-    private formBuilder: NonNullableFormBuilder,
-    private service: PedidoService,
-    private snackBar: MatSnackBar,
-    private location: Location,
-  ) {}
-
-  ngOnInit(): void {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => {
-        const name = typeof value === 'string' ? value : value?.name;
-        return name ? this._filter(name as string) : this.options.slice();
-      }),
-    );
-
-    // this.isAdressChecked = this.formulario.get('deliveryAddress')?.value || false;
-    // this.formulario.get('deliveryAddress')?.valueChanges.subscribe(value => {
-    //   this.isAdressChecked = value || false;
-    // });
-
-    // this.isPaymentChecked = this.formulario.get('cashPayment')?.value || false;
-    // this.formulario.get('cashPayment')?.valueChanges.subscribe(value => {
-    //   this.isPaymentChecked = value || false;
-    // });
-  }
 
   // dadosPedido: any = {
   //   id: '2',
