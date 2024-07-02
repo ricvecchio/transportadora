@@ -11,8 +11,8 @@ import { PedidoPage } from './model/pedido-page';
 })
 export class PedidoService {
 
-  private readonly API = 'api/pedidos'
-  // private readonly API = 'http://localhost:2000/pedidos'
+  private readonly API = 'api/clientes'
+  // private readonly API = 'http://localhost:2000/clientes'
   // private readonly API = '/backend/db.json';
 
   constructor(private httpClient: HttpClient) { }
