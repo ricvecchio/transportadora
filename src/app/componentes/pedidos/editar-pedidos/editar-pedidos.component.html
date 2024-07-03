@@ -20,21 +20,21 @@
             <mat-label>Nome:</mat-label>
             <input
               matInput
-              name="nome"
+              name="nomePedido"
               placeholder="Digite o Nome"
-              formControlName="nome"
+              formControlName="nomePedido"
             />
           </mat-form-field>
         </div>
 
         <div class="col-md-3">
           <mat-form-field class="form-grid">
-            <mat-label>CPF:</mat-label>
+            <mat-label>CPF/CNPJ:</mat-label>
             <input
               matInput
-              name="cpf"
-              placeholder="Digite o CPF"
-              formControlName="cpf"
+              name="cpfcnpjPedido"
+              placeholder="Digite o CPF ou CNPJ"
+              formControlName="cpfcnpjPedido"
             />
           </mat-form-field>
         </div>
@@ -48,13 +48,13 @@
         <div class="col-md-9">
           <mat-form-field class="form-grid">
             <mat-label>Logradouro:</mat-label>
-            <input matInput name="logradouro" formControlName="logradouro" />
+            <input matInput name="logradouroPedido" formControlName="logradouroPedido" />
           </mat-form-field>
         </div>
         <div class="col-md-3">
           <mat-form-field class="form-grid">
             <mat-label>Número:</mat-label>
-            <input matInput name="numero" formControlName="numero" />
+            <input matInput name="numeroPedido" formControlName="numeroPedido" />
           </mat-form-field>
         </div>
       </div>
@@ -66,15 +66,15 @@
             <input
               matInput
               placeholder="Ex. Apto 64"
-              name="complemento"
-              formControlName="complemento"
+              name="complementoPedido"
+              formControlName="complementoPedido"
             />
           </mat-form-field>
         </div>
         <div class="col-md-3">
           <mat-form-field class="form-grid">
             <mat-label>Bairro:</mat-label>
-            <input matInput name="bairro" formControlName="bairro" />
+            <input matInput name="bairroPedido" formControlName="bairroPedido" />
           </mat-form-field>
         </div>
       </div>
@@ -86,8 +86,8 @@
             <input
               matInput
               placeholder="Ex. Santo André"
-              name="cidade"
-              formControlName="cidade"
+              name="cidadePedido"
+              formControlName="cidadePedido"
             />
           </mat-form-field>
         </div>
@@ -97,8 +97,8 @@
             <input
               matInput
               placeholder="Ex. São Paulo"
-              name="estado"
-              formControlName="estado"
+              name="estadoPedido"
+              formControlName="estadoPedido"
             />
           </mat-form-field>
         </div>
@@ -223,42 +223,42 @@
           <mat-form-field class="form-grid">
             <mat-label>Preço cx-5m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoCx5" formControlName="precoCx5" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço cx-10m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoCx10" formControlName="precoCx10" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço cx-15m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoCx15" formControlName="precoCx15" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço lav-5m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoLv5" formControlName="precoLv5" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço lav-10m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoLv10" formControlName="precoLv10" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço lav-15m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoLv15" formControlName="precoCx15" />
           </mat-form-field>
         </div>
       </div>

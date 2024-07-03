@@ -67,7 +67,7 @@ export class ConsultarPedidosComponent implements OnInit {
   }
 
   onEdit(pedido: Pedido) {
-    this.router.navigate(['/editar-pedidos/', pedido.id], { relativeTo: this.route });
+    this.router.navigate(['/editar-pedidos/', pedido.idPedido], { relativeTo: this.route });
     // this.edit.emit(pedido);
     // });
   }
@@ -79,7 +79,7 @@ export class ConsultarPedidosComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        this.pedidosService.excluir(pedido.id).subscribe(
+        this.pedidosService.excluir(pedido.idPedido).subscribe(
           () => {
             this.refresh();
             this.snackBar.open('Pedido removido com sucesso!', 'X', {
