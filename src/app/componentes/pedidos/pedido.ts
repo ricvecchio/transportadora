@@ -36,5 +36,5 @@ export interface Pedido {
   precoLv10: string;
   precoLv15: string;
   ajudanteHora: string;
-  observacao: string;
+  observacao: string
 }
