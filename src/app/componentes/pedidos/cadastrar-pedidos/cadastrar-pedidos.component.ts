@@ -1,6 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+  Validators,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { map, Observable, of, startWith } from 'rxjs';
@@ -29,7 +34,6 @@ export interface User {
   styleUrl: './cadastrar-pedidos.component.css',
 })
 export class CadastrarPedidosComponent implements OnInit {
-
   constructor(
     private formBuilder: NonNullableFormBuilder,
     private router: Router,
@@ -63,9 +67,10 @@ export class CadastrarPedidosComponent implements OnInit {
   isPaymentChecked = false;
 
   formulario = this.formBuilder.group({
-    nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
-    cpf: ['', Validators.required],
-    telefone: [''],
+    idCliente: [''],
+    nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)],],
+    cpfcnpj: ['', Validators.required],
+    telefone: ['', Validators.required],
     celular: [''],
     email: ['', [Validators.required, Validators.email]],
     cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
@@ -75,35 +80,32 @@ export class CadastrarPedidosComponent implements OnInit {
     bairro: [''],
     cidade: [''],
     estado: [''],
-    fantasia: [''],
+    idPedido: [''],
+    nomePedido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
     razaoSocial: [''],
-    cnpj: [''],
+    cpfcnpjPedido: ['', Validators.required],
     tipoPgto: [''],
-    // cashPayment: [false, Validators.requiredTrue],
     deliveryAddress: [false, Validators.requiredTrue],
-    cepEntrega: ['', Validators.pattern('true')],
-    logradouroEntrega: [''],
-    numeroEntrega: [''],
-    complementoEntrega: [''],
-    bairroEntrega: [''],
-    cidadeEntrega: [''],
-    estadoEntrega: [''],
+    cepPedido: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
+    logradouroPedido: [''],
+    numeroPedido: [''],
+    complementoPedido: [''],
+    bairroPedido: [''],
+    cidadePedido: [''],
+    estadoPedido: [''],
     sfobras: [''],
     cno: [''],
-    mangueira: [''],
     ie: [''],
+    mangueira: [''],
     volume: [''],
-    valor: [''],
-    preco1: [''],
-    preco2: [''],
-    preco3: [''],
-    preco4: [''],
-    preco5: [''],
-    preco6: [''],
+    precoCx5: [''],
+    precoCx10: [''],
+    precoCx15: [''],
+    precoLv5: [''],
+    precoLv10: [''],
+    precoLv15: [''],
     ajudanteHora: [''],
-    observacao: [''],
-    idPedido: [''],
-    status: ['Em Aberto']
+    observacao: ['']
   });
 
   // dadosPedido: any = {
@@ -253,7 +255,7 @@ export class CadastrarPedidosComponent implements OnInit {
           complemento: dados.complemento,
           bairro: dados.bairro,
           cidade: dados.localidade,
-          estado: dados.uf
+          estado: dados.uf,
         });
       });
     }
@@ -267,16 +269,20 @@ export class CadastrarPedidosComponent implements OnInit {
     }
 
     if (field?.hasError('minlength')) {
-      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 5;
+      const requiredLength = field.errors
+        ? field.errors['minlength']['requiredLength']
+        : 5;
       return `Tamanho mínimo precisa ser de ${requiredLength} caracteres.`;
     }
 
     if (field?.hasError('maxlength')) {
-      const requiredLength = field.errors ? field.errors['maxlength']['requiredLength'] : 200;
+      const requiredLength = field.errors
+        ? field.errors['maxlength']['requiredLength']
+        : 200;
       return `Tamanho máximo precisa ser de ${requiredLength} caracteres.`;
     }
 
-    return  'Campo Inválido';
+    return 'Campo Inválido';
   }
 
   dataAtual: Date = new Date();

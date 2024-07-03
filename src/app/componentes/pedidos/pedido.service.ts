@@ -30,18 +30,18 @@ export class PedidoService {
     return this.httpClient.post<Pedido>(this.API, pedido);
   }
 
-  buscarPorId(id: string) {
-    const url = `${this.API}/${id}`
+  buscarPorId(idPedido: string) {
+    const url = `${this.API}/${idPedido}`
     return this.httpClient.get<Pedido>(url)
   }
 
   editar(pedido: Pedido): Observable<Pedido> {
-    const url = `${this.API}/${pedido.id}`
+    const url = `${this.API}/${pedido.idPedido}`
     return this.httpClient.put<Pedido>(url, pedido)
   }
 
-  excluir(id: string) {
-    const url = `${this.API}/${id}`
+  excluir(idPedido: string) {
+    const url = `${this.API}/${idPedido}`
     return this.httpClient.delete<Pedido>(url)
   }
 

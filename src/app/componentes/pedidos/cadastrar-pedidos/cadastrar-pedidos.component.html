@@ -29,8 +29,8 @@
             matInput
             disableRipple
             value="1"
-            name="idPedido"
-            formControlName="idPedido"
+            name="idCliente"
+            formControlName="idCliente"
           />
         </mat-form-field>
       </div>
@@ -61,12 +61,12 @@
 
         <div class="col-md-3">
           <mat-form-field class="form-grid">
-            <mat-label>CPF:</mat-label>
+            <mat-label>CPF/CNPJ:</mat-label>
             <input
               matInput
-              name="cpf"
-              placeholder="Digite o CPF"
-              formControlName="cpf"
+              name="cpfcnpj"
+              placeholder="Digite o CPF ou CNPJ"
+              formControlName="cpfcnpj"
             />
           </mat-form-field>
         </div>
@@ -217,9 +217,9 @@
             <mat-label>Nome Fantasia:</mat-label>
             <input
               matInput
-              name="fantasia"
+              name="nomePedido"
               placeholder="Digite o nome fantasia"
-              formControlName="fantasia"
+              formControlName="nomePedido"
             />
           </mat-form-field>
         </div>
@@ -239,12 +239,12 @@
         </div>
         <div class="col-md-3">
           <mat-form-field class="form-grid">
-            <mat-label>CNPJ:</mat-label>
+            <mat-label>CPF/CNPJ:</mat-label>
             <input
               matInput
-              name="cnpj"
-              placeholder="Digite o CNPJ"
-              formControlName="cnpj"
+              name="cpfcnpjPedido"
+              placeholder="Digite o CPF ou CNPJ"
+              formControlName="cpfcnpjPedido"
             />
           </mat-form-field>
         </div>
@@ -327,8 +327,8 @@
             <input
               [disabled]="isAdressChecked"
               matInput
-              name="cepEntrega"
-              formControlName="cepEntrega"
+              name="cepPedido"
+              formControlName="cepPedido"
               (blur)="consultaCEP()"
             />
             <div *ngIf="(formulario?.invalid && formulario?.touched) || formulario?.dirty">
@@ -347,8 +347,8 @@
             <input
               [disabled]="isAdressChecked"
               matInput
-              name="logradouroEntrega"
-              formControlName="logradouroEntrega"
+              name="logradouroPedido"
+              formControlName="logradouroPedido"
             />
           </mat-form-field>
         </div>
@@ -359,8 +359,8 @@
               disableRipple
               [disabled]="isAdressChecked"
               matInput
-              name="numeroEntrega"
-              formControlName="numeroEntrega"
+              name="numeroPedido"
+              formControlName="numeroPedido"
             />
           </mat-form-field>
         </div>
@@ -374,9 +374,9 @@
               disableRipple
               [disabled]="isAdressChecked"
               matInput
-              name="complementoEntrega"
+              name="complementoPedido"
               placeholder="Ex. Apto 64"
-              formControlName="complementoEntrega"
+              formControlName="complementoPedido"
             />
           </mat-form-field>
         </div>
@@ -387,8 +387,8 @@
               disableRipple
               [disabled]="isAdressChecked"
               matInput
-              name="bairroEntrega"
-              formControlName="bairroEntrega"
+              name="bairroPedido"
+              formControlName="bairroPedido"
             />
           </mat-form-field>
         </div>
@@ -402,9 +402,9 @@
               disableRipple
               [disabled]="isAdressChecked"
               matInput
-              name="cidadeEntrega"
+              name="cidadePedido"
               placeholder="Ex. Santo André"
-              formControlName="cidadeEntrega"
+              formControlName="cidadePedido"
             />
           </mat-form-field>
         </div>
@@ -415,9 +415,9 @@
               disableRipple
               [disabled]="isAdressChecked"
               matInput
-              name="estadoEntrega"
+              name="estadoPedido"
               placeholder="Ex. São Paulo"
-              formControlName="estadoEntrega"
+              formControlName="estadoPedido"
             />
           </mat-form-field>
         </div>
@@ -492,42 +492,42 @@
           <mat-form-field class="form-grid">
             <mat-label>Preço cx-5m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoCx5" formControlName="precoCx5" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço cx-10m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoCx10" formControlName="precoCx10" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço cx-15m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoCx15" formControlName="precoCx15" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço lav-5m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoLv5" formControlName="precoLv5" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço lav-10m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoLv10" formControlName="precoLv10" />
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <mat-form-field class="form-grid">
             <mat-label>Preço lav-15m³</mat-label>
             <span matTextPrefix>R$ </span>
-            <input matInput name="valor" formControlName="valor" />
+            <input matInput name="precoLv15" formControlName="precoLv15" />
           </mat-form-field>
         </div>
       </div>
@@ -581,7 +581,7 @@
 
       <div class="row">
         <div class="col-md-9">
-          <h4>PEDIDO: {{ formulario.controls.idPedido.value }}</h4>
+          <h4>PEDIDO: {{ formulario.controls.idCliente.value }}</h4>
         </div>
         <div class="col-md-3">
           <b>DATA: </b>
@@ -596,23 +596,23 @@
       <br />
 
       <div class="campos_previa">
-        <p class="fantasia">
+        <p class="nomePedido">
           <b>CLIENTE: </b>
-          {{ formulario.controls.fantasia.value }}
-          <small> - CNPJ: {{ formulario.controls.cnpj.value }}</small>
+          {{ formulario.controls.nomePedido.value }}
+          <small> - CNPJ: {{ formulario.controls.cpfcnpjPedido.value }}</small>
         </p>
       </div>
 
       <div class="campos_previa">
         <p class="endereco">
           <b>ENDEREÇO: </b>
-          {{ formulario.controls.logradouro.value }},
-          {{ formulario.controls.numero.value }} -
-          {{ formulario.controls.complemento.value }} -
-          {{ formulario.controls.bairro.value }}/{{
-            formulario.controls.estado.value
+          {{ formulario.controls.logradouroPedido.value }},
+          {{ formulario.controls.numeroPedido.value }} -
+          {{ formulario.controls.complementoPedido.value }} -
+          {{ formulario.controls.bairroPedido.value }}/{{
+            formulario.controls.estadoPedido.value
           }}
-          - CEP: {{ formulario.controls.cep.value }}
+          - CEP: {{ formulario.controls.cepPedido.value }}
         </p>
       </div>
 
@@ -627,7 +627,7 @@
         </div>
         <div class="col-md-4">
           <b>PREÇO: R$ </b>
-          {{ formulario.controls.valor.value }}
+          {{ formulario.controls.precoCx5.value }}
         </div>
       </div>
 
