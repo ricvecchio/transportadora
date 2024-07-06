@@ -73,15 +73,15 @@ export class CadastrarPedidosComponent implements OnInit {
       telefone: ['', Validators.required],
       celular: [''],
       email: ['', [Validators.required, Validators.email]],
-      endereco: this.formBuilder.group({
+      // endereco: this.formBuilder.group({
         cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')],],
         logradouro: [''],
-        numero: [null, Validators.required],
-        complemento: [null],
-        bairro: [null, Validators.required],
-        cidade: [null, Validators.required],
-        estado: [null, Validators.required],
-      }),
+        numero: [''],
+        complemento: [''],
+        bairro: [''],
+        cidade: [''],
+        estado: [''],
+      // }),
       idPedido: [''],
       nomePedido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
       razaoSocial: [''],
@@ -260,13 +260,13 @@ export class CadastrarPedidosComponent implements OnInit {
     if (cep != '') {
       this.consultaCepService.getConsultaCep(cep).subscribe((dados: any) => {
         this.formulario.patchValue({
-          endereco: {
+          // endereco: {
           logradouro: dados.logradouro,
           complemento: dados.complemento,
           bairro: dados.bairro,
           cidade: dados.localidade,
           estado: dados.uf
-        }
+        // }
         });
       });
     }
