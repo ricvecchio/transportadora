@@ -40,21 +40,14 @@
         <mat-header-cell *matHeaderCellDef>
           <strong>Cliente</strong>
         </mat-header-cell>
-        <mat-cell *matCellDef="let pedido">{{ pedido.nome }}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="cpf">
-        <mat-header-cell *matHeaderCellDef>
-          <strong>CPF</strong>
-        </mat-header-cell>
-        <mat-cell *matCellDef="let pedido">{{ pedido.cpf }}</mat-cell>
+        <mat-cell *matCellDef="let pedido">{{ pedido.nomePedido }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="endereco">
         <mat-header-cell *matHeaderCellDef>
           <strong>Endereco</strong>
         </mat-header-cell>
-        <mat-cell *matCellDef="let pedido">{{ pedido.endereco }}</mat-cell>
+        <mat-cell *matCellDef="let pedido">{{ pedido.logradouroPedido }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="volume">
@@ -75,7 +68,7 @@
         <mat-header-cell *matHeaderCellDef>
           <strong>Valor</strong>
         </mat-header-cell>
-        <mat-cell *matCellDef="let pedido">{{ pedido.valor }}</mat-cell>
+        <mat-cell *matCellDef="let pedido">{{ pedido.precoCx5 }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="status">

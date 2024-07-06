@@ -5,10 +5,10 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 
 import { ErrorDialogComponent } from '../../../directives/error-dialog/error-dialog.component';
-import { Pedido } from '../pedido';
 import { PedidoService } from '../pedido.service';
 import { CadastrarPedidosComponent } from '../cadastrar-pedidos/cadastrar-pedidos.component';
 import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
+import { Pedido } from '../model/pedido';
 
 export interface UserData {
   id: string;
@@ -41,7 +41,7 @@ export class ConsultarPedidosComponent implements OnInit {
     'mangueira',
     'valor',
     'status',
-    'acao',
+    'acao'
   ];
 
   constructor(

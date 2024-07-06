@@ -1,4 +1,4 @@
-import { Pedido } from "../pedido";
+import { Pedido } from "./pedido";
 
 export interface PedidoPage {
   pedidos: Pedido[];

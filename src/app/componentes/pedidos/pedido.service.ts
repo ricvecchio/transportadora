@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, delay, first, tap } from 'rxjs';
+import { Observable, delay, first, of, tap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
-import { Pedido } from './pedido';
 import { PedidoPage } from './model/pedido-page';
+import { Pedido } from './model/pedido';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class PedidoService {
 
   buscarPorId(idPedido: string) {
     const url = `${this.API}/${idPedido}`
-    return this.httpClient.get<Pedido>(url)
+    return this.httpClient.get<Pedido>(url);
   }
 
   editar(pedido: Pedido): Observable<Pedido> {
