@@ -6,7 +6,7 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot } f
 import { Observable, of } from 'rxjs';
 
 import { PedidoService } from '../pedido.service';
-import { Pedido } from './../pedido';
+import { Pedido } from '../model/pedido';
 
 interface Metros {
   value: string;

@@ -82,7 +82,6 @@ export class CadastrarPedidosComponent implements OnInit {
         cidade: [null, Validators.required],
         estado: [null, Validators.required],
       }),
-    pedido: this.formBuilder.group({
       idPedido: [''],
       nomePedido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
       razaoSocial: [''],
@@ -111,8 +110,7 @@ export class CadastrarPedidosComponent implements OnInit {
       observacao: [''],
 
       // frameworks: this.buildFrameworks()
-    }),
-    });
+     });
 
   // buildFrameworks() {
   //   const values = this.frameworks.map(v => new FormControl(false));
