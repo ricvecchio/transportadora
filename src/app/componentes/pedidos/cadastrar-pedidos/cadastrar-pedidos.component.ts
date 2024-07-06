@@ -67,46 +67,57 @@ export class CadastrarPedidosComponent implements OnInit {
   isPaymentChecked = false;
 
   formulario = this.formBuilder.group({
-    idCliente: [''],
-    nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)],],
-    cpfcnpj: ['', Validators.required],
-    telefone: ['', Validators.required],
-    celular: [''],
-    email: ['', [Validators.required, Validators.email]],
-    cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
-    logradouro: [''],
-    numero: [''],
-    complemento: [''],
-    bairro: [''],
-    cidade: [''],
-    estado: [''],
-    idPedido: [''],
-    nomePedido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
-    razaoSocial: [''],
-    cpfcnpjPedido: ['', Validators.required],
-    tipoPgto: [''],
-    deliveryAddress: [false, Validators.requiredTrue],
-    cepPedido: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
-    logradouroPedido: [''],
-    numeroPedido: [''],
-    complementoPedido: [''],
-    bairroPedido: [''],
-    cidadePedido: [''],
-    estadoPedido: [''],
-    sfobras: [''],
-    cno: [''],
-    ie: [''],
-    mangueira: [''],
-    volume: [''],
-    precoCx5: [''],
-    precoCx10: [''],
-    precoCx15: [''],
-    precoLv5: [''],
-    precoLv10: [''],
-    precoLv15: [''],
-    ajudanteHora: [''],
-    observacao: ['']
-  });
+      idCliente: [''],
+      nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
+      cpfcnpj: ['', Validators.required],
+      telefone: ['', Validators.required],
+      celular: [''],
+      email: ['', [Validators.required, Validators.email]],
+      endereco: this.formBuilder.group({
+        cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')],],
+        logradouro: [''],
+        numero: [null, Validators.required],
+        complemento: [null],
+        bairro: [null, Validators.required],
+        cidade: [null, Validators.required],
+        estado: [null, Validators.required],
+      }),
+    pedido: this.formBuilder.group({
+      idPedido: [''],
+      nomePedido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
+      razaoSocial: [''],
+      cpfcnpjPedido: ['', Validators.required],
+      tipoPgto: [''],
+      deliveryAddress: [false, Validators.requiredTrue],
+      cepPedido: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')],],
+      logradouroPedido: ['', Validators.required],
+      numeroPedido: [''],
+      complementoPedido: [''],
+      bairroPedido: [''],
+      cidadePedido: [''],
+      estadoPedido: [''],
+      sfobras: [''],
+      cno: [''],
+      ie: [''],
+      mangueira: [''],
+      volume: [''],
+      precoCx5: [''],
+      precoCx10: [''],
+      precoCx15: [''],
+      precoLv5: [''],
+      precoLv10: [''],
+      precoLv15: [''],
+      ajudanteHora: [''],
+      observacao: [''],
+
+      // frameworks: this.buildFrameworks()
+    }),
+    });
+
+  // buildFrameworks() {
+  //   const values = this.frameworks.map(v => new FormControl(false));
+  //   return this.formBuilder.array(values, FormValidations.requiredMinCheckbox(1));
+  // }
 
   // dadosPedido: any = {
   //   id: '2',
@@ -251,11 +262,13 @@ export class CadastrarPedidosComponent implements OnInit {
     if (cep != '') {
       this.consultaCepService.getConsultaCep(cep).subscribe((dados: any) => {
         this.formulario.patchValue({
+          endereco: {
           logradouro: dados.logradouro,
           complemento: dados.complemento,
           bairro: dados.bairro,
           cidade: dados.localidade,
-          estado: dados.uf,
+          estado: dados.uf
+        }
         });
       });
     }
