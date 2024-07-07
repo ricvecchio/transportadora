@@ -1,18 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  NonNullableFormBuilder,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { map, Observable, of, startWith } from 'rxjs';
 
 import { ConsultaCepService } from '../../../service/consulta-cep.service';
 import { PedidoService } from '../pedido.service';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 interface Metros {
   value: string;
@@ -67,23 +61,24 @@ export class CadastrarPedidosComponent implements OnInit {
   isPaymentChecked = false;
 
   formulario = this.formBuilder.group({
-      idCliente: [''],
-      nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
-      cpfcnpj: ['', Validators.required],
-      telefone: ['', Validators.required],
-      celular: [''],
-      email: ['', [Validators.required, Validators.email]],
-      // endereco: this.formBuilder.group({
-        cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')],],
-        logradouro: [''],
-        numero: [''],
-        complemento: [''],
-        bairro: [''],
-        cidade: [''],
-        estado: [''],
-      // }),
+    idCliente: [''],
+    nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)],],
+    cpfcnpj: ['', Validators.required],
+    telefone: ['', Validators.required],
+    celular: [''],
+    email: ['', [Validators.required, Validators.email]],
+    endereco: this.formBuilder.group({
+      cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
+      logradouro: [''],
+      numero: [''],
+      complemento: [''],
+      bairro: [''],
+      cidade: [''],
+      estado: [''],
+    }),
+    dadosPedido: this.formBuilder.group({
       idPedido: [''],
-      nomePedido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
+      nomePedido: ['',[Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
       razaoSocial: [''],
       cpfcnpjPedido: ['', Validators.required],
       tipoPgto: [''],
@@ -108,100 +103,14 @@ export class CadastrarPedidosComponent implements OnInit {
       precoLv15: [''],
       ajudanteHora: [''],
       observacao: [''],
-
       // frameworks: this.buildFrameworks()
-     });
+    }),
+  });
 
   // buildFrameworks() {
   //   const values = this.frameworks.map(v => new FormControl(false));
   //   return this.formBuilder.array(values, FormValidations.requiredMinCheckbox(1));
   // }
-
-  // dadosPedido: any = {
-  //   id: '2',
-  //   nome: '',
-  //   cpf: '',
-  //   telefone: '',
-  //   celular: '',
-  //   email: '',
-  //   cep: '',
-  //   logradouro: '',
-  //   numero: '',
-  //   complemento: '',
-  //   bairro: '',
-  //   cidade: '',
-  //   estado: '',
-  //   fantasia: '',
-  //   razaoSocial: '',
-  //   cnpj: '',
-  //   tipoPgto: '',
-  //   cepEntrega: '',
-  //   logradouroEntrega: '',
-  //   numeroEntrega: '',
-  //   complementoEntrega: '',
-  //   bairroEntrega: '',
-  //   cidadeEntrega: '',
-  //   estadoEntrega: '',
-  //   sfobras: '',
-  //   cno: '',
-  //   mangueira: '',
-  //   ie: '',
-  //   volume: '',
-  //   preco1: '',
-  //   preco2: '',
-  //   preco3: '',
-  //   preco4: '',
-  //   preco5: '',
-  //   preco6: '',
-  //   ajudanteHora: '',
-  //   observacao: '',
-  //   idPedido: 1,
-  //   modelo: 'modelo1',
-  // };
-
-  // formGroup = this.formBuilder.group({
-  //   idCliente: [{ value: 1, disabled: true }],
-  //   buscarCliente: ['', Validators.required],
-  //   nome: ['', Validators.required],
-  //   cpf: ['', Validators.required],
-  //   telefone: ['', Validators.required],
-  //   celular: ['', Validators.required],
-  //   email: ['', [Validators.required, Validators.email]],
-  //   cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
-  //   logradouro: ['', Validators.required],
-  //   numero: ['', Validators.required],
-  //   complemento: [''],
-  //   bairro: ['', Validators.required],
-  //   cidade: ['', Validators.required],
-  //   estado: ['', Validators.required],
-  //   fantasia: [''],
-  //   razaoSocial: [''],
-  //   cnpj: [''],
-  //   tipoPgto: [''],
-  //   cashPayment: [false, Validators.requiredTrue],
-  //   deliveryAddress: [false, Validators.requiredTrue],
-  //   cepEntrega: [''],
-  //   logradouroEntrega: [''],
-  //   numeroEntrega: [''],
-  //   complementoEntrega: [''],
-  //   bairroEntrega: [''],
-  //   cidadeEntrega: [''],
-  //   estadoEntrega: [''],
-  //   sfobras: [''],
-  //   cno: [''],
-  //   mangueira: [''],
-  //   ie: [''],
-  //   volume: [''],
-  //   preco1: [''],
-  //   preco2: [''],
-  //   preco3: [''],
-  //   preco4: [''],
-  //   preco5: [''],
-  //   preco6: [''],
-  //   ajudanteHora: [''],
-  //   observacao: [''],
-  //   idPedido: [''],
-  // });
 
   myControl = new FormControl<string | User>('');
 
@@ -260,13 +169,13 @@ export class CadastrarPedidosComponent implements OnInit {
     if (cep != '') {
       this.consultaCepService.getConsultaCep(cep).subscribe((dados: any) => {
         this.formulario.patchValue({
-          // endereco: {
-          logradouro: dados.logradouro,
-          complemento: dados.complemento,
-          bairro: dados.bairro,
-          cidade: dados.localidade,
-          estado: dados.uf
-        // }
+          endereco: {
+            logradouro: dados.logradouro,
+            complemento: dados.complemento,
+            bairro: dados.bairro,
+            cidade: dados.localidade,
+            estado: dados.uf,
+          },
         });
       });
     }

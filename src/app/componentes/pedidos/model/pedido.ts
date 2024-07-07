@@ -1,17 +1,4 @@
 export interface Pedido {
-  idCliente: string;
-  nome: string;
-  cpfcnpj: string;
-  telefone: string;
-  celular: string;
-  email: string;
-  cep: string;
-  logradouro: string;
-  numero: string;
-  complemento: string;
-  bairro: string;
-  cidade: string;
-  estado: string;
   idPedido: string;
   nomePedido: string;
   razaoSocial: string;
@@ -36,5 +23,5 @@ export interface Pedido {
   precoLv10: string;
   precoLv15: string;
   ajudanteHora: string;
-  observacao: string
+  observacao: string;
 }
