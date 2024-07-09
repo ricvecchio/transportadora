@@ -1,3 +1,5 @@
+import { Pedido } from "./pedido";
+
 export interface Cliente {
   idCliente: string;
   nome: string;
@@ -12,5 +14,5 @@ export interface Cliente {
   bairro: string;
   cidade: string;
   estado: string;
-  // pedidos?: Pedido[];
+  pedidos?: Pedido[];
 }
