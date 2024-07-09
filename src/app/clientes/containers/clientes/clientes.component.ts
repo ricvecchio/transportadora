@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable, catchError } from 'rxjs';
 import { ErrorDialogComponent } from '../../../compartilhado/componentes/error-dialog/error-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmationDialogComponent } from '../../componentes/confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from '../../../compartilhado/componentes/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-clientes',
