@@ -23,6 +23,7 @@
       [clientes]="clientes"
       (add)="onAdd()"
       (edit)="onEdit($event)"
+      (remove)="onDelete($event)"
     ></app-clientes-lista>
 
     <ng-template #loading>

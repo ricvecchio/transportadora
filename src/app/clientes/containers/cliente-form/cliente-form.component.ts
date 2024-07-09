@@ -25,9 +25,10 @@ export interface User {
 })
 export class ClienteFormComponent implements OnInit {
 
+  // formulario!: FormGroup;
   formulario = this.formBuilder.group({
     idCliente: [''],
-    nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
+    nome: ['',[Validators.required, Validators.minLength(5), Validators.maxLength(100)],],
     cpfcnpj: ['', Validators.required],
     telefone: ['', Validators.required],
     celular: [''],
@@ -41,27 +42,8 @@ export class ClienteFormComponent implements OnInit {
     estado: [''],
   });
 
-  clientes: Cliente[] = [];
-
-  @Input() dadosCliente: Cliente = {
-    idCliente: '',
-    nome: '',
-    cpfcnpj: '',
-    telefone: '',
-    celular: '',
-    email: '',
-    cep: '',
-    logradouro: '',
-    numero: '',
-    complemento: '',
-    bairro: '',
-    cidade: '',
-    estado: '',
-  };
-
   constructor(
     private formBuilder: NonNullableFormBuilder,
-    private router: Router,
     private consultaCepService: ConsultaCepService,
     private service: ClienteService,
     private snackBar: MatSnackBar,
@@ -70,6 +52,39 @@ export class ClienteFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const cliente: Cliente = this.route.snapshot.data['cliente'];
+    this.formulario.setValue({
+      idCliente: cliente.idCliente,
+      nome: cliente.nome,
+      cpfcnpj: cliente.cpfcnpj,
+      telefone: cliente.telefone,
+      celular: cliente.celular,
+      email: cliente.email,
+      cep: cliente.cep,
+      logradouro: cliente.logradouro,
+      numero: cliente.numero,
+      complemento: cliente.complemento,
+      bairro: cliente.bairro,
+      cidade: cliente.cidade,
+      estado: cliente.estado,
+      // lessons: this.formBuilder.array(this.retrieveLessons(cliente), Validators.required)
+      // this.formulario = this.formBuilder.group({
+      //   idCliente: [cliente.idCliente],
+      //   nome: [cliente.nome, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      //   cpfcnpj: [cliente.cpfcnpj, [Validators.required]],
+      //   telefone: [cliente.telefone, [Validators.required]],
+      //   celular: [cliente.celular, [Validators.required]],
+      //   email: [cliente.email, [Validators.required]],
+      //   cep: [cliente.cep],
+      //   logradouro: [cliente.logradouro, [Validators.required]],
+      //   numero: [cliente.numero],
+      //   complemento: [cliente.complemento],
+      //   bairro: [cliente.bairro],
+      //   cidade: [cliente.cidade],
+      //   estado: [cliente.estado]
+      //   lessons: this.formBuilder.array(this.retrieveLessons(cliente), Validators.required)
+    });
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => {
@@ -77,8 +92,41 @@ export class ClienteFormComponent implements OnInit {
         return name ? this._filter(name as string) : this.options.slice();
       }),
     );
-    this.formulario.value.nome = 'teste';
   }
+
+  // formulario = this.formBuilder.group({
+  //   idCliente: [''],
+  //   nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
+  //   cpfcnpj: ['', Validators.required],
+  //   telefone: ['', Validators.required],
+  //   celular: [''],
+  //   email: ['', [Validators.required, Validators.email]],
+  //   cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
+  //   logradouro: [''],
+  //   numero: [''],
+  //   complemento: [''],
+  //   bairro: [''],
+  //   cidade: [''],
+  //   estado: [''],
+  // });
+
+  // clientes: Cliente[] = [];
+
+  // @Input() dadosCliente: Cliente = {
+  //   idCliente: '',
+  //   nome: '',
+  //   cpfcnpj: '',
+  //   telefone: '',
+  //   celular: '',
+  //   email: '',
+  //   cep: '',
+  //   logradouro: '',
+  //   numero: '',
+  //   complemento: '',
+  //   bairro: '',
+  //   cidade: '',
+  //   estado: '',
+  // };
 
   myControl = new FormControl<string | User>('');
   options: User[] = [
