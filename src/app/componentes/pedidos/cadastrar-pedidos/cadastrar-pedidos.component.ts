@@ -132,49 +132,49 @@ export class CadastrarPedidosComponent implements OnInit {
     // }),
     });
 
-  private retrievepedidos(cliente: Cliente) {
-    const pedidos = [];
-    if (cliente?.pedidos) {
-      cliente.pedidos.forEach(pedido => pedidos.push(this.createPedido(pedido)));
-    } else {
-      pedidos.push(this.createPedido());
-    }
-    return pedidos;
-  }
+  // private retrievepedidos(cliente: Cliente) {
+  //   const pedidos = [];
+  //   if (cliente?.pedidos) {
+  //     cliente.pedidos.forEach(pedido => pedidos.push(this.createPedido(pedido)));
+  //   } else {
+  //     pedidos.push(this.createPedido());
+  //   }
+  //   return pedidos;
+  // }
 
-  private createPedido(pedido: Pedido = { idPedido: '', nomePedido: '', razaoSocial: '' , cpfcnpjPedido: '' , tipoPgto: ''
-    , cepPedido: '' , logradouroPedido: '' , numeroPedido: '' , complementoPedido: '' , bairroPedido: '' , cidadePedido: '' , estadoPedido: ''
-    , sfobras: '' , cno: '' , ie: '' , mangueira: '' , volume: '' , precoCx5: '' , precoCx10: ''
-    , precoCx15: '' , precoLv5: '' , precoLv10: '' , precoLv15: '' , ajudanteHora: '' , observacao: ''
-  }) {
-    return this.formBuilder.group({
-      idPedido: [pedido.idPedido],
-      nomePedido: ['' , [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
-      razaoSocial: [''],
-      cpfcnpjPedido: [''],
-      tipoPgto: [pedido.tipoPgto],
-      cepPedido: [pedido.cepPedido],
-      logradouroPedido: [pedido.logradouroPedido],
-      numeroPedido: [pedido.numeroPedido],
-      complementoPedido: [pedido.complementoPedido],
-      bairroPedido: [pedido.bairroPedido],
-      cidadePedido: [pedido.cidadePedido],
-      estadoPedido: [pedido.estadoPedido],
-      sfobras: [pedido.sfobras],
-      cno: [pedido.cno],
-      ie: [pedido.ie],
-      mangueira: [pedido.mangueira],
-      volume: [pedido.volume],
-      precoCx5: [pedido.precoCx5],
-      precoCx10: [pedido.precoCx10],
-      precoCx15: [pedido.precoCx15],
-      precoLv5: [pedido.precoLv5],
-      precoLv10: [pedido.precoLv10],
-      precoLv15: [pedido.precoLv15],
-      ajudanteHora: [pedido.ajudanteHora],
-      observacao: [pedido.observacao]
-    });
-  }
+  // private createPedido(pedido: Pedido = { idPedido: '', nomePedido: '', razaoSocial: '' , cpfcnpjPedido: '' , tipoPgto: ''
+  //   , cepPedido: '' , logradouroPedido: '' , numeroPedido: '' , complementoPedido: '' , bairroPedido: '' , cidadePedido: '' , estadoPedido: ''
+  //   , sfobras: '' , cno: '' , ie: '' , mangueira: '' , volume: '' , precoCx5: '' , precoCx10: ''
+  //   , precoCx15: '' , precoLv5: '' , precoLv10: '' , precoLv15: '' , ajudanteHora: '' , observacao: ''
+  // }) {
+  //   return this.formBuilder.group({
+  //     idPedido: [pedido.idPedido],
+  //     nomePedido: ['' , [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+  //     razaoSocial: [''],
+  //     cpfcnpjPedido: [''],
+  //     tipoPgto: [pedido.tipoPgto],
+  //     cepPedido: [pedido.cepPedido],
+  //     logradouroPedido: [pedido.logradouroPedido],
+  //     numeroPedido: [pedido.numeroPedido],
+  //     complementoPedido: [pedido.complementoPedido],
+  //     bairroPedido: [pedido.bairroPedido],
+  //     cidadePedido: [pedido.cidadePedido],
+  //     estadoPedido: [pedido.estadoPedido],
+  //     sfobras: [pedido.sfobras],
+  //     cno: [pedido.cno],
+  //     ie: [pedido.ie],
+  //     mangueira: [pedido.mangueira],
+  //     volume: [pedido.volume],
+  //     precoCx5: [pedido.precoCx5],
+  //     precoCx10: [pedido.precoCx10],
+  //     precoCx15: [pedido.precoCx15],
+  //     precoLv5: [pedido.precoLv5],
+  //     precoLv10: [pedido.precoLv10],
+  //     precoLv15: [pedido.precoLv15],
+  //     ajudanteHora: [pedido.ajudanteHora],
+  //     observacao: [pedido.observacao]
+  //   });
+  // }
 
   isAdressChecked = false;
   isPaymentChecked = false;

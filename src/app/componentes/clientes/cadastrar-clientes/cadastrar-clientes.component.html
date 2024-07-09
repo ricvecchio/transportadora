@@ -1,49 +1,214 @@
 <section class="container cadastrar-clientes ff-inter">
   <header class="header">
-    <h2>Cadastro de Clientes:</h2>
+    <h4><strong>Cadastrar Clientes:</strong></h4>
   </header>
-  <form>
-    <label for="fantasia">Fantasia</label>
-    <input
-      type="textarea"
-      class="input"
-      id="nome"
-      name="nome"
-      placeholder="Digite o nome"
-      [(ngModel)]="dadosPedido.nome"
-    />
 
-    <label for="cpfcnpj">CPF/CNPJ</label>
-    <input
-      type="textarea"
-      class="input"
-      id="cpfcnpj"
-      name="cpfcnpj"
-      placeholder="Digite a Razão Social"
-      [(ngModel)]="dadosPedido.cpfcnpj"
-    />
+  <form [formGroup]="formulario" class="full-width" id="formulario">
+    <div class="row">
+      <div class="col-md-9">
+        <mat-form-field class="form-grid" appearance="fill">
+          <mat-label>Buscar Cliente</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+            autofocus
+          />
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            @for (option of filteredOptions | async; track option) {
+              <mat-option [value]="option">{{ option.name }}</mat-option>
+            }
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="form-grid" appearance="outline">
+          <mat-label>Código Cliente</mat-label>
+          <input
+            matInput
+            disableRipple
+            value="1"
+            name="idCliente"
+            formControlName="idCliente"
+          />
+        </mat-form-field>
+      </div>
+    </div>
 
-    <label for="telefone">Telefone</label>
-    <input
-      type="textarea"
-      class="input"
-      id="telefone"
-      name="telefone"
-      placeholder="Digite o telefone"
-      [(ngModel)]="dadosPedido.telefone"
-    />
+    <br />
+    <h6><strong>Informações Cliente:</strong></h6>
+    <br />
+
+    <div class="espaco-dentro">
+      <div class="row">
+        <div class="col-md-9">
+          <mat-form-field class="form-grid">
+            <mat-label>Nome:</mat-label>
+            <input
+              matInput
+              name="nome"
+              placeholder="Digite o Nome"
+              formControlName="nome"
+              #nome
+            />
+            <!-- <mat-hint align="end">{{nome.value?.length || 0}} / 100</mat-hint>
+            <mat-error *ngIf="formulario.get('nome')?.invalid"> {{getMensagemErro("nome")}}</mat-error> -->
+            <!-- @if (formulario.get('nome')?.invalid) {
+            <mat-error>{{ formUtils.getErrorMessage(formulario, "nome") }}</mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+          <mat-form-field class="form-grid">
+            <mat-label>CPF/CNPJ:</mat-label>
+            <input
+              matInput
+              name="cpfcnpj"
+              placeholder="Digite o CPF ou CNPJ"
+              formControlName="cpfcnpj"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <mat-form-field class="form-grid">
+            <mat-label>Telefone:</mat-label>
+            <span matTextPrefix>+55</span>
+            <input
+              matInput
+              name="telefone"
+              placeholder="(11) 5555-1234"
+              formControlName="telefone"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field class="form-grid">
+            <mat-label>Celular:</mat-label>
+            <span matTextPrefix>+55</span>
+            <input
+              matInput
+              name="celular"
+              placeholder="(XX) 9XXXX-XXXX"
+              formControlName="celular"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="form-grid">
+            <mat-label>E-mail:</mat-label>
+            <input
+              matInput
+              name="email"
+              placeholder="Ex. pat@example.com"
+              formControlName="email"
+            />
+            <div
+              *ngIf="
+                (formulario?.invalid && formulario?.touched) ||
+                formulario?.dirty
+              "
+            >
+              <mat-error
+                *ngIf="
+                  formulario.hasError('email') &&
+                  !formulario.hasError('required')
+                "
+              >
+                E-mail é obrigatório.
+              </mat-error>
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <mat-form-field class="form-grid">
+            <mat-label>CEP:</mat-label>
+            <input
+              matInput
+              name="cep"
+              placeholder="Digite o CEP"
+              formControlName="cep"
+              (blur)="consultaCEP()"
+            />
+            <div *ngIf="(formulario?.invalid && formulario?.touched) || formulario?.dirty">
+              <mat-error *ngIf="formulario.hasError('cep') && !formulario.hasError('required')">
+                O campo de CEP é obrigatório
+              </mat-error>
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-9">
+          <mat-form-field class="form-grid">
+            <mat-label>Logradouro:</mat-label>
+            <input matInput name="logradouro" formControlName="logradouro" />
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field class="form-grid">
+            <mat-label>Número:</mat-label>
+            <input matInput name="numero" formControlName="numero" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-9">
+          <mat-form-field class="form-grid">
+            <mat-label>Complemento:</mat-label>
+            <input
+              matInput
+              placeholder="Ex. Apto 64"
+              name="complemento"
+              formControlName="complemento"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field class="form-grid">
+            <mat-label>Bairro:</mat-label>
+            <input matInput name="bairro" formControlName="bairro" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-9">
+          <mat-form-field class="form-grid">
+            <mat-label>Cidade:</mat-label>
+            <input
+              matInput
+              placeholder="Ex. Santo André"
+              name="cidade"
+              formControlName="cidade"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field class="form-grid">
+            <mat-label>UF:</mat-label>
+            <input
+              matInput
+              placeholder="Ex. São Paulo"
+              name="estado"
+              formControlName="estado"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
 
     <div class="acoes">
-      <button (click)="cadastrarCliente()" class="botao">Salvar</button>
-      <button (click)="cancelar()" class="botao">Cancelar</button>
-
-      <button class="botao-editar">
-        <img src="/assets/img/icone-editar.png" routerLink="/clientes/editar-clientes/{{dadosPedido.idCliente}}" alt="Ícone de editar">
-      </button>
-      <button class="botao-excluir" routerLink="/clientes/excluir-clientes/{{dadosPedido.idCliente}}">
-        <img src="/assets/img/icone-excluir.png" alt="Ícone de excluir">
-      </button>
+      <button (click)="onSubmit()" class="botao">Salvar</button>
+      <button (click)="onCancel()" class="botao">Cancelar</button>
     </div>
   </form>
-
 </section>

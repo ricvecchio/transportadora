@@ -14,5 +14,5 @@ export interface Cliente {
   bairro: string;
   cidade: string;
   estado: string;
-  pedidos?: Pedido[];
+  // pedidos?: Pedido[];
 }
