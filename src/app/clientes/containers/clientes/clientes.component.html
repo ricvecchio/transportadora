@@ -1,0 +1,89 @@
+<!-- <section class="container">
+  <header class="header d-flex">
+    <h2 class="ff-inter">Consultar Clientes:</h2>
+  </header>
+  <div class="layoutcliente" *ngIf="listaClientes.length > 0; else semClientes">
+    <div *ngFor="let cliente of listaClientes">
+      <app-cadastrar-clientes [dadosCliente]="cliente"></app-cadastrar-clientes>
+    </div>
+  </div>
+
+<ng-template #semClientes>
+  <div class="ff-inter sem-clientes]">
+    <p>Ainda não há clientes cadastrados!</p>
+  </div>
+</ng-template> -->
+
+<mat-card>
+  <mat-toolbar color="primary">Lista de Clientes</mat-toolbar>
+
+  <div class="column-flex mat-elevation-z8">
+    <app-clientes-lista
+      *ngIf="clientes$ | async as clientes; else loading"
+      [clientes]="clientes"
+    ></app-clientes-lista>
+
+    <!-- <div *ngIf="clientes$ | async as clientes; else loading">
+    <mat-table [dataSource]="clientes" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef
+          ><strong>ID</strong></mat-header-cell
+        >
+        <mat-cell *matCellDef="let cliente">{{ cliente.idCliente }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef>
+          <strong>Cliente</strong>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let cliente">{{ cliente.nome }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="telefone">
+        <mat-header-cell *matHeaderCellDef>
+          <strong>Telefone</strong>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let cliente">{{ cliente.telefone }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>
+          <strong>E-mail</strong>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let cliente">{{ cliente.email }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acao">
+        <mat-header-cell *matHeaderCellDef class="action-column">
+          <button mat-mini-fab color="accent" aria-label="Adicionar um Pedido" (click)="onAdd()" class="action-column-header">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let pedido">
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Editando um Pedido"
+            (click)="onEdit(pedido)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" aria-label="Deletando um Pedido" (click)="onDelete(pedido)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div> -->
+
+    <ng-template #loading>
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+  </div>
+</mat-card>
