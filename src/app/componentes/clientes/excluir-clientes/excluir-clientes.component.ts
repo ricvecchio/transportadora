@@ -11,11 +11,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ExcluirClientesComponent implements OnInit {
 
   cliente: Cliente = {
-    id: 0,
-    fantasia: '',
-    razaosocial: '',
+    idCliente: '',
+    nome: '',
+    cpfcnpj: '',
     telefone: '',
-    modelo: ''
+    celular:  '',
+    email:  '',
+    cep:  '',
+    logradouro:  '',
+    numero: '',
+    complemento: '',
+    bairro: '',
+    cidade: '',
+    estado: ''
   };
 
   constructor(
@@ -25,19 +33,19 @@ export class ExcluirClientesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
+    const id = this.route.snapshot.paramMap.get('idCliente')
     this.service.buscarPorId(parseInt(id!)).subscribe((cliente) => {
       this.cliente = cliente
     })
   }
 
-  excluirCliente() {
-    if(this.cliente.id) {
-      this.service.excluir(this.cliente.id).subscribe(() => {
-        this.router.navigate(['/consultar-cliente'])
-      })
-    }
-  }
+  // excluirCliente() {
+  //   if(this.cliente.idCliente) {
+  //     this.service.excluir(this.cliente.id).subscribe(() => {
+  //       this.router.navigate(['/consultar-cliente'])
+  //     })
+  //   }
+  // }
 
   cancelar() {
     this.router.navigate(['/menu'])

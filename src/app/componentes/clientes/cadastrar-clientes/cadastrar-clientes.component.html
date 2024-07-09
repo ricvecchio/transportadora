@@ -7,20 +7,20 @@
     <input
       type="textarea"
       class="input"
-      id="fantasia"
-      name="fantasia"
-      placeholder="Digite o nome fantasia"
-      [(ngModel)]="dadosPedido.fantasia"
+      id="nome"
+      name="nome"
+      placeholder="Digite o nome"
+      [(ngModel)]="dadosPedido.nome"
     />
 
-    <label for="razaosocial">Razão Social</label>
+    <label for="cpfcnpj">CPF/CNPJ</label>
     <input
       type="textarea"
       class="input"
-      id="razaosocial"
-      name="razaosocial"
+      id="cpfcnpj"
+      name="cpfcnpj"
       placeholder="Digite a Razão Social"
-      [(ngModel)]="dadosPedido.razaosocial"
+      [(ngModel)]="dadosPedido.cpfcnpj"
     />
 
     <label for="telefone">Telefone</label>
@@ -33,101 +33,14 @@
       [(ngModel)]="dadosPedido.telefone"
     />
 
-    <label for="modelo">Selecione o modelo do card:</label>
-    <div class="container-radio">
-      <div class="radio-modelo">
-        <label for="modelo1">
-          <input
-            type="radio"
-            id="modelo1"
-            value="modelo1"
-            name="modelo-card"
-            [(ngModel)]="dadosPedido.modelo"
-          />
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>Modelo 1</span>
-        </label>
-
-        Prévia:
-        <div class="modelo modelo1 ff-roboto-mono" [ngClass]="larguraCliente()">
-          <img src="../../../../assets/img/modelo1.png" alt="Aspas azuis" />
-          <p class="fantasia">{{ dadosPedido.fantasia }}</p>
-          <p class="razaosocial">
-            <b>{{ dadosPedido.razaosocial }}</b>
-          </p>
-          <p class="telefone">
-            <b>{{ dadosPedido.telefone }}</b>
-          </p>
-        </div>
-      </div>
-
-      <div class="radio-modelo">
-        <label for="modelo2">
-          <input
-            type="radio"
-            id="modelo2"
-            value="modelo2"
-            name="modelo-card"
-            [(ngModel)]="dadosPedido.modelo"
-          />
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>Modelo 2</span>
-        </label>
-
-        Prévia:
-        <div class="modelo modelo2 ff-roboto-mono" [ngClass]="larguraCliente()">
-          <img src="../../../../assets/img/modelo2.png" alt="Aspas azuis" />
-          <p class="fantasia">{{ dadosPedido.fantasia }}</p>
-          <p class="razaosocial">
-            <b>{{ dadosPedido.razaosocial }}</b>
-          </p>
-          <p class="telefone">
-            <b>{{ dadosPedido.telefone }}</b>
-          </p>
-        </div>
-      </div>
-
-      <div class="radio-modelo">
-        <label for="modelo3">
-          <input
-            type="radio"
-            id="modelo3"
-            value="modelo3"
-            name="modelo-card"
-            [(ngModel)]="dadosPedido.modelo"
-          />
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>Modelo 3</span>
-        </label>
-
-        Prévia:
-        <div class="pedido {{ dadosPedido.modelo }} ff-roboto-mono" [ngClass]="larguraCliente()">
-          <img src="../../../../assets/img/modelo3.png" alt="Aspas azuis" />
-          <p class="fantasia">{{ dadosPedido.fantasia }}</p>
-          <p class="razaosocial">
-            <b>{{ dadosPedido.razaosocial }}</b>
-          </p>
-          <p class="telefone">
-            <b>{{ dadosPedido.telefone }}</b>
-          </p>
-        </div>
-      </div>
-    </div>
-
     <div class="acoes">
       <button (click)="cadastrarCliente()" class="botao">Salvar</button>
       <button (click)="cancelar()" class="botao">Cancelar</button>
 
       <button class="botao-editar">
-        <img src="/assets/img/icone-editar.png" routerLink="/clientes/editar-clientes/{{dadosPedido.id}}" alt="Ícone de editar">
+        <img src="/assets/img/icone-editar.png" routerLink="/clientes/editar-clientes/{{dadosPedido.idCliente}}" alt="Ícone de editar">
       </button>
-      <button class="botao-excluir" routerLink="/clientes/excluir-clientes/{{dadosPedido.id}}">
+      <button class="botao-excluir" routerLink="/clientes/excluir-clientes/{{dadosPedido.idCliente}}">
         <img src="/assets/img/icone-excluir.png" alt="Ícone de excluir">
       </button>
     </div>

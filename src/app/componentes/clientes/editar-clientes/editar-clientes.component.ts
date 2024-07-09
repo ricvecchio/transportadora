@@ -11,11 +11,19 @@ import { Cliente } from '../cliente';
 export class EditarClientesComponent implements OnInit {
 
   cliente: Cliente = {
-    id: 0,
-    fantasia: '',
-    razaosocial: '',
+    idCliente: '',
+    nome: '',
+    cpfcnpj: '',
     telefone: '',
-    modelo: ''
+    celular:  '',
+    email:  '',
+    cep:  '',
+    logradouro:  '',
+    numero: '',
+    complemento: '',
+    bairro: '',
+    cidade: '',
+    estado: ''
   };
 
   constructor(
@@ -25,7 +33,7 @@ export class EditarClientesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
+    const id = this.route.snapshot.paramMap.get('idCliente')
     this.service.buscarPorId(parseInt(id!)).subscribe((cliente) => {
       this.cliente = cliente
     })

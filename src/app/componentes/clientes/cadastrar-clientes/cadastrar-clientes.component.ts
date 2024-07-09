@@ -10,14 +10,24 @@ import { ClienteService } from '../cliente.service';
 })
 export class CadastrarClientesComponent implements OnInit {
   @Input() dadosPedido: Cliente = {
-    fantasia: '',
-    razaosocial: '',
+    idCliente: '',
+    nome: '',
+    cpfcnpj: '',
     telefone: '',
-    modelo: 'modelo1',
+    celular:  '',
+    email:  '',
+    cep:  '',
+    logradouro:  '',
+    numero: '',
+    complemento: '',
+    bairro: '',
+    cidade: '',
+    estado: ''
   };
 
+
   larguraCliente(): string {
-    if (this.dadosPedido.razaosocial.length >= 256) {
+    if (this.dadosPedido.nome.length >= 256) {
       return 'cliente-g';
     }
     return 'cliente-p';

@@ -5,6 +5,7 @@ import { AsyncPipe } from '@angular/common';
 
 import { PedidoPage } from './model/pedido-page';
 import { Pedido } from './model/pedido';
+import { Cliente } from '../clientes/cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,8 @@ export class PedidoService {
       );
   }
 
-  salvar(pedido: Partial<Pedido>){
-    return this.httpClient.post<Pedido>(this.API, pedido);
+  salvar(cliente: Partial<Cliente>){
+    return this.httpClient.post<Cliente>(this.API, cliente);
   }
 
   buscarPorId(idPedido: string) {

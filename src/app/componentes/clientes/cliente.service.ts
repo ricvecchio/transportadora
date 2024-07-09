@@ -21,7 +21,7 @@ export class ClienteService {
   }
 
   editar(cliente: Cliente): Observable<Cliente> {
-    const url = `${this.API}/${cliente.id}`
+    const url = `${this.API}/${cliente.idCliente}`
     return this.http.put<Cliente>(url, cliente )
   }
 
