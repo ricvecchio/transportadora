@@ -1,20 +1,17 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from '@angular/router';
+import { ClienteService } from '../servicos/cliente.service';
+import { Cliente } from '../modelo/cliente';
 import { Observable, of } from 'rxjs';
-
-import { ClienteService } from './servicos/cliente.service';
-import { Cliente } from './modelo/cliente';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ClienteResolver {
-  constructor(private service: ClienteService) {}
+export class ClienteResolver  {
 
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
-  ): Observable<Cliente> {
+  constructor(private service: ClienteService) { }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Cliente> {
     if (route.params && route.params['idCliente']) {
       return this.service.buscarPorId(route.params['idCliente']);
     }
@@ -35,4 +32,4 @@ export class ClienteResolver {
       pedidos: []
     });
   }
-}
+};

@@ -3,9 +3,8 @@
   max-height: 600px;
 }
 
-
 .action-column {
-  flex: 0 0 75px;
+  flex: 0 0 125px;
 }
 
 .action-column-header {

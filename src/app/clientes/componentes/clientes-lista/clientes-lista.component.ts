@@ -24,4 +24,12 @@ export class ClientesListaComponent implements OnInit {
     this.add.emit(true);
   }
 
+  onEdit(cliente: Cliente) {
+    this.edit.emit(cliente);
+  }
+
+  onDelete(cliente: Cliente) {
+    this.remove.emit(cliente);
+  }
+
 }
