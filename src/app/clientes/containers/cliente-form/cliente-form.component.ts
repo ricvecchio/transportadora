@@ -5,6 +5,7 @@ import {
   FormControl,
   FormGroup,
   NonNullableFormBuilder,
+  UntypedFormArray,
   Validators,
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -109,6 +110,20 @@ export class ClienteFormComponent implements OnInit {
       observacao: [pedido.observacao]
     });
   }
+
+  // getPedidosFormArray() {
+  //   return (<UntypedFormArray>this.formulario.get('pedidos')).controls;
+  // }
+
+  // addNovoPedido() {
+  //   const pedidos = this.formulario.get('pedidos') as UntypedFormArray;
+  //   pedidos.push(this.criarPedido());
+  // }
+
+  // removePedido(index: number) {
+  //   const pedidos = this.formulario.get('pedidos') as UntypedFormArray;
+  //   pedidos.removeAt(index);
+  // }
 
   // formulario = this.formBuilder.group({
   //   idCliente: [''],
