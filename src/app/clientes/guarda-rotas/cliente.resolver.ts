@@ -1,8 +1,9 @@
-import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from '@angular/router';
-import { ClienteService } from '../servicos/cliente.service';
-import { Cliente } from '../modelo/cliente';
-import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable, of } from 'rxjs';
+
+import { Cliente } from '../modelo/cliente';
+import { ClienteService } from '../servicos/cliente.service';
 
 @Injectable({
   providedIn: 'root',
