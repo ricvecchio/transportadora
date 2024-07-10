@@ -15,6 +15,7 @@ import { Cliente } from '../../modelo/cliente';
 import { ConsultaCepService } from '../../../pedidos/service/consulta-cep.service';
 import { ClienteService } from '../../servicos/cliente.service';
 import { Pedido } from '../../../pedidos/model/pedido';
+import { FormUtilsService } from '../../../compartilhado/form-utils-service';
 
 export interface User {
   name: string;
@@ -36,6 +37,7 @@ export class ClienteFormComponent implements OnInit {
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute,
+    public formUtils: FormUtilsService
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +48,7 @@ export class ClienteFormComponent implements OnInit {
         nome: [cliente.nome, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
         cpfcnpj: [cliente.cpfcnpj, [Validators.required]],
         telefone: [cliente.telefone, [Validators.required]],
-        celular: [cliente.celular, [Validators.required]],
+        celular: [cliente.celular],
         email: [cliente.email, [Validators.required]],
         cep: [cliente.cep],
         logradouro: [cliente.logradouro, [Validators.required]],
@@ -235,10 +237,12 @@ export class ClienteFormComponent implements OnInit {
   disabled = false;
 
   onSubmit() {
-    this.service.salvar(this.formulario.value).subscribe(
-      (result) => this.onSucess(),
-      (error) => this.onError(),
-    );
+    if (this.formulario.valid) {
+      this.service.salvar(this.formulario.value)
+        .subscribe(result => this.onSucess(), error => this.onError());
+    } else {
+      this.formUtils.validateAllFormFields(this.formulario);
+    }
   }
 
   private onSucess() {
