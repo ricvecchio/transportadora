@@ -207,30 +207,6 @@ export class ClienteFormComponent implements OnInit {
     }
   }
 
-  getMensagemErro(fieldNome: string) {
-    const field = this.formulario.get(fieldNome);
-
-    if (field?.hasError('required')) {
-      return 'Campo Obrigatório';
-    }
-
-    if (field?.hasError('minlength')) {
-      const requiredLength = field.errors
-        ? field.errors['minlength']['requiredLength']
-        : 5;
-      return `Tamanho mínimo precisa ser de ${requiredLength} caracteres.`;
-    }
-
-    if (field?.hasError('maxlength')) {
-      const requiredLength = field.errors
-        ? field.errors['maxlength']['requiredLength']
-        : 200;
-      return `Tamanho máximo precisa ser de ${requiredLength} caracteres.`;
-    }
-
-    return 'Campo Inválido';
-  }
-
   dataAtual: Date = new Date();
 
   checked = false;
@@ -241,7 +217,7 @@ export class ClienteFormComponent implements OnInit {
       this.service.salvar(this.formulario.value)
         .subscribe(result => this.onSucess(), error => this.onError());
     } else {
-      this.formUtils.validateAllFormFields(this.formulario);
+      this.formUtils.validarTodosCamposFormFields(this.formulario);
     }
   }
 
