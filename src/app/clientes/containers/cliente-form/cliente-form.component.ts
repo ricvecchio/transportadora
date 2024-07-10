@@ -13,6 +13,7 @@ import { map, Observable, of, startWith } from 'rxjs';
 import { Cliente } from '../../modelo/cliente';
 import { ConsultaCepService } from '../../../pedidos/service/consulta-cep.service';
 import { ClienteService } from '../../servicos/cliente.service';
+import { Pedido } from '../../../pedidos/model/pedido';
 
 export interface User {
   name: string;
@@ -25,22 +26,7 @@ export interface User {
 })
 export class ClienteFormComponent implements OnInit {
 
-  // formulario!: FormGroup;
-  formulario = this.formBuilder.group({
-    idCliente: [''],
-    nome: ['',[Validators.required, Validators.minLength(5), Validators.maxLength(100)],],
-    cpfcnpj: ['', Validators.required],
-    telefone: ['', Validators.required],
-    celular: [''],
-    email: ['', [Validators.required, Validators.email]],
-    cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
-    logradouro: [''],
-    numero: [''],
-    complemento: [''],
-    bairro: [''],
-    cidade: [''],
-    estado: [''],
-  });
+  formulario!: FormGroup;
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
@@ -53,36 +39,22 @@ export class ClienteFormComponent implements OnInit {
 
   ngOnInit(): void {
     const cliente: Cliente = this.route.snapshot.data['cliente'];
-    this.formulario.setValue({
-      idCliente: cliente.idCliente,
-      nome: cliente.nome,
-      cpfcnpj: cliente.cpfcnpj,
-      telefone: cliente.telefone,
-      celular: cliente.celular,
-      email: cliente.email,
-      cep: cliente.cep,
-      logradouro: cliente.logradouro,
-      numero: cliente.numero,
-      complemento: cliente.complemento,
-      bairro: cliente.bairro,
-      cidade: cliente.cidade,
-      estado: cliente.estado,
-      // lessons: this.formBuilder.array(this.retrieveLessons(cliente), Validators.required)
-      // this.formulario = this.formBuilder.group({
-      //   idCliente: [cliente.idCliente],
-      //   nome: [cliente.nome, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
-      //   cpfcnpj: [cliente.cpfcnpj, [Validators.required]],
-      //   telefone: [cliente.telefone, [Validators.required]],
-      //   celular: [cliente.celular, [Validators.required]],
-      //   email: [cliente.email, [Validators.required]],
-      //   cep: [cliente.cep],
-      //   logradouro: [cliente.logradouro, [Validators.required]],
-      //   numero: [cliente.numero],
-      //   complemento: [cliente.complemento],
-      //   bairro: [cliente.bairro],
-      //   cidade: [cliente.cidade],
-      //   estado: [cliente.estado]
-      //   lessons: this.formBuilder.array(this.retrieveLessons(cliente), Validators.required)
+
+      this.formulario = this.formBuilder.group({
+        idCliente: [cliente.idCliente],
+        nome: [cliente.nome, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+        cpfcnpj: [cliente.cpfcnpj, [Validators.required]],
+        telefone: [cliente.telefone, [Validators.required]],
+        celular: [cliente.celular, [Validators.required]],
+        email: [cliente.email, [Validators.required]],
+        cep: [cliente.cep],
+        logradouro: [cliente.logradouro, [Validators.required]],
+        numero: [cliente.numero],
+        complemento: [cliente.complemento],
+        bairro: [cliente.bairro],
+        cidade: [cliente.cidade],
+        estado: [cliente.estado],
+        pedidos: this.formBuilder.array(this.obterPedidos(cliente), Validators.required)
     });
 
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -92,6 +64,50 @@ export class ClienteFormComponent implements OnInit {
         return name ? this._filter(name as string) : this.options.slice();
       }),
     );
+  }
+
+  private obterPedidos(cliente: Cliente) {
+    const pedidos = [];
+    if (cliente?.pedidos) {
+      cliente.pedidos.forEach(pedido => pedidos.push(this.criarPedido(pedido)));
+    } else {
+      pedidos.push(this.criarPedido());
+    }
+    return pedidos;
+  }
+
+  private criarPedido(pedido: Pedido = { idPedido: '', nomePedido: '', razaoSocial: '' , cpfcnpjPedido: '' , tipoPgto: ''
+    , cepPedido: '' , logradouroPedido: '' , numeroPedido: '' , complementoPedido: '' , bairroPedido: '' , cidadePedido: '' , estadoPedido: ''
+    , sfobras: '' , cno: '' , ie: '' , mangueira: '' , volume: '' , precoCx5: '' , precoCx10: ''
+    , precoCx15: '' , precoLv5: '' , precoLv10: '' , precoLv15: '' , ajudanteHora: '' , observacao: ''
+  }) {
+    return this.formBuilder.group({
+      idPedido: [pedido.idPedido],
+      nomePedido: ['' , [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      razaoSocial: [''],
+      cpfcnpjPedido: [''],
+      tipoPgto: [pedido.tipoPgto],
+      cepPedido: [pedido.cepPedido],
+      logradouroPedido: [pedido.logradouroPedido],
+      numeroPedido: [pedido.numeroPedido],
+      complementoPedido: [pedido.complementoPedido],
+      bairroPedido: [pedido.bairroPedido],
+      cidadePedido: [pedido.cidadePedido],
+      estadoPedido: [pedido.estadoPedido],
+      sfobras: [pedido.sfobras],
+      cno: [pedido.cno],
+      ie: [pedido.ie],
+      mangueira: [pedido.mangueira],
+      volume: [pedido.volume],
+      precoCx5: [pedido.precoCx5],
+      precoCx10: [pedido.precoCx10],
+      precoCx15: [pedido.precoCx15],
+      precoLv5: [pedido.precoLv5],
+      precoLv10: [pedido.precoLv10],
+      precoLv15: [pedido.precoLv15],
+      ajudanteHora: [pedido.ajudanteHora],
+      observacao: [pedido.observacao]
+    });
   }
 
   // formulario = this.formBuilder.group({
