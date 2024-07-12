@@ -12,7 +12,7 @@ import { MensagemComponent } from './home/mensagem/mensagem.component';
 import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { MenuComponent } from './menu/menu.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
 
 @NgModule({
@@ -32,6 +32,7 @@ import { AsyncPipe } from '@angular/common';
     MatToolbarModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AsyncPipe
   ],
   providers: [],
