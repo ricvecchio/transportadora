@@ -13,6 +13,7 @@ import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component
 import { RodapeComponent } from './rodape/rodape.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule } from '@angular/forms';
+import { AsyncPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     MatToolbarModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AsyncPipe
   ],
   providers: [],
   bootstrap: [AppComponent],
