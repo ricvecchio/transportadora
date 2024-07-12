@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { ClienteResolver } from './cliente.resolver';
 import { ClientesComponent } from './containers/clientes/clientes.component';
+import { ClienteResolver } from './guarda-rotas/cliente.resolver';
 
 export const COURSES_ROUTES: Routes = [
   { path: '', component: ClientesComponent },

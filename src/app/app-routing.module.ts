@@ -7,33 +7,28 @@ import { LoginComponent } from './home/login/login.component';
 import { NovoUsuarioComponent } from './home/novo-usuario/novo-usuario.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'home',
-  //   pathMatch: 'full',
-  // },
-  // {
-  //   path: 'home',
-  //   component: HomeComponent,
-  //   children: [
-  //     {
-  //       path: '',
-  //       component: LoginComponent,
-  //     },
-  //     {
-  //       path: 'novousuario',
-  //       component: NovoUsuarioComponent,
-  //     },
-  //   ],
-  // },
-  // {
-  //   path: 'menu',
-  //   component: MenuComponent
-  // },
   {
     path: '',
-    redirectTo: 'clientes',
+    redirectTo: 'home',
     pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        component: LoginComponent,
+      },
+      {
+        path: 'novousuario',
+        component: NovoUsuarioComponent,
+      },
+    ],
+  },
+  {
+    path: 'menu',
+    component: MenuComponent
   },
   {
     path: 'clientes',

@@ -1,12 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, Observable, of } from 'rxjs';
+
+import {
+  ConfirmationDialogComponent,
+} from '../../../compartilhado/componentes/confirmation-dialog/confirmation-dialog.component';
+import { ErrorDialogComponent } from '../../../compartilhado/componentes/error-dialog/error-dialog.component';
 import { Cliente } from '../../modelo/cliente';
 import { ClienteService } from '../../servicos/cliente.service';
-import { MatDialog } from '@angular/material/dialog';
-import { Observable, catchError, of } from 'rxjs';
-import { ErrorDialogComponent } from '../../../compartilhado/componentes/error-dialog/error-dialog.component';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmationDialogComponent } from '../../../compartilhado/componentes/confirmation-dialog/confirmation-dialog.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-clientes',

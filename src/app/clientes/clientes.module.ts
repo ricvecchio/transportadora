@@ -21,8 +21,7 @@ import { ClientesListaComponent } from './componentes/clientes-lista/clientes-li
         ClientesRoutingModule,
         AppMaterialModule,
         CompartilhadoModule,
-        ReactiveFormsModule,
-        ClientesListaComponent
+        ReactiveFormsModule
     ]
 })
 export class ClientesModule { }
