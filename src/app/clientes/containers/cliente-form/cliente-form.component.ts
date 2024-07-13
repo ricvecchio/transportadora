@@ -33,7 +33,7 @@ export class ClienteFormComponent implements OnInit {
     const cliente: Cliente = this.route.snapshot.data['cliente'];
 
     this.formulario = this.formBuilder.group({
-      idCliente: [cliente.idCliente],
+      id: [cliente.id],
       nome: [cliente.nome, [Validators.required, Validators.minLength(5), Validators.maxLength(100),],],
       cpfcnpj: [cliente.cpfcnpj, [Validators.required]],
       telefone: [cliente.telefone, [Validators.required]],

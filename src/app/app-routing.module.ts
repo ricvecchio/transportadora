@@ -35,7 +35,7 @@ const routes: Routes = [
   },
   { path: 'cadastrar-cliente', component: ClienteFormComponent, resolve: { cliente: ClienteResolver} },
   { path: 'consultar-clientes', component: ClientesListaComponent, resolve: { cliente: ClienteResolver} },
-  { path: 'editar-cliente/:idCliente', component: ClienteFormComponent, resolve: { cliente: ClienteResolver} },
+  { path: 'editar-cliente/:id', component: ClienteFormComponent, resolve: { cliente: ClienteResolver} },
 
   // {
   //   path: 'clientes',

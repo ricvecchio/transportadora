@@ -17,13 +17,13 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.API);
   }
 
-  buscarPorId(idCliente: number): Observable<Cliente> {
-    const url = `${this.API}/${idCliente}`
+  buscarPorId(id: number): Observable<Cliente> {
+    const url = `${this.API}/${id}`
     return this.http.get<Cliente>(url)
   }
 
   salvar(cliente: Partial<Cliente>) {
-    if (cliente.idCliente) {
+    if (cliente.id) {
       return this.editar(cliente);
     }
     return this.criar(cliente);
@@ -34,7 +34,7 @@ export class ClienteService {
   }
 
   private editar(cliente: Partial<Cliente>) {
-    return this.http.put<Cliente>(`${this.API}/${cliente.idCliente}`, cliente).pipe(first());
+    return this.http.put<Cliente>(`${this.API}/${cliente.id}`, cliente).pipe(first());
   }
 
   excluir(idCliente: string) {

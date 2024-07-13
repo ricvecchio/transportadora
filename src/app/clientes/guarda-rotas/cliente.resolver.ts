@@ -13,11 +13,11 @@ export class ClienteResolver  {
   constructor(private service: ClienteService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Cliente> {
-    if (route.params && route.params['idCliente']) {
-      return this.service.buscarPorId(route.params['idCliente']);
+    if (route.params && route.params['id']) {
+      return this.service.buscarPorId(route.params['id']);
     }
     return of({
-      idCliente: '',
+      id: '',
       nome: '',
       cpfcnpj: '',
       telefone: '',

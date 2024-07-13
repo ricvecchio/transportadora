@@ -20,7 +20,7 @@ export class ClientesListaComponent implements OnInit {
 
   clientes$: Observable<Cliente[]> | null = null;
   readonly displayedColumns: string[] = [
-    'idCliente',
+    'id',
     'nome',
     'telefone',
     'email',
@@ -59,7 +59,7 @@ export class ClientesListaComponent implements OnInit {
   }
 
   onEdit(cliente: Cliente) {
-    this.router.navigate(['/editar-cliente/', cliente.idCliente], {
+    this.router.navigate(['/editar-cliente/', cliente.id], {
       relativeTo: this.route,
     });
   }
@@ -69,9 +69,14 @@ export class ClientesListaComponent implements OnInit {
       data: 'Tem certeza que deseja remover esse cliente?',
     });
 
+    // console.log("PASSOU POR AQUI");
+    // console.log("PASSOU idCliente: ", cliente.id);
+
     dialogRef.afterClosed().subscribe((result: boolean) => {
+      console.log(result);
+      console.log(cliente);
       if (result) {
-        this.clienteService.excluir(cliente.idCliente).subscribe(
+        this.clienteService.excluir(cliente.id).subscribe(
           () => {
             this.atualiza();
             this.snackBar.open('Cliente removido com sucesso!', 'X', {

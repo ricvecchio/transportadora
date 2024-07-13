@@ -1,7 +1,7 @@
 import { Pedido } from "./pedido";
 
 export interface Cliente {
-  idCliente: string;
+  id: string;
   nome: string;
   cpfcnpj: string;
   telefone: string;
