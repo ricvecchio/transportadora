@@ -46,7 +46,7 @@ export class ClienteFormComponent implements OnInit {
       bairro: [cliente.bairro],
       cidade: [cliente.cidade],
       estado: [cliente.estado],
-      pedidos: this.formBuilder.array(this.obterPedidos(cliente), Validators.required,),
+      pedidos: this.formBuilder.array(this.obterPedidos(cliente),),
     });
   }
 
@@ -198,14 +198,14 @@ export class ClienteFormComponent implements OnInit {
   disabled = false;
 
   onSubmit() {
-    // if (this.formulario.valid) {
+    if (this.formulario.valid) {
     this.service.salvar(this.formulario.value).subscribe(
       (result) => this.onSucess(),
       (error) => this.onError(),
     );
-    // } else {
-    //   this.formUtils.validarTodosCamposFormFields(this.formulario);
-    // }
+    } else {
+      this.formUtils.validarTodosCamposFormFields(this.formulario);
+    }
   }
 
   private onSucess() {
