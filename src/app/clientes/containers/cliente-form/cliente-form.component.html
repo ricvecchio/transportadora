@@ -4,37 +4,6 @@
   </header>
 
   <form [formGroup]="formulario" class="full-width" id="formulario">
-    <div class="row">
-      <div class="col-md-9">
-        <mat-form-field class="form-grid" appearance="fill">
-          <mat-label>Buscar Cliente</mat-label>
-          <input
-            type="text"
-            matInput
-            [formControl]="myControl"
-            [matAutocomplete]="auto"
-            autofocus
-          />
-          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-            @for (option of filteredOptions | async; track option) {
-              <mat-option [value]="option">{{ option.name }}</mat-option>
-            }
-          </mat-autocomplete>
-        </mat-form-field>
-      </div>
-      <div class="col-md-3">
-        <mat-form-field class="form-grid" appearance="outline">
-          <mat-label>Código Cliente</mat-label>
-          <input
-            matInput
-            disableRipple
-            value="1"
-            name="idCliente"
-            formControlName="idCliente"
-          />
-        </mat-form-field>
-      </div>
-    </div>
 
     <br />
     <h6><strong>Informações Cliente:</strong></h6>

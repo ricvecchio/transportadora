@@ -8,7 +8,8 @@ import { Cliente } from '../modelo/cliente';
 })
 export class ClienteService {
 
-  private readonly API = 'http://localhost:2000/clientes'
+  // private readonly API = 'http://localhost:2000/clientes'
+    private readonly API = '/api/clientes'
 
   constructor(private http: HttpClient) { }
 
