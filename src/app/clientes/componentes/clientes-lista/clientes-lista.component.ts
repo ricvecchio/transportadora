@@ -68,10 +68,6 @@ export class ClientesListaComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: 'Tem certeza que deseja remover esse cliente?',
     });
-
-    // console.log("PASSOU POR AQUI");
-    // console.log("PASSOU idCliente: ", cliente.id);
-
     dialogRef.afterClosed().subscribe((result: boolean) => {
       console.log(result);
       console.log(cliente);
@@ -90,10 +86,4 @@ export class ClientesListaComponent implements OnInit {
       }
     });
   }
-
-  // @Input() clientes: Cliente[] = [];
-  // @Output() add = new EventEmitter(false);
-  // @Output() edit = new EventEmitter(false);
-  // @Output() remove = new EventEmitter(false);
-
 }
