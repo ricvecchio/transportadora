@@ -1,6 +1,22 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppRoutingModule } from './app/app-routing.module';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
-import { AppModule } from './app/app.module';
+import { AppComponent } from './app/app.component';
+import { environment } from './environments/environment';
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+if (environment.production) {
+  enableProdMode();
+}
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(BrowserModule, AppRoutingModule, MatToolbarModule),
+    provideAnimations(),
+    provideHttpClient(withInterceptorsFromDi())
+  ]
+})
   .catch(err => console.error(err));
