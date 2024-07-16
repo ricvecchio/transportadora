@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
 import { ClientesListaComponent } from './clientes/componentes/clientes-lista/clientes-lista.component';
 import { ClienteFormComponent } from './clientes/containers/cliente-form/cliente-form.component';
+import { AppMaterialModule } from './compartilhado/app-material.module';
+import { CompartilhadoModule } from './compartilhado/compartilhado.module';
 import { MatNativeDateModule } from '@angular/material/core';
 import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
 
@@ -30,6 +32,8 @@ import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
         FormsModule,
         ReactiveFormsModule,
         AsyncPipe,
+        AppMaterialModule,
+        CompartilhadoModule,
         CabecalhoComponent,
         RodapeComponent,
         HomeComponent,
