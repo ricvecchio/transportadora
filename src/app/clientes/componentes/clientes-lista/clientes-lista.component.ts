@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 
 import {
   ConfirmationDialogComponent,
@@ -10,6 +10,8 @@ import {
 import { ErrorDialogComponent } from '../../../compartilhado/componentes/error-dialog/error-dialog.component';
 import { Cliente } from '../../modelo/cliente';
 import { ClienteService } from '../../servicos/cliente.service';
+import { ClientePagina } from '../../modelo/cliente-pagina';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-clientes-lista',
@@ -18,7 +20,7 @@ import { ClienteService } from '../../servicos/cliente.service';
 })
 export class ClientesListaComponent implements OnInit {
 
-  clientes$: Observable<Cliente[]> | null = null;
+  clientes$: Observable<ClientePagina> | null = null;
   readonly displayedColumns: string[] = [
     'id',
     'nome',
@@ -26,6 +28,11 @@ export class ClientesListaComponent implements OnInit {
     'email',
     'acao'
   ];
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  pageIndex = 0;
+  pageSize = 10;
 
   constructor(
     private clienteService: ClienteService,
@@ -37,12 +44,17 @@ export class ClientesListaComponent implements OnInit {
     this.atualiza();
   }
 
-  atualiza() {
-    this.clientes$ = this.clienteService.listar().pipe(
+  atualiza(pageEvent: PageEvent = { length: 0, pageIndex: 0, pageSize: 10 }) {
+    this.clientes$ = this.clienteService.listar(pageEvent.pageIndex, pageEvent.pageSize)
+    .pipe(
+      tap(() => {
+        this.pageIndex = pageEvent.pageIndex;
+        this.pageSize = pageEvent.pageSize;
+      }),
       catchError((error) => {
         this.onError('Erro ao carregar clientes.');
-        return of([]);
-      }),
+        return of( {clientes: [], totalElementos: 0, totalPaginas: 0 })
+      })
     );
   }
 

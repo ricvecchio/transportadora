@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first, Observable } from 'rxjs';
 import { Cliente } from '../modelo/cliente';
+import { ClientePagina } from '../modelo/cliente-pagina';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,11 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(this.API);
+  listar(page = 0, pageSize = 10) {
+    return this.http.get<ClientePagina>(this.API, { params: { page, pageSize } })
+      .pipe(
+        first(),
+      );
   }
 
   buscarPorId(id: number): Observable<Cliente> {
