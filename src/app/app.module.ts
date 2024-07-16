@@ -23,35 +23,33 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CabecalhoComponent,
-    RodapeComponent,
-    HomeComponent,
-    LoginComponent,
-    NovoUsuarioComponent,
-    MenuComponent,
-    MensagemComponent,
-    ClienteFormComponent,
-    ClientesListaComponent
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    MatToolbarModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AsyncPipe,
-    AppMaterialModule,
-    CompartilhadoModule
-  ],
-  providers: [
-    provideAnimations(),
-    provideHttpClient(),
-    importProvidersFrom(MatNativeDateModule),
-    provideMomentDateAdapter()
-  ],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        MatToolbarModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AsyncPipe,
+        AppMaterialModule,
+        CompartilhadoModule,
+        CabecalhoComponent,
+        RodapeComponent,
+        HomeComponent,
+        LoginComponent,
+        NovoUsuarioComponent,
+        MenuComponent,
+        MensagemComponent,
+        ClienteFormComponent,
+        ClientesListaComponent
+    ],
+    providers: [
+        provideAnimations(),
+        provideHttpClient(),
+        importProvidersFrom(MatNativeDateModule),
+        provideMomentDateAdapter()
+    ],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

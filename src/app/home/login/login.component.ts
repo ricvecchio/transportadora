@@ -1,11 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { AutenticacaoService } from '../../autenticacao/autenticacao.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { MensagemComponent } from '../mensagem/mensagem.component';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        NgIf,
+        MensagemComponent,
+        RouterLink,
+    ],
 })
 export class LoginComponent implements OnInit {
   usuario = '';

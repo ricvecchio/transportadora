@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { UsuarioService } from '../autenticacao/usuario/usuario.service';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-cabecalho',
-  templateUrl: './cabecalho.component.html',
-  styleUrls: ['./cabecalho.component.css'],
+    selector: 'app-cabecalho',
+    templateUrl: './cabecalho.component.html',
+    styleUrls: ['./cabecalho.component.css'],
+    standalone: true,
+    imports: [
+        NgIf,
+        RouterLink,
+        AsyncPipe,
+    ],
 })
 export class CabecalhoComponent {
   user$ = this.usuarioService.retornaUsuario();

@@ -6,17 +6,15 @@ import { ConfirmationDialogComponent } from './componentes/confirmation-dialog/c
 
 
 @NgModule({
-  declarations: [
-    ErrorDialogComponent,
-    ConfirmationDialogComponent
-  ],
-  imports: [
-    CommonModule,
-    AppMaterialModule
-  ],
-  exports: [
-    ErrorDialogComponent,
-    ConfirmationDialogComponent
-  ]
+    imports: [
+        CommonModule,
+        AppMaterialModule,
+        ErrorDialogComponent,
+        ConfirmationDialogComponent
+    ],
+    exports: [
+        ErrorDialogComponent,
+        ConfirmationDialogComponent
+    ]
 })
 export class CompartilhadoModule { }

@@ -12,11 +12,20 @@ import { Cliente } from '../../modelo/cliente';
 import { ClienteService } from '../../servicos/cliente.service';
 import { ClientePagina } from '../../modelo/cliente-pagina';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatIcon } from '@angular/material/icon';
+import { MatMiniFabButton, MatIconButton } from '@angular/material/button';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatCard } from '@angular/material/card';
 
 @Component({
-  selector: 'app-clientes-lista',
-  templateUrl: './clientes-lista.component.html',
-  styleUrl: './clientes-lista.component.css'
+    selector: 'app-clientes-lista',
+    templateUrl: './clientes-lista.component.html',
+    styleUrl: './clientes-lista.component.css',
+    standalone: true,
+    imports: [MatCard, MatToolbar, NgIf, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatMiniFabButton, MatIcon, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator, MatProgressSpinner, AsyncPipe]
 })
 export class ClientesListaComponent implements OnInit {
 

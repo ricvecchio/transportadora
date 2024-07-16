@@ -1,6 +1,6 @@
-import { Location } from '@angular/common';
+import { Location, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,11 +9,25 @@ import { Pedido } from '../../../pedidos/model/pedido';
 import { ConsultaCepService } from '../../../pedidos/service/consulta-cep.service';
 import { Cliente } from '../../modelo/cliente';
 import { ClienteService } from '../../servicos/cliente.service';
+import { MatInput } from '@angular/material/input';
+import { MatFormField, MatLabel, MatHint, MatError, MatPrefix } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-cliente-form',
-  templateUrl: './cliente-form.component.html',
-  styleUrl: './cliente-form.component.css',
+    selector: 'app-cliente-form',
+    templateUrl: './cliente-form.component.html',
+    styleUrl: './cliente-form.component.css',
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        MatHint,
+        NgIf,
+        MatError,
+        MatPrefix,
+    ],
 })
 export class ClienteFormComponent implements OnInit {
 

@@ -1,16 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { minusculoValidator } from './minusculo.validator';
 import { NovoUsuario } from './novo-usuario';
 import { NovoUsuarioService } from './novo-usuario.service';
 import { UsuarioExisteService } from './usuario-existe.service';
 import { usuarioSenhaIguaisValidator } from './usuario-senha-iguais.validator';
+import { MensagemComponent } from '../mensagem/mensagem.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: "app-novo-usuario",
-  templateUrl: "./novo-usuario.component.html",
-  styleUrls: ["./novo-usuario.component.css"],
+    selector: "app-novo-usuario",
+    templateUrl: "./novo-usuario.component.html",
+    styleUrls: ["./novo-usuario.component.css"],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        MensagemComponent,
+        RouterLink,
+    ],
 })
 export class NovoUsuarioComponent implements OnInit {
   novoUsuarioForm!: FormGroup;
