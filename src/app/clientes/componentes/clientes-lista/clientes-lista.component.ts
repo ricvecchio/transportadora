@@ -16,7 +16,7 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatIcon } from '@angular/material/icon';
 import { MatMiniFabButton, MatIconButton } from '@angular/material/button';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatCard } from '@angular/material/card';
 
@@ -25,7 +25,7 @@ import { MatCard } from '@angular/material/card';
     templateUrl: './clientes-lista.component.html',
     styleUrl: './clientes-lista.component.css',
     standalone: true,
-    imports: [MatCard, MatToolbar, NgIf, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatMiniFabButton, MatIcon, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator, MatProgressSpinner, AsyncPipe]
+    imports: [MatCard, MatToolbar, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatMiniFabButton, MatIcon, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator, MatProgressSpinner, AsyncPipe]
 })
 export class ClientesListaComponent implements OnInit {
 

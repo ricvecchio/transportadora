@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AutenticacaoService } from '../../autenticacao/autenticacao.service';
 import { Router, RouterLink } from '@angular/router';
 import { MensagemComponent } from '../mensagem/mensagem.component';
-import { NgIf } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,11 +11,10 @@ import { FormsModule } from '@angular/forms';
     styleUrls: ['./login.component.css'],
     standalone: true,
     imports: [
-        FormsModule,
-        NgIf,
-        MensagemComponent,
-        RouterLink,
-    ],
+    FormsModule,
+    MensagemComponent,
+    RouterLink
+],
 })
 export class LoginComponent implements OnInit {
   usuario = '';

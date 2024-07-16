@@ -7,7 +7,7 @@ import { NovoUsuarioService } from './novo-usuario.service';
 import { UsuarioExisteService } from './usuario-existe.service';
 import { usuarioSenhaIguaisValidator } from './usuario-senha-iguais.validator';
 import { MensagemComponent } from '../mensagem/mensagem.component';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: "app-novo-usuario",
@@ -15,12 +15,11 @@ import { NgIf } from '@angular/common';
     styleUrls: ["./novo-usuario.component.css"],
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        NgIf,
-        MensagemComponent,
-        RouterLink,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MensagemComponent,
+    RouterLink
+],
 })
 export class NovoUsuarioComponent implements OnInit {
   novoUsuarioForm!: FormGroup;
