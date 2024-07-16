@@ -1,4 +1,4 @@
-import { Location, NgIf } from '@angular/common';
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -18,16 +18,15 @@ import { MatFormField, MatLabel, MatHint, MatError, MatPrefix } from '@angular/m
     styleUrl: './cliente-form.component.css',
     standalone: true,
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        MatInput,
-        MatHint,
-        NgIf,
-        MatError,
-        MatPrefix,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatHint,
+    MatError,
+    MatPrefix
+],
 })
 export class ClienteFormComponent implements OnInit {
 
@@ -53,7 +52,7 @@ export class ClienteFormComponent implements OnInit {
       telefone: [cliente.telefone, [Validators.required]],
       celular: [cliente.celular],
       email: [cliente.email, [Validators.required]],
-      cep: [cliente.cep],
+      cep: [cliente.cep, [Validators.required]],
       logradouro: [cliente.logradouro, [Validators.required]],
       numero: [cliente.numero],
       complemento: [cliente.complemento],
@@ -205,14 +204,14 @@ export class ClienteFormComponent implements OnInit {
   disabled = false;
 
   onSubmit() {
-    // if (this.formulario.valid) {
+    if (this.formulario.valid) {
     this.service.salvar(this.formulario.value).subscribe(
       (result) => this.onSucess(),
       (error) => this.onError(),
     );
-    // } else {
-    //   this.formUtils.validarTodosCamposFormFields(this.formulario);
-    // }
+    } else {
+      this.formUtils.validarTodosCamposFormFields(this.formulario);
+    }
   }
 
   private onSucess() {

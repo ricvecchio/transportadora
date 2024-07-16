@@ -4,7 +4,6 @@
   </header>
 
   <form [formGroup]="formulario" class="full-width" id="formulario">
-
     <br />
     <h6><strong>Informações Cliente:</strong></h6>
     <br />
@@ -21,8 +20,12 @@
               formControlName="nome"
               #nome
             />
-           <mat-hint align="end">{{nome.value.length || 0}} / 100</mat-hint>
-           <mat-error *ngIf="formulario.get('nome')?.invalid"> {{formUtils.getMensagemErro(formulario, "nome")}}</mat-error>
+            <mat-hint align="end">{{ nome.value.length || 0 }} / 100</mat-hint>
+            @if (formulario.get("nome")?.invalid) {
+              <mat-error>
+                {{ formUtils.getMensagemErro(formulario, "nome") }}</mat-error
+              >
+            }
           </mat-form-field>
         </div>
 
@@ -50,6 +53,13 @@
               placeholder="(11) 5555-1234"
               formControlName="telefone"
             />
+            @if (formulario.get("telefone")?.invalid) {
+              <mat-error>
+                {{
+                  formUtils.getMensagemErro(formulario, "telefone")
+                }}</mat-error
+              >
+            }
           </mat-form-field>
         </div>
         <div class="col-md-3">
@@ -73,21 +83,11 @@
               placeholder="Ex. pat@example.com"
               formControlName="email"
             />
-            <div
-              *ngIf="
-                (formulario?.invalid && formulario?.touched) ||
-                formulario?.dirty
-              "
-            >
-              <mat-error
-                *ngIf="
-                  formulario.hasError('email') &&
-                  !formulario.hasError('required')
-                "
+            @if (formulario.get("email")?.invalid) {
+              <mat-error>
+                {{ formUtils.getMensagemErro(formulario, "email") }}</mat-error
               >
-                E-mail é obrigatório.
-              </mat-error>
-            </div>
+            }
           </mat-form-field>
         </div>
       </div>
@@ -103,11 +103,11 @@
               formControlName="cep"
               (blur)="consultaCEP()"
             />
-            <div *ngIf="(formulario?.invalid && formulario?.touched) || formulario?.dirty">
-              <mat-error *ngIf="formulario.hasError('cep') && !formulario.hasError('required')">
-                O campo de CEP é obrigatório
-              </mat-error>
-            </div>
+            @if (formulario.get("cep")?.invalid) {
+              <mat-error>
+                {{ formUtils.getMensagemErro(formulario, "cep") }}</mat-error
+              >
+            }
           </mat-form-field>
         </div>
       </div>
@@ -117,6 +117,13 @@
           <mat-form-field class="form-grid">
             <mat-label>Logradouro:</mat-label>
             <input matInput name="logradouro" formControlName="logradouro" />
+            @if (formulario.get("logradouro")?.invalid) {
+              <mat-error>
+                {{
+                  formUtils.getMensagemErro(formulario, "logradouro")
+                }}</mat-error
+              >
+            }
           </mat-form-field>
         </div>
         <div class="col-md-3">
@@ -179,4 +186,3 @@
     </div>
   </form>
 </section>
-
