@@ -2,8 +2,8 @@
   <mat-toolbar color="primary">Lista de Clientes</mat-toolbar>
 
   <div *ngIf="clientes$ | async as clientes; else loading">
-        <!-- <mat-table [clientes]="clientes.clientes" class="mat-elevation-z8"> -->
-          <mat-table [dataSource]="clientes.clientes"> class="mat-elevation-z8">
+    <mat-table [dataSource]="clientes.clientes">
+      class="mat-elevation-z8">
 
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
@@ -64,16 +64,15 @@
     </mat-table>
 
     <mat-paginator
-    [pageSizeOptions]="[5, 10, 15]"
-    showFirstLastButtons
-    [pageIndex]="pageIndex"
-    [pageSize]="pageSize"
-    [length]="clientes.totalElementos"
-    (page)="atualiza($event)"
-    aria-label="Selecione a página dos Clientes"
-  >
-  </mat-paginator>
-
+      [pageSizeOptions]="[5, 10, 15]"
+      showFirstLastButtons
+      [pageIndex]="pageIndex"
+      [pageSize]="pageSize"
+      [length]="clientes.totalElementos"
+      (page)="atualiza($event)"
+      aria-label="Selecione a página dos Clientes"
+    >
+    </mat-paginator>
   </div>
 
   <ng-template #loading>
