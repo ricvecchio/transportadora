@@ -80,7 +80,7 @@ export class ClientesListaComponent implements OnInit {
   }
 
   onEdit(cliente: Cliente) {
-    this.router.navigate(['/editar-cliente/', cliente.id], {
+    this.router.navigate(['/editar-cliente', cliente.id], {
       relativeTo: this.route,
     });
   }

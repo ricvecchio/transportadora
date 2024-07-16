@@ -107,16 +107,9 @@ export class ClienteFormComponent implements OnInit {
   ) {
     return this.formBuilder.group({
       idPedido: [pedido.idPedido],
-      nomePedido: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(100),
-        ],
-      ],
-      razaoSocial: [''],
-      cpfcnpjPedido: [''],
+      nomePedido: [pedido.nomePedido],
+      razaoSocial: [pedido.razaoSocial],
+      cpfcnpjPedido: [pedido.cpfcnpjPedido],
       tipoPgto: [pedido.tipoPgto],
       cepPedido: [pedido.cepPedido],
       logradouroPedido: [pedido.logradouroPedido],
@@ -212,14 +205,14 @@ export class ClienteFormComponent implements OnInit {
   disabled = false;
 
   onSubmit() {
-    if (this.formulario.valid) {
+    // if (this.formulario.valid) {
     this.service.salvar(this.formulario.value).subscribe(
       (result) => this.onSucess(),
       (error) => this.onError(),
     );
-    } else {
-      this.formUtils.validarTodosCamposFormFields(this.formulario);
-    }
+    // } else {
+    //   this.formUtils.validarTodosCamposFormFields(this.formulario);
+    // }
   }
 
   private onSucess() {
