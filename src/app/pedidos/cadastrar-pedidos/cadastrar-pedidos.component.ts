@@ -1,14 +1,13 @@
-import { Pedido } from './../model/pedido';
-import { Cliente } from './../../clientes/cliente';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, of, startWith } from 'rxjs';
-
-import { ConsultaCepService } from '../../../service/consulta-cep.service';
-import { PedidoService } from '../pedido.service';
+import { ConsultaCepService } from '../service/consulta-cep.service';
+import { MatError, MatFormField, MatHint, MatLabel, MatPrefix } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { FormUtilsService } from '../../compartilhado/form-utils-service';
 
 
 interface Metros {
@@ -29,6 +28,17 @@ export interface User {
   selector: 'app-cadastrar-pedidos',
   templateUrl: './cadastrar-pedidos.component.html',
   styleUrl: './cadastrar-pedidos.component.css',
+  standalone: true,
+  imports: [
+  FormsModule,
+  ReactiveFormsModule,
+  MatFormField,
+  MatLabel,
+  MatInput,
+  MatHint,
+  MatError,
+  MatPrefix
+],
 })
 export class CadastrarPedidosComponent implements OnInit {
 
@@ -38,10 +48,11 @@ export class CadastrarPedidosComponent implements OnInit {
     private formBuilder: NonNullableFormBuilder,
     private router: Router,
     private consultaCepService: ConsultaCepService,
-    private service: PedidoService,
+    // private service: PedidoService,
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute,
+    public formUtils: FormUtilsService,
   ) {}
 
 
@@ -93,7 +104,6 @@ export class CadastrarPedidosComponent implements OnInit {
     telefone: ['', Validators.required],
     celular: [''],
     email: ['', [Validators.required, Validators.email]],
-    // endereco: this.formBuilder.group({
       cep: ['', [Validators.required, Validators.pattern('^(d{5})(-?d{3})$')]],
       logradouro: [''],
       numero: [''],
@@ -236,13 +246,11 @@ export class CadastrarPedidosComponent implements OnInit {
     if (cep != '') {
       this.consultaCepService.getConsultaCep(cep).subscribe((dados: any) => {
         this.formulario.patchValue({
-          // endereco: {
             logradouro: dados.logradouro,
             complemento: dados.complemento,
             bairro: dados.bairro,
             cidade: dados.localidade,
             estado: dados.uf,
-          // },
         });
       });
     }
@@ -286,10 +294,10 @@ export class CadastrarPedidosComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.salvar(this.formulario.value).subscribe(
-      (result) => this.onSucess(),
-      (error) => this.onError(),
-    );
+    // this.service.salvar(this.formulario.value).subscribe(
+    //   (result) => this.onSucess(),
+    //   (error) => this.onError(),
+    // );
   }
 
 
